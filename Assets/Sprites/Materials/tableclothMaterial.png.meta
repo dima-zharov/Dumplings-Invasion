@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e579b8431b90fa41a0c488a8d9d9236
+guid: 12d65fcd7966f9840bc1eaaa675981a1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -108,18 +108,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: tableclothMaterial.jpg_0
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 0
+        width: 217
+        height: 749
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9301ab39cf3788d4daf5ab60734061e5
+      internalID: -447538433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: c5cb74dddbfeba14aacdc1530daa3353
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tableclothMaterial.jpg_0: -447538433
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
