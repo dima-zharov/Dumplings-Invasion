@@ -17,6 +17,7 @@ public class EnemyFollowPlayer : FollowPlayer
     {
         Vector3 target = new Vector3(_player.transform.position.x - transform.position.x, 0, _player.transform.position.z - transform.position.z).normalized * _speed;
 
+        Debug.Log(target);
         _rigidbody.AddForce(target);
     }
 }

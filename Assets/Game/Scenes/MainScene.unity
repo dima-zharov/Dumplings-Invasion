@@ -1535,7 +1535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &434674721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2285,6 +2285,7 @@ GameObject:
   - component: {fileID: 809476418}
   - component: {fileID: 809476420}
   - component: {fileID: 809476419}
+  - component: {fileID: 809476421}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -2349,6 +2350,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809476417}
   m_CullTransparentMesh: 1
+--- !u!114 &809476421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809476417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd07d8c67137c349a85d871b3cb1dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationSpeed: 30
 --- !u!1 &821625505
 GameObject:
   m_ObjectHideFlags: 0
@@ -3018,6 +3032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23795ad00fa3fe943978901dea1f2319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _restartLevel: {fileID: 1241814986}
   _loadLevel: {fileID: 1017825326}
   _startPosition: {x: 0, y: 5.6, z: -7.67}
   _jumpForce: 5
@@ -4464,7 +4479,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4524,6 +4539,42 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 809476421}
+        m_TargetAssemblyTypeName: LoadImageAnimation, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1122993095}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1040625713}
+        m_TargetAssemblyTypeName: BlockPlayerMovement, Assembly-CSharp
+        m_MethodName: BlockMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!222 &1629210318
 CanvasRenderer:
@@ -4677,7 +4728,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1653195993}
   - component: {fileID: 1653195995}
-  - component: {fileID: 1653195994}
   m_Layer: 0
   m_Name: NextLevel
   m_TagString: Untagged
@@ -4700,21 +4750,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1017825325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1653195994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653195992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e66a556a92f4404dbfce360a4f05eaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _panel: {fileID: 264716554}
-  _nextLevelButton: {fileID: 0}
-  _spawnEnemy: {fileID: 1266844831}
 --- !u!114 &1653195995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4886,7 +4921,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1673100655}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 264716554}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1653195995}
+        m_TargetAssemblyTypeName: Levels, Assembly-CSharp
+        m_MethodName: Next
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1040625713}
+        m_TargetAssemblyTypeName: BlockPlayerMovement, Assembly-CSharp
+        m_MethodName: BlockMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1266844831}
+        m_TargetAssemblyTypeName: SpawnEnemy, Assembly-CSharp
+        m_MethodName: DestroyAllEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1673100655
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,6 @@ public class PushObject : MonoBehaviour
 
         Vector3 pushDirection = directionToEnemy * pushForce * _speed;
 
-        _enemyRigidbody.AddForce(pushDirection);
+        _enemyRigidbody.AddForce(pushDirection, ForceMode.Impulse);
     }
 }

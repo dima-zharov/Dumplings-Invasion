@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerPosition : MonoBehaviour
 {
+    [SerializeField] private RestartLevel _restartLevel;
     [SerializeField] private LoadLevel _loadLevel;
     [SerializeField] private Vector3 _startPosition;
     [SerializeField] private float _jumpForce;
@@ -11,18 +12,16 @@ public class PlayerPosition : MonoBehaviour
 
     private void OnEnable()
     {
-        _loadLevel.OnLevelLoaded += Restart;
+        _loadLevel.OnLevelLoaded += RestartPosition;
+        _restartLevel.GameOver += RestartPosition; 
     }
 
     private void OnDisable()
     {
-        _loadLevel.OnLevelLoaded -= Restart;
+        _loadLevel.OnLevelLoaded -= RestartPosition;
+        _restartLevel.GameOver -= RestartPosition;
     }
 
-    private void Restart()
-    {
-        RestartPosition();
-    }
 
     private void RestartPosition()
     {
