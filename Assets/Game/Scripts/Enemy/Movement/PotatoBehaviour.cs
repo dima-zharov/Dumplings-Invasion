@@ -17,14 +17,12 @@ public class PotatoBehaviour : FollowPlayer
         Vector3 direction = (_player.transform.position - transform.position).normalized;
 
         Vector3 midPoint = _player.transform.position - direction * _radius;
-
-        if(transform.position.x > _radius)
-            transform.position = new Vector3(_radius, 0, 0);
-        else if(transform.position.z > _radius)
-            transform.position = new Vector3(0, 0, _radius);
-
+       
         Vector3 targetPosition = (midPoint - transform.position).normalized * _speed;
         _rigidbody.AddForce(targetPosition);
+
+        if(transform.position.x > _radius || transform.position.z > _radius || transform.position.x < _radius || transform.position.z < _radius)
+            _rigidbody.AddForce(direction * _speed);
     }
 
 }

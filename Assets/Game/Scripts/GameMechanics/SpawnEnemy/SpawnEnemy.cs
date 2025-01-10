@@ -7,9 +7,13 @@ public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField] private EnemyCombination _enemyCombination;
     [SerializeField] private DeathPlayer _player;
+    [SerializeField] private RestartLevel _restartLevel;
+    [SerializeField] private LoadLevel _loadLevel;
+    [SerializeField] private BlockPlayerMovement _blockPlayerMovement;
 
     private List<Enemy> _enemiesCombination = new();
     private List<Enemy> _enemies = new();
+
 
     private float _spawnZMax = -3.5f;
     private float _spawnZMin = -9;
@@ -19,6 +23,20 @@ public class SpawnEnemy : MonoBehaviour
     private bool _isSpawning;
 
     public event Action OnEnemiesDied;
+
+    private void OnEnable()
+    {
+        _restartLevel.GameOver += DestroyAllEnemy;
+        OnEnemiesDied += _blockPlayerMovement.BlockMovement;
+        OnEnemiesDied += _loadLevel.Load;
+    }
+
+    private void OnDisable()
+    {
+        _restartLevel.GameOver -= DestroyAllEnemy;
+        OnEnemiesDied += _blockPlayerMovement.BlockMovement;
+        OnEnemiesDied -= _loadLevel.Load;
+    }
 
     private void Update()
     {

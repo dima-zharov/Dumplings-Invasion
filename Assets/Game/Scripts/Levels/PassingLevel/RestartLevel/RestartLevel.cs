@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class RestartLevel : MonoBehaviour
 {
-    [SerializeField] private LoadLevel _loadLevel;
-    [SerializeField] private SpawnEnemy _spawnEnemy;
+    public event Action GameOver;
 
     public void Restart()
     {
-        _spawnEnemy.DestroyAllEnemy();
-        _loadLevel.Load();
+        GameOver?.Invoke();
     }
 }
