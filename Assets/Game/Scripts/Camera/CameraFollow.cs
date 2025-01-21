@@ -9,7 +9,6 @@ public class CameraFollow : MonoBehaviour
     private float _barrierX;
     private float _barrierMinZ;
     private float _barrierMaxZ;
-    private float _constYPosition;
     private Vector3 _offsetPosition;
 
     private void Start()
@@ -19,7 +18,6 @@ public class CameraFollow : MonoBehaviour
         _barrierX = 1.5f;
         _barrierMinZ = -21f;
         _barrierMaxZ = -18.5f;
-        _constYPosition = 16.4f;
     }
 
     private void LateUpdate()

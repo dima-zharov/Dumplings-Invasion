@@ -1,13 +1,18 @@
-using System;
 using UnityEngine;
 
 public class DeathPlayer : MonoBehaviour
 {
+    [SerializeField] private GameOver _gameOver;
+
+    private Rigidbody _rigidbody;
     private bool _isAlive = true;
 
     public bool IsAlive => _isAlive;
 
-    public event Action OnPlayerDead;
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     public void RevivePlayer()
     {
@@ -16,10 +21,12 @@ public class DeathPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Death"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Death") && _isAlive)
         {
-            OnPlayerDead?.Invoke();
             _isAlive = false;
+
+            _gameOver.FinishGame();
+            Debug.Log("Death");
         }
     }
 }

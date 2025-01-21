@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EnemyFollowPlayer : FollowPlayer
 {
-
     private void Awake()
     {
         Initialize();
@@ -16,8 +15,6 @@ public class EnemyFollowPlayer : FollowPlayer
     protected override void Follow()
     {
         Vector3 target = new Vector3(_player.transform.position.x - transform.position.x, 0, _player.transform.position.z - transform.position.z).normalized * _speed;
-
-        Debug.Log(target);
         _rigidbody.AddForce(target);
     }
 }

@@ -6,18 +6,18 @@ public class MovementPlatform : MonoBehaviour
     [SerializeField] private float _startPositionZ;
     [SerializeField] private float _endPositionZ;
     [SerializeField] private float _platformSpeed;
-    [SerializeField] private LoadLevel _loadLevel;
+    [SerializeField] private NextLevel _nextLevel;
 
     private bool _isMovement;
 
     private void OnEnable()
     {
-        _loadLevel.OnLevelLoaded += StartMove;
+        _nextLevel.OnCompleteLevel += StartMove;
     }
 
     private void OnDisable()
     {
-        _loadLevel.OnLevelLoaded -= StartMove;
+        _nextLevel.OnCompleteLevel -= StartMove;
     }
 
     private void Update()
@@ -28,16 +28,19 @@ public class MovementPlatform : MonoBehaviour
 
     private void Move()
     {
-        for (int i = 0; i < _platforms.Length; i++)
-        {
-            if (_platforms[i].transform.position.z <= _endPositionZ)
-            {
-                _platforms[i].transform.position = new Vector3(transform.position.x, transform.position.y, _startPositionZ);
-                _isMovement = false;
-                return;
-            }
+        _platforms[0].transform.Translate(new Vector3(0, 0, -1) * _platformSpeed * Time.deltaTime);
+        _platforms[1].transform.Translate(new Vector3(0, 0, -1) * _platformSpeed * Time.deltaTime);
 
-            _platforms[i].transform.Translate(new Vector3(0, 0, -1) * _platformSpeed * Time.deltaTime);
+        CheckStartPosition(_platforms[0]);
+        CheckStartPosition(_platforms[1]);
+    }
+
+    private void CheckStartPosition(GameObject platform)
+    {
+        if (platform.transform.position.z <= _endPositionZ)
+        {
+            platform.transform.position = new Vector3(transform.position.x, transform.position.y, _startPositionZ);
+            _isMovement = false;
         }
     }
 

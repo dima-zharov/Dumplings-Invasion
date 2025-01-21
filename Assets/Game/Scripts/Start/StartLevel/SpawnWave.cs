@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SpawnWave : MonoBehaviour
 {
+    [SerializeField] private Levels _levels;
 
     private SpawnEnemy _spawnEnemy;
 
@@ -10,9 +11,11 @@ public class SpawnWave : MonoBehaviour
         _spawnEnemy = GetComponent<SpawnEnemy>();
     }
 
-
     public void Spawn()
     {
-        _spawnEnemy.Spawn();
+        if(_levels.CurrentLevel % 2 == 0)
+            _spawnEnemy.SpawnBoss();
+        else
+            _spawnEnemy.Spawn();
     }
 }

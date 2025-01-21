@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class RestartLevel : MonoBehaviour
 {
-    public event Action GameOver;
+    [SerializeField] private LoadLevel _loadLevel;
+
+    public event Action OnRestartedLevel;
 
     public void Restart()
     {
-        GameOver?.Invoke();
+        OnRestartedLevel?.Invoke();
+        _loadLevel.Load();
     }
 }
