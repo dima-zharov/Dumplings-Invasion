@@ -5,7 +5,9 @@ public class Levels : MonoBehaviour
     [SerializeField] private LevelUI _levelUI;
     [SerializeField] private RestartLevel _restartLevel;
     [SerializeField] private NextLevel _nextLevel;
+    [SerializeField] private LocationSystem _locationSystem;
 
+    private int _minimumLevel;
     private int _currentLevel = 1;
 
     public int CurrentLevel => _currentLevel;
@@ -14,11 +16,18 @@ public class Levels : MonoBehaviour
     {
         _restartLevel.OnRestartedLevel += RestartLevel;
         _nextLevel.OnCompleteLevel += Next;
+        _locationSystem.OnChangedLocation += Init;
     }
     private void OnDisable()
     {
         _restartLevel.OnRestartedLevel -= RestartLevel;
         _nextLevel.OnCompleteLevel -= Next;
+        _locationSystem.OnChangedLocation -= Init;
+    }
+
+    private void Init(Location location)
+    {
+        _minimumLevel = location.MinimumLevel;
     }
 
     public void Next()
@@ -29,7 +38,7 @@ public class Levels : MonoBehaviour
 
     public void RestartLevel()
     {
-        _currentLevel = 1;
+        _currentLevel = _minimumLevel;
         _levelUI.ChangeLevel();
     }
 

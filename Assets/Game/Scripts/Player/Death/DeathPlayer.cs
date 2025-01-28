@@ -3,16 +3,14 @@ using UnityEngine;
 public class DeathPlayer : MonoBehaviour
 {
     [SerializeField] private GameOver _gameOver;
+    [SerializeField] private StartLevel _startLevel;
 
-    private Rigidbody _rigidbody;
     private bool _isAlive = true;
 
     public bool IsAlive => _isAlive;
 
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+    private void OnEnable() { _startLevel.OnStartedLevel += RevivePlayer; }
+    private void OnDisable() { _startLevel.OnStartedLevel -= RevivePlayer; }
 
     public void RevivePlayer()
     {
@@ -24,9 +22,7 @@ public class DeathPlayer : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Death") && _isAlive)
         {
             _isAlive = false;
-
             _gameOver.FinishGame();
-            Debug.Log("Death");
         }
     }
 }

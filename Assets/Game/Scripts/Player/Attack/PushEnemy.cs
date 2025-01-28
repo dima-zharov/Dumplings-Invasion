@@ -14,7 +14,7 @@ public class PushEnemy : PushObject
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Enemy enemy) && _playerMovement.IsPlayerMoving()) 
+        if (collision.gameObject.TryGetComponent(out Enemy enemy) && _playerMovement.IsPlayerMoving())
             Push(enemy.gameObject, gameObject, _playerForce.PushForce);
     }
 }

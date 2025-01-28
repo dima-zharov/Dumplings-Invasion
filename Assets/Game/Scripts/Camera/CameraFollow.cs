@@ -1,29 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerChange _playerChange;
 
-    private float _barrierX;
-    private float _barrierMinZ;
-    private float _barrierMaxZ;
+    private Player _player;
     private Vector3 _offsetPosition;
+
+    private float _barrierX = 1.5f;
+    private float _barrierMinZ = -21;
+    private float _barrierMaxZ = -18.5f;
+
+    private void OnEnable() { _playerChange.OnChangedPlayer += ChangeTarget; }
+    private void OnDisable() { _playerChange.OnChangedPlayer -= ChangeTarget; }
 
     private void Start()
     {
         _offsetPosition = transform.position - _player.transform.position;
-
-        _barrierX = 1.5f;
-        _barrierMinZ = -21f;
-        _barrierMaxZ = -18.5f;
     }
 
     private void LateUpdate()
     {
-        Follow();
-        CheckPosition();
+        if (_player != null)
+        {
+            Follow();
+            CheckPosition();
+        }
+    }
+
+    private void ChangeTarget(Player player)
+    {
+        _player = player;
     }
 
     private void Follow()

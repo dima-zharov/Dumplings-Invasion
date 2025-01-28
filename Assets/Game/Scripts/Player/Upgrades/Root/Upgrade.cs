@@ -9,6 +9,8 @@ public abstract class Upgrade : MonoBehaviour
 
     public static event Action<float> OnUpgradedAbility;
 
+    public bool IsUpgradeAvaliable {  get; private set; }
+
     protected abstract void UpgradeAbility();
 
     private void RaisePrice()
@@ -18,7 +20,8 @@ public abstract class Upgrade : MonoBehaviour
 
     public virtual void TryUpgrade(MoneyData moneyData)
     {
-        if (moneyData.CurrentMoney >= _upgradePrice)
+        IsUpgradeAvaliable = moneyData.CurrentMoney >= _upgradePrice;
+        if (IsUpgradeAvaliable)
         {
             UpgradeAbility();
             OnUpgradedAbility?.Invoke(_upgradePrice);

@@ -13,7 +13,7 @@ public class SpawnWave : MonoBehaviour
 
     public void Spawn()
     {
-        if(_levels.CurrentLevel % 2 == 0)
+        if(_levels.CurrentLevel % 3 == 0)
             _spawnEnemy.SpawnBoss();
         else
             _spawnEnemy.Spawn();

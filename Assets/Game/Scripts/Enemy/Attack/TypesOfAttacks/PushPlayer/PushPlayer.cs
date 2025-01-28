@@ -1,10 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PushPlayer : PushObject
 {
     [SerializeField] private float _pushForce;
+
+    public void SetStartForce(float pushForce)
+    {
+        _pushForce += pushForce;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

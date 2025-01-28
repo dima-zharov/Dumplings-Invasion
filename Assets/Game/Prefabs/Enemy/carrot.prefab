@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6961000036864836072}
   - component: {fileID: -7619077874963612630}
   - component: {fileID: -4023276508807971247}
+  - component: {fileID: 7770537531942063897}
   m_Layer: 0
   m_Name: carrot
   m_TagString: Untagged
@@ -189,3 +190,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 1
+--- !u!114 &7770537531942063897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425913308089511157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5188b7fca526542abe429923d32a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentDefence: 0

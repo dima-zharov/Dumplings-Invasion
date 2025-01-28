@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6232988895641321760}
   - component: {fileID: 2729128559233434724}
   - component: {fileID: 6421623915608228911}
+  - component: {fileID: -5019962749286163397}
   m_Layer: 0
   m_Name: Broccoli
   m_TagString: Untagged
@@ -188,3 +189,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 1
+--- !u!114 &-5019962749286163397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015962840685928193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5188b7fca526542abe429923d32a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentDefence: 0

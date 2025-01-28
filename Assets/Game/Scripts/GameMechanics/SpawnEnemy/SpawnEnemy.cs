@@ -6,9 +6,11 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField] private EnemyCombination _enemyCombination;
-    [SerializeField] private DeathPlayer _player;
+    [SerializeField] private EnemyStartSettings _startSettings;
     [SerializeField] private LoadLevel _loadLevel;
-    [SerializeField] private BlockPlayerMovement _blockPlayerMovement;
+    [SerializeField] private PlayerChange _playerChange;
+
+    private DeathPlayer _player;
 
     private List<Enemy> _enemiesCombination = new();
     private List<Enemy> _enemies = new();
@@ -25,13 +27,13 @@ public class SpawnEnemy : MonoBehaviour
     private void OnEnable()
     {
         _loadLevel.OnLevelLoaded += DestroyAllEnemy;
-        OnEnemiesDied += _blockPlayerMovement.BlockMovement;
+        _playerChange.OnChangedPlayer += ChangePlayer;
     }
 
     private void OnDisable()
     {
         _loadLevel.OnLevelLoaded -= DestroyAllEnemy;
-        OnEnemiesDied += _blockPlayerMovement.BlockMovement;
+        _playerChange.OnChangedPlayer -= ChangePlayer;
     }
 
     private void Update()
@@ -49,13 +51,22 @@ public class SpawnEnemy : MonoBehaviour
         }
     }
 
+    private void ChangePlayer(Player player)
+    {
+        _player = player.GetComponent<DeathPlayer>();
+    }
+
     public void Spawn()
     {
         _enemiesCombination = _enemyCombination.GetEnemyCombination().ToList();
 
         for (int i = 0; i < _enemiesCombination.Count; i++)
         {
-            _enemies.Add(Instantiate(_enemiesCombination[i], GenerateSpawnPosition(), Quaternion.identity));
+            Enemy enemy = Instantiate(_enemiesCombination[i], GenerateSpawnPosition(), Quaternion.identity);
+
+            _enemies.Add(enemy);
+            _startSettings.SetSettings(enemy);
+
         }
 
         _isSpawning = true;

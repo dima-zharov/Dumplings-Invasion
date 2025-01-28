@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class WatchAd : MonoBehaviour
+public class ContinueGameAttempts : MonoBehaviour
 {
     [SerializeField] private GameObject _losePanel;
     [SerializeField] private GameObject _secondChancePanel;
     [SerializeField] private GameOver _gameOver;
     [SerializeField] private int _numberOfAttempts;
 
-    [SerializeField]private int _currentAttempts;
+    private int _currentAttempts;
 
     private void Awake()
     {

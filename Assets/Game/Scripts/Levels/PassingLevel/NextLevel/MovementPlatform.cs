@@ -3,11 +3,12 @@ using UnityEngine;
 public class MovementPlatform : MonoBehaviour
 {
     [SerializeField] private GameObject[] _platforms;
+    [SerializeField] private NextLevel _nextLevel;
     [SerializeField] private float _startPositionZ;
     [SerializeField] private float _endPositionZ;
     [SerializeField] private float _platformSpeed;
-    [SerializeField] private NextLevel _nextLevel;
 
+    private float _averagePositionZ;
     private bool _isMovement;
 
     private void OnEnable()
@@ -31,15 +32,17 @@ public class MovementPlatform : MonoBehaviour
         _platforms[0].transform.Translate(new Vector3(0, 0, -1) * _platformSpeed * Time.deltaTime);
         _platforms[1].transform.Translate(new Vector3(0, 0, -1) * _platformSpeed * Time.deltaTime);
 
-        CheckStartPosition(_platforms[0]);
-        CheckStartPosition(_platforms[1]);
+        CheckStartPosition(_platforms[0], _platforms[1]);
+        CheckStartPosition(_platforms[1], _platforms[0]);
     }
 
-    private void CheckStartPosition(GameObject platform)
+    private void CheckStartPosition(GameObject platform1, GameObject platform2)
     {
-        if (platform.transform.position.z <= _endPositionZ)
+        if (platform1.transform.position.z <= _endPositionZ)
         {
-            platform.transform.position = new Vector3(transform.position.x, transform.position.y, _startPositionZ);
+            platform1.transform.position = new Vector3(transform.position.x, transform.position.y, _startPositionZ);
+            platform2.transform.position = new Vector3(transform.position.x, transform.position.y, _averagePositionZ);
+
             _isMovement = false;
         }
     }
