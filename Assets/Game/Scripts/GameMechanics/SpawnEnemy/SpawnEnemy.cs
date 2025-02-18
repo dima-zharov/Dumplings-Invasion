@@ -11,6 +11,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private PlayerChange _playerChange;
 
     private DeathPlayer _player;
+    private Vector3 _spawnPosition;
 
     private List<Enemy> _enemiesCombination = new();
     private List<Enemy> _enemies = new();
@@ -20,6 +21,7 @@ public class SpawnEnemy : MonoBehaviour
     private float _spawnXMax = 3;
     private float _spawnXMin = -3;
     private float _spawnY = 5.5f;
+    private float _zoneRadius = 3;
     private bool _isSpawning;
 
     public event Action OnEnemiesDied;
@@ -81,10 +83,16 @@ public class SpawnEnemy : MonoBehaviour
 
     private Vector3 GenerateSpawnPosition()
     {
-        float spawnX = UnityEngine.Random.Range(_spawnXMin, _spawnXMax);
-        float spawnZ = UnityEngine.Random.Range(_spawnZMin, _spawnZMax);
+        do
+        {
+            float spawnX = UnityEngine.Random.Range(_spawnXMin, _spawnXMax);
+            float spawnZ = UnityEngine.Random.Range(_spawnZMin, _spawnZMax);
 
-        return new Vector3(spawnX, _spawnY, spawnZ);
+            _spawnPosition = new Vector3(spawnX, _spawnY, spawnZ);
+        }
+        while (Vector3.Distance(_spawnPosition, _player.transform.position) < _zoneRadius);
+
+        return _spawnPosition;
     }
 
     public void DestroyAllEnemy()

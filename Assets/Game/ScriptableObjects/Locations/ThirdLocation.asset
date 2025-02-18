@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ThirdLocation
   m_EditorClassIdentifier: 
   _locationId: 3
-  _minimumLevel: 40
+  _minimumLevel: 20
   _minimumUpgradePrice: 250

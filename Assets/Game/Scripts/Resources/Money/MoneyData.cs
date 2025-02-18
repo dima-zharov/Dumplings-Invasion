@@ -15,7 +15,6 @@ public class MoneyData : MonoBehaviour
 
     private void Start()
     {
-        _currentMoney = 1000;
         _increaseMoney = 10;
         _multiplier = 1;
     }

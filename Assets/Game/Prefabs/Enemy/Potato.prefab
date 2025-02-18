@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5005966698107766206}
   - component: {fileID: 4304010458456501499}
   - component: {fileID: 4537454229439460552}
+  - component: {fileID: 3216336954166805045}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.54, y: 2.85, z: 2.18}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -217,3 +218,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 6972027527379071418, guid: c4cc279e0fcfb7149beed0c1985aae3d, type: 3}
+--- !u!114 &3216336954166805045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270749252831739033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f719ba6198c7f8548b084f99d1ae289d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endSize: 0.5
+  _duration: 0.5

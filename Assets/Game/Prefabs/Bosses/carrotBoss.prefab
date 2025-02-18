@@ -117,10 +117,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4951772285674952367}
   - component: {fileID: 1619591848325400266}
-  - component: {fileID: 388929190342942180}
   - component: {fileID: 6961000036864836072}
   - component: {fileID: -7619077874963612630}
   - component: {fileID: -4023276508807971247}
+  - component: {fileID: 8398963391870020336}
+  - component: {fileID: 3101544291571147020}
   m_Layer: 0
   m_Name: carrotBoss
   m_TagString: Untagged
@@ -138,7 +139,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.5, y: 2.85, z: 2.18}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8180461770967746938}
@@ -169,21 +170,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &388929190342942180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425913308089511157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9a2d3c07a45f14c8aa36997b92eceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 16
 --- !u!114 &6961000036864836072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +209,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 2
+--- !u!114 &8398963391870020336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425913308089511157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f719ba6198c7f8548b084f99d1ae289d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endSize: 0.3
+  _duration: 1
+--- !u!114 &3101544291571147020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425913308089511157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00605e0f72386994fa3036cb7b1e1787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 10
+  _duration: 0.5
+  _timeOfTrack: 3

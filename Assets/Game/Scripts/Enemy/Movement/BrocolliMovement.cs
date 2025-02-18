@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyFollowPlayer : FollowPlayer
+public class BrocolliMovement : FollowPlayer
 {
     private void Awake()
     {

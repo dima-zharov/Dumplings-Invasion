@@ -7,6 +7,8 @@ public abstract class FollowPlayer : MonoBehaviour
     protected DeathPlayer _player;
     protected Rigidbody _rigidbody;
 
+    protected bool _isMovement = false;
+
     protected void Initialize()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -14,14 +16,19 @@ public abstract class FollowPlayer : MonoBehaviour
         _player = FindObjectOfType<DeathPlayer>();
     }
 
-    protected void CheckPlayerExistence()
+    protected virtual void CheckPlayerExistence()
     {
-        if (_player.IsAlive)
+        if (_player.IsAlive && _isMovement)
             Follow();
         else
             _rigidbody.velocity = Vector3.zero;
     }
 
     protected abstract void Follow();
+
+    public void AllowMovement()
+    {
+        _isMovement = true;
+    }
 
 }

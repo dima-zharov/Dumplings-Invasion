@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SecondLocation
   m_EditorClassIdentifier: 
   _locationId: 2
-  _minimumLevel: 20
+  _minimumLevel: 10
   _minimumUpgradePrice: 100
