@@ -11,6 +11,7 @@ public class Levels : MonoBehaviour
     private int _currentLevel = 1;
 
     public int CurrentLevel => _currentLevel;
+    public int MinimumLevel => _minimumLevel;
 
     private void OnEnable()
     {

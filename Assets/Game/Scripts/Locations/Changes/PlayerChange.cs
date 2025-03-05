@@ -21,6 +21,7 @@ public class PlayerChange : MonoBehaviour
         {
             [1] = _players[0],
             [2] = _players[1],
+            [3] = _players[2],
         };
     }
 

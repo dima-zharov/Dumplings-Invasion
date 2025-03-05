@@ -11,6 +11,7 @@ public class NextLevel : MonoBehaviour
     private void OnEnable() { _spawnEnemy.OnEnemiesDied += LoadNextLevel; }
     private void OnDisable() { _spawnEnemy.OnEnemiesDied -= LoadNextLevel; }
 
+    [ContextMenu(nameof(LoadNextLevel))]
     public void LoadNextLevel()
     {
         OnCompleteLevel?.Invoke();

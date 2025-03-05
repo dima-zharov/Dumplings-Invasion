@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LocationSystem : MonoBehaviour
 {
-    [SerializeField] private Location[] _locations;
+    [field:SerializeField] public Location[] Locations { get; private set; }
     [SerializeField] private Levels _levels;
     [SerializeField] private NextLevel _nextLevel; 
 
@@ -19,7 +19,7 @@ public class LocationSystem : MonoBehaviour
 
     private void CheckTransitionToNewLocation()
     {
-        foreach (var location in _locations)
+        foreach (var location in Locations)
         {
             if (_levels.CurrentLevel == location.MinimumLevel)
                 OnChangedLocation?.Invoke(location);
