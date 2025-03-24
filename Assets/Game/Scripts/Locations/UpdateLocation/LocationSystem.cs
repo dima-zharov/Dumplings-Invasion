@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class LocationSystem : MonoBehaviour
 {
-    [field:SerializeField] public Location[] Locations { get; private set; }
+    [SerializeField] private Location[] _locations;
     [SerializeField] private Levels _levels;
     [SerializeField] private NextLevel _nextLevel; 
-
+    
+    public Location[] Locations => _locations;
     public event Action<Location> OnChangedLocation;
 
     private void Awake()

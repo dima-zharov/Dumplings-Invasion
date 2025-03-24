@@ -3,12 +3,12 @@ using UnityEngine;
 public class MovementPlatform : MonoBehaviour
 {
     [SerializeField] private float _platformSpeed;
-    [SerializeField] private MapBorder _border;
     [SerializeField] private NextLevel _nextLevel;
+    [SerializeField] private LevelTransition _levelTransition;
 
     private float _startPositionZ = 0;
     private float _endPositionZ = -40;
-    private bool _isMovement;
+    private bool _isMovement = false;
 
     private void OnEnable()
     {
@@ -27,8 +27,8 @@ public class MovementPlatform : MonoBehaviour
     }
 
     public void StartMovement() => _isMovement = true;
-    
-    
+
+
 
     private void Move()
     {
@@ -39,20 +39,14 @@ public class MovementPlatform : MonoBehaviour
 
     private void CheckPosition()
     {
+
         if (transform.position.z <= _endPositionZ)
         {
+            _levelTransition.CompleteTransition();
             transform.position = new Vector3(transform.position.x, transform.position.y, _startPositionZ);
             _isMovement = false;
-            ChangeTilePosition(-_endPositionZ);
-        }
-    }
 
-    private void ChangeTilePosition(float offsetZPos)
-    {
-        if (_border.FirstPlatform != null)
-        {
-            Vector3 newPos = new Vector3(0, 0, _border.FirstPlatform.transform.position.z + offsetZPos);
-            _border.FirstPlatform.transform.position = newPos;
         }
     }
+    
 }
