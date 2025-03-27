@@ -30,6 +30,7 @@ public class UpgradeForce : Upgrade
         _upgradeUI.ChangeUpgradeText();
     }
 
+
     private void ChangePlayer(Player player)
     {
         _playerForce = player.GetComponent<PlayerForce>();
@@ -38,5 +39,13 @@ public class UpgradeForce : Upgrade
     protected override void UpgradeAbility()
     {
         _playerForce.UpgradeForce(_increaseForce);
+    }
+    
+    public void LoadData(int upgradeLevel, float upgradePrice)
+    {
+        _upgradeLevel = upgradeLevel;
+        _upgradePrice = upgradePrice;
+        
+        _upgradeUI.ChangeUpgradeText();
     }
 }

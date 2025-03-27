@@ -10,13 +10,16 @@ public class MoneyData : MonoBehaviour
     private float _increaseMoney;
 
     public float CurrentMoney => _currentMoney;
+    public float Multiplier => _multiplier;
 
     public event Action OnMoneyChange;
 
     private void Start()
     {
         _increaseMoney = 10;
-        _multiplier = 1;
+        
+        if (!PlayerPrefs.HasKey("firstOpen"))
+            _multiplier = 1;
     }
 
     private void OnEnable()
@@ -36,6 +39,12 @@ public class MoneyData : MonoBehaviour
         _currentMoney += (int)Math.Round(_multiplier * _increaseMoney);
 
         OnMoneyChange?.Invoke();
+    }
+
+    public void Init(float money, float multiplier)
+    {
+        _currentMoney = money;
+        _multiplier = multiplier;
     }
 
     private void RemoveMoney(float amount)

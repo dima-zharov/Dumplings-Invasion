@@ -31,23 +31,12 @@ public class ChangePlatformsState : MonoBehaviour
             _platforms[i].AddLevelToId(_levels.CurrentLevel);
 
             if (_platforms[i].PlatformLevel <= _locations.Locations[0].MinimumLevel)
-                ActivatePlatfomTile(0, i);
-            else if(_platforms[i].PlatformLevel >= _locations.Locations[1].MinimumLevel && _platforms[i].PlatformLevel < _locations.Locations[2].MinimumLevel)
-                ActivatePlatfomTile(1, i);
-            else if(_platforms[i].PlatformLevel >= _locations.Locations[2].MinimumLevel)
-                ActivatePlatfomTile(2, i);
+                _platforms[i].SetTileToPlatform(0);
+            else if (_platforms[i].PlatformLevel >= _locations.Locations[1].MinimumLevel && _platforms[i].PlatformLevel < _locations.Locations[2].MinimumLevel)
+                _platforms[i].SetTileToPlatform(1);
+            else if (_platforms[i].PlatformLevel >= _locations.Locations[2].MinimumLevel)
+                _platforms[i].SetTileToPlatform(2);
 
-        }
-    }
-
-    private void ActivatePlatfomTile(int tileNumber, int platformNumber)
-    {
-        for (int i = 0; i < _platforms.Count; i++)
-        {
-            if(tileNumber == i)
-                _platforms[platformNumber].SetTileToPlatform(i, true);
-            else
-                _platforms[platformNumber].SetTileToPlatform(i, false);
         }
     }
 

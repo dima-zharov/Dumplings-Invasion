@@ -32,6 +32,6 @@ public abstract class Upgrade : MonoBehaviour
     }
 
     public float GetUpgradePrice() => _upgradePrice;
-    public float GetUpgradeLevel() => _upgradeLevel;
+    public int GetUpgradeLevel() => _upgradeLevel;
 }
 

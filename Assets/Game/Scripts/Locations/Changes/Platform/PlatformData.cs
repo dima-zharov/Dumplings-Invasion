@@ -13,9 +13,15 @@ public class PlatformData : MonoBehaviour
     }
 
 
-    public void SetTileToPlatform(int numberOfTile, bool isActive)
+    public void SetTileToPlatform(int numberOfTile)
     {
-        _tilesPrefabs[numberOfTile].SetActive(isActive);
+        for (int i = 0; i < _tilesPrefabs.Length; i++)
+        {
+            if (i == numberOfTile)
+                _tilesPrefabs[i].SetActive(true);
+            else
+                _tilesPrefabs[i].SetActive(false);
+        }
     }
 
 

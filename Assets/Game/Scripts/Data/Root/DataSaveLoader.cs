@@ -1,12 +1,19 @@
 using UnityEngine;
+using Zenject;
+using System.Collections.Generic;
 
 public class DataSaveLoader : MonoBehaviour
 {
     [SerializeField] private GameBeginning _gameBeginning;
 
-    private readonly IDataSaveLoader[] _dataSaveLoaders = {
+    private List<IDataSaveLoader> _dataSaveLoaders;
 
-    };
+    [Inject]
+    public void Construct(List<IDataSaveLoader> dataSaveLoaders)
+    {
+        _dataSaveLoaders = dataSaveLoaders;
+        Debug.Log("Получено SaveLoaders: " + _dataSaveLoaders.Count);
+    }
 
     private void OnEnable()
     {
@@ -27,6 +34,7 @@ public class DataSaveLoader : MonoBehaviour
 
         Repository.SaveState();
         PlayerPrefs.SetInt("firstOpen", 1);
+        //PlayerPrefs.DeleteKey("firstOpen");
     }
 
     private void LoadData()

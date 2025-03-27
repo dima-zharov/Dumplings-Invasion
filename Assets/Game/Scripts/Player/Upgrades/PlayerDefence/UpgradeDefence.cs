@@ -8,7 +8,7 @@ public class UpgradeDefence : Upgrade
 
     private DefenceAbility _defenceAbility;
 
-    private float _increaseSpeed = 0.1f;
+    private float _increaseDefence = 0.1f;
 
     private void OnEnable()
     {
@@ -37,6 +37,17 @@ public class UpgradeDefence : Upgrade
 
     protected override void UpgradeAbility()
     {
-        _defenceAbility.SetDefence(_increaseSpeed);
+        _defenceAbility.SetDefence(_increaseDefence);
+    }
+
+    public void LoadData(int upgradeLevel, float upgradePrice)
+    {
+        _upgradeLevel = upgradeLevel;
+        _upgradePrice = upgradePrice;
+        
+        Debug.Log("PriceDefence" + upgradePrice);
+        Debug.Log("LevelDefence" + upgradeLevel);
+        
+        _upgradeUI.ChangeUpgradeText();
     }
 }

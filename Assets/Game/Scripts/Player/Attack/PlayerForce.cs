@@ -10,11 +10,21 @@ public class PlayerForce : MonoBehaviour
     private void Start()
     {
         _startPushForce = 1;
-        _pushForce = _startPushForce;
+        
+        if (!PlayerPrefs.HasKey("firstOpen"))
+            _pushForce = _startPushForce;
+    }
+
+    public void Init(float pushForce)
+    {
+        _pushForce = pushForce;
+        Debug.Log("push force " + _pushForce);
     }
 
     public void UpgradeForce(float increaseForce)
     {
         _pushForce += _startPushForce * increaseForce;
     }
+    
+    
 }

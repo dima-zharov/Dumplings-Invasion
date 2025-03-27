@@ -6,9 +6,11 @@ public class LocationSystem : MonoBehaviour
     [SerializeField] private Location[] _locations;
     [SerializeField] private Levels _levels;
     [SerializeField] private NextLevel _nextLevel; 
+    public int CurrentLocationId {get; private set;}
     
     public Location[] Locations => _locations;
     public event Action<Location> OnChangedLocation;
+
 
     private void Awake()
     {
@@ -23,7 +25,10 @@ public class LocationSystem : MonoBehaviour
         foreach (var location in Locations)
         {
             if (_levels.CurrentLevel == location.MinimumLevel)
+            {
                 OnChangedLocation?.Invoke(location);
+                CurrentLocationId = location.LocationID;
+            }
         }
     }
 }

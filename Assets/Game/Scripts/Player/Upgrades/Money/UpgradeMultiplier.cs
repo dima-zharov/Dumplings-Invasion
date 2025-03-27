@@ -3,17 +3,31 @@ using UnityEngine;
 public class UpgradeMultiplier : Upgrade
 {
     [SerializeField] private MoneyData _moneyData;
+    [SerializeField] private UpgradeUI _upgradeUI;
 
     private float _increaseMultiplier = 0.2f;
 
     private void Awake()
     {
         _startUpgradePrice = 10;
-        _upgradePrice = _startUpgradePrice;
+        
+        if (!PlayerPrefs.HasKey("firstOpen"))
+            _upgradePrice = _startUpgradePrice;
     }
 
     protected override void UpgradeAbility()
     {
         _moneyData.UpgradeMultiplier(_increaseMultiplier);
+    }
+
+    public void Init(int upgradeLevel, float upgradePrice)
+    {
+        _upgradePrice = upgradePrice;
+        _upgradeLevel = upgradeLevel;
+        
+        Debug.Log("PriceMult" + upgradePrice);
+        Debug.Log("LevelMult" + upgradeLevel);
+        
+        _upgradeUI.ChangeUpgradeText();
     }
 }
