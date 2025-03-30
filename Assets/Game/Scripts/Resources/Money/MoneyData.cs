@@ -34,6 +34,7 @@ public class MoneyData : MonoBehaviour
         Upgrade.OnUpgradedAbility -= RemoveMoney;
     }
 
+    [ContextMenu(nameof(AddMoney))]
     private void AddMoney()
     {
         _currentMoney += (int)Math.Round(_multiplier * _increaseMoney);

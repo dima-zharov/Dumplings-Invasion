@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class Upgrade : MonoBehaviour
 {
+    [SerializeField] private SoundPlayer _soundPlayer;
     protected float _upgradePrice;
     protected float _startUpgradePrice;
     protected int _upgradeLevel;
@@ -23,12 +24,15 @@ public abstract class Upgrade : MonoBehaviour
         IsUpgradeAvaliable = moneyData.CurrentMoney >= _upgradePrice;
         if (IsUpgradeAvaliable)
         {
+            _soundPlayer.PlayPurchaseSound();
             UpgradeAbility();
             OnUpgradedAbility?.Invoke(_upgradePrice);
 
             _upgradeLevel++;
             RaisePrice();
         }
+        else
+            _soundPlayer.PlayNotEnoughtMoneySound();
     }
 
     public float GetUpgradePrice() => _upgradePrice;
