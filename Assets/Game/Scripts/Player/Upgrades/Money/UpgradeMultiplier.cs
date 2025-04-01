@@ -25,8 +25,6 @@ public class UpgradeMultiplier : Upgrade
         _upgradePrice = upgradePrice;
         _upgradeLevel = upgradeLevel;
         
-        Debug.Log("PriceMult" + upgradePrice);
-        Debug.Log("LevelMult" + upgradeLevel);
         
         _upgradeUI.ChangeUpgradeText();
     }
