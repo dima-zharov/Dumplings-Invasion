@@ -4,6 +4,7 @@ public class DeathPlayer : MonoBehaviour
 {
     [SerializeField] private GameOver _gameOver;
     [SerializeField] private StartLevel _startLevel;
+    [SerializeField] private ContinueGameAttempts _continueGameAttempts;
 
     private bool _isAlive = false;
 
@@ -20,12 +21,11 @@ public class DeathPlayer : MonoBehaviour
     public void Kill()
     {
         _isAlive = false;
-        _gameOver.FinishGame();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Death") && _isAlive)
-            Kill();
+            _continueGameAttempts.CheckAttempts();
     }
 }

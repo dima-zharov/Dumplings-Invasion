@@ -46,6 +46,8 @@ public class MoneyData : MonoBehaviour
     {
         _currentMoney = money;
         _multiplier = multiplier;
+        
+        OnMoneyChange?.Invoke();
     }
 
     private void RemoveMoney(float amount)

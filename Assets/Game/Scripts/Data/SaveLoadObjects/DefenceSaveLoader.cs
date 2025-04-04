@@ -28,9 +28,11 @@ public class DefenceSaveLoader: IDataSaveLoader
 
     public void LoadData()
     {
-        DefenceDataSerializable data = Repository.GetData<DefenceDataSerializable>();
-        _upgradeDefence.LoadData(data.UpgradeLevel, data.UpgradePrice);
-        _defenceAbility.Init(data.CurrentDefence);
+        if (Repository.TryGetData(out DefenceDataSerializable data))
+        {
+            _upgradeDefence.LoadData(data.UpgradeLevel, data.UpgradePrice);
+            _defenceAbility.Init(data.CurrentDefence);
+        }
     }
 }
 

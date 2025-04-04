@@ -27,13 +27,14 @@ public class DataSaveLoader : MonoBehaviour
 
     private void SaveData()
     {
+        PlayerPrefs.SetInt("firstOpen", 1);
+        
         foreach (var dataSaveLoader in _dataSaveLoaders)
         {
             dataSaveLoader.SaveData();
         }
 
         Repository.SaveState();
-        PlayerPrefs.SetInt("firstOpen", 1);
         //PlayerPrefs.DeleteKey("firstOpen");
     }
 

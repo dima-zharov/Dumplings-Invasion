@@ -3,9 +3,17 @@ using UnityEngine;
 
 public class DefenceAbility : MonoBehaviour
 {
-    [SerializeField] private float _currentDefence;
+    [SerializeField] private float _startDefence;
+    
+    private float _currentDefence;
 
     public float CurrentDefence => _currentDefence;
+
+    private void Start()
+    {
+        if (_currentDefence < _startDefence || !PlayerPrefs.HasKey("firstOpen"))
+            _currentDefence = _startDefence;
+    }
 
     public void Init(float currentDefence)
     {

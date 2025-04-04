@@ -21,6 +21,8 @@ public class UpgradeBuyAnimation : MonoBehaviour
     {
         image.DOColor(color, _duration).OnComplete(() => image.DOColor(_startImageColor, _duration));
         
-
     }
+
+    public void EnableUpgradeAnimtion(Image image) => EnableAnimation(image, _sucessfulUpgradeColor);
+    public void DisableUpgradeAnimtion(Image image) => EnableAnimation(image, _errorUpgradeColor);
 }

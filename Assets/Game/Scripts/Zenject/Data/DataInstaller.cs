@@ -9,9 +9,13 @@ public class DataInstaller : MonoInstaller
     [SerializeField] private UpgradeDefence _upgradeDefence;
     [SerializeField] private DefenceAbility _defenceAbility;
     [SerializeField] private UpgradeMultiplier _upgradeMultiplier;
+    [SerializeField] private LocationSystem _locationSystem;
     
     public override void InstallBindings()
     {
+        Container.Bind<LocationSystem>().FromInstance(_locationSystem).AsSingle();
+        Container.Bind<IDataSaveLoader>().To<LocationSaveLoader>().AsSingle();
+        
         Container.Bind<MoneyData>().FromInstance(_moneyData).AsSingle();
         Container.Bind<IDataSaveLoader>().To<MoneySaveLoader>().AsSingle();
         
@@ -25,6 +29,6 @@ public class DataInstaller : MonoInstaller
         Container.Bind<DefenceAbility>().FromInstance(_defenceAbility).AsSingle();
         Container.Bind<UpgradeDefence>().FromInstance(_upgradeDefence).AsSingle();
         Container.Bind<IDataSaveLoader>().To<DefenceSaveLoader>().AsSingle();
-        Debug.Log("DataInstaller: Биндинги установлены.");
+        
     }
 }

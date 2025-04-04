@@ -26,9 +26,11 @@ public class StrengthSaveLoader : IDataSaveLoader
 
     public void LoadData()
     {
-        StrengthDataSerializable data = Repository.GetData<StrengthDataSerializable>();
-        _upgradeForce.LoadData(data.UpgradeLevel, data.UpgradePrice);
-        _playerForce.Init(data.PushForce);
+        if (Repository.TryGetData(out StrengthDataSerializable data))
+        {
+            _upgradeForce.LoadData(data.UpgradeLevel, data.UpgradePrice);
+            _playerForce.Init(data.PushForce);
+        }
     }
 }
 

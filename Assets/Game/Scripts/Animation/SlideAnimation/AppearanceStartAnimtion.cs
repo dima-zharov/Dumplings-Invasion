@@ -6,7 +6,7 @@ public class AppearanceStartAnimtion : SlideAnimation
 
     protected override void MoveObject(Vector2 position)
     {
-        _rectTransform.DOAnchorPos(position, _durationAnimation)
+        _rectTransform.DOAnchorPos(position, DurationAnimation)
            .SetEase(Ease.InOutSine)
            .OnUpdate(() =>
            {

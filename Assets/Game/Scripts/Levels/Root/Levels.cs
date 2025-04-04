@@ -29,6 +29,7 @@ public class Levels : MonoBehaviour
     private void Init(Location location)
     {
         _minimumLevel = location.MinimumLevel;
+        RestartLevel();
     }
 
     public void Next()

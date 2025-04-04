@@ -15,3 +15,4 @@ MonoBehaviour:
   _locationId: 2
   _minimumLevel: 10
   _minimumUpgradePrice: 100
+  _maxUpgradeLevel: 30

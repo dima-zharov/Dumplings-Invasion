@@ -22,7 +22,8 @@ public class PlayCompleteLevelSound : MonoBehaviour
 
     private void PlaySound()
     {
+        _audioSource.pitch = Random.Range(1f, 1.15f);
         _audioSource.Play();
-    } 
+    }
 
 }

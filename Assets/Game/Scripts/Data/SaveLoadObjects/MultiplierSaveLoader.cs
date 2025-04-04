@@ -23,8 +23,8 @@ public class MultiplierSaveLoader : IDataSaveLoader
 
     public void LoadData()
     {
-        MultiplierDataSerializable data = Repository.GetData<MultiplierDataSerializable>();
-        _upgradeMultiplier.Init(data.UpgradeLevel, data.UpgradePrice);
+        if (Repository.TryGetData(out MultiplierDataSerializable data))
+            _upgradeMultiplier.Init(data.UpgradeLevel, data.UpgradePrice);
     }
 }
 

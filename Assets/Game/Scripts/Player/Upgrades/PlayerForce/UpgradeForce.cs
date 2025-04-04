@@ -25,8 +25,6 @@ public class UpgradeForce : Upgrade
     {
         _startUpgradePrice = location.MinimumUpgradePrice;
         _upgradePrice = _startUpgradePrice;
-
-        _upgradeLevel = 0;
         _upgradeUI.ChangeUpgradeText();
     }
 

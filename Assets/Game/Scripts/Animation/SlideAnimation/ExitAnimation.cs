@@ -6,7 +6,7 @@ public class ExitAnimation : SlideAnimation
 {
     protected override void MoveObject(Vector2 position)
     {
-        _rectTransform.DOAnchorPos(position, _durationAnimation).SetEase(Ease.InOutSine).OnComplete(ResumePosition);
+        _rectTransform.DOAnchorPos(position, DurationAnimation).SetEase(Ease.InOutSine).OnComplete(ResumePosition);
     }
 
     private void ResumePosition()

@@ -10,7 +10,6 @@ public class MoneySaveLoader : IDataSaveLoader
     public MoneySaveLoader(MoneyData moneyData)
     {
         _moneyData = moneyData;
-        Debug.Log(_moneyData);
     }
     
     public void SaveData()
@@ -24,8 +23,8 @@ public class MoneySaveLoader : IDataSaveLoader
 
     public void LoadData()
     {
-        MoneyDataSerializable data = Repository.GetData<MoneyDataSerializable>();
-        _moneyData.Init(data.Money, data.Multiplier);
+        if (Repository.TryGetData(out MoneyDataSerializable data))
+            _moneyData.Init(data.Money, data.Multiplier);
     }
 }
 

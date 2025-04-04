@@ -25,9 +25,6 @@ public class UpgradeDefence : Upgrade
     {
         _startUpgradePrice = location.MinimumUpgradePrice;
         _upgradePrice = _startUpgradePrice;
-
-        _upgradeLevel = 0;
-        _upgradeUI.ChangeUpgradeText();
     }
 
     private void ChangePlayer(Player player)
@@ -44,9 +41,6 @@ public class UpgradeDefence : Upgrade
     {
         _upgradeLevel = upgradeLevel;
         _upgradePrice = upgradePrice;
-        
-        Debug.Log("PriceDefence" + upgradePrice);
-        Debug.Log("LevelDefence" + upgradeLevel);
         
         _upgradeUI.ChangeUpgradeText();
     }

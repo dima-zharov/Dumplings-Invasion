@@ -470,6 +470,7 @@ MonoBehaviour:
   _losePanel: {fileID: 437887377}
   _secondChancePanel: {fileID: 484633289}
   _gameOver: {fileID: 733022896}
+  _playerDeth: {fileID: 0}
   _numberOfAttempts: 1
 --- !u!1 &114388487
 GameObject:
@@ -1046,7 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2481c4233f16d4b814e3d8be0511ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _durationAnimation: 1
+  <DurationAnimation>k__BackingField: 0
   _animationDirection: 0
 --- !u!114 &306362224
 MonoBehaviour:
@@ -1481,7 +1482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5188b7fca526542abe429923d32a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentDefence: 0
+  _startDefence: 3
 --- !u!114 &396709110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,6 +1495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c449db132eff7469bda8c47f91c89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPushForce: 3
 --- !u!114 &396709111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,6 +1557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOver: {fileID: 733022896}
   _startLevel: {fileID: 385212480}
+  _continueGameAttempts: {fileID: 108730070}
 --- !u!114 &396709115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1929,13 +1932,15 @@ GameObject:
   - component: {fileID: 437887378}
   - component: {fileID: 437887380}
   - component: {fileID: 437887379}
+  - component: {fileID: 437887381}
+  - component: {fileID: 437887382}
   m_Layer: 0
   m_Name: LosePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &437887378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1953,7 +1958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1122, y: 51}
   m_SizeDelta: {x: 1000, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &437887379
@@ -1994,6 +1999,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437887377}
   m_CullTransparentMesh: 1
+--- !u!114 &437887381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437887377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab5e9e558ff29e4b8f442b2bc6c3a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DurationAnimation>k__BackingField: 1
+  _animationDirection: 2
+  _positionToMove: {x: 0, y: 0}
+--- !u!114 &437887382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437887377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2481c4233f16d4b814e3d8be0511ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DurationAnimation>k__BackingField: 1
+  _animationDirection: 3
 --- !u!1001 &439123933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2298,14 +2332,15 @@ GameObject:
   - component: {fileID: 484633290}
   - component: {fileID: 484633292}
   - component: {fileID: 484633291}
-  - component: {fileID: 484633294}
+  - component: {fileID: 484633295}
+  - component: {fileID: 484633296}
   m_Layer: 0
   m_Name: ContinueChancePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &484633290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2324,7 +2359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1122, y: 51}
   m_SizeDelta: {x: 1000, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484633291
@@ -2365,7 +2400,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484633289}
   m_CullTransparentMesh: 1
---- !u!114 &484633294
+--- !u!114 &484633295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484633289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab5e9e558ff29e4b8f442b2bc6c3a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DurationAnimation>k__BackingField: 1
+  _animationDirection: 2
+  _positionToMove: {x: 0, y: 0}
+--- !u!114 &484633296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2377,8 +2427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2481c4233f16d4b814e3d8be0511ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _durationAnimation: 1
-  _animationDirection: 1
+  <DurationAnimation>k__BackingField: 1
+  _animationDirection: 3
 --- !u!1 &494275447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,42 +2849,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 437887377}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 264716554}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1122993095}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!222 &550852782
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3219,18 +3233,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 873354962}
-        m_TargetAssemblyTypeName: UpgradeUI, Assembly-CSharp
-        m_MethodName: ChangeUpgardeBuyAnimation
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 503893345}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &568944300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3428,7 +3430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moneyData: {fileID: 553076363}
-  _upgradeBuyAnimation: {fileID: 609711928}
+  _locationSystem: {fileID: 2001035059}
 --- !u!114 &609711928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3832,9 +3834,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1241814986}
-        m_TargetAssemblyTypeName: RestartLevel, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 437887382}
+        m_TargetAssemblyTypeName: SlideAnimation, Assembly-CSharp
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3844,9 +3846,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SlideAnimation, Assembly-CSharp
-        m_MethodName: StartAnimation
+      - m_Target: {fileID: 1241814986}
+        m_TargetAssemblyTypeName: RestartLevel, Assembly-CSharp
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3876,7 +3878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -782759845, guid: 0eb770a93dfa886478791607d9653122, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4058,9 +4060,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 306362219}
   - {fileID: 1730706454}
   - {fileID: 2041273972}
-  - {fileID: 306362219}
   m_Father: {fileID: 1520976517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4303,7 +4305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1096, y: 0}
+  m_AnchoredPosition: {x: 1101, y: 0}
   m_SizeDelta: {x: -72.9807, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &809476419
@@ -4735,6 +4737,7 @@ MonoBehaviour:
   _upgradeLevelText: {fileID: 806279729}
   _upgrade: {fileID: 873354963}
   _upgradeBuyAnimation: {fileID: 609711928}
+  _locationSystem: {fileID: 2001035059}
 --- !u!114 &873354963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4748,6 +4751,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundPlayer: {fileID: 1841212307}
+  _upgradeBuyAnimation: {fileID: 609711928}
+  _upgradeIcon: {fileID: 503893345}
   _locationSystem: {fileID: 2001035059}
   _playerChange: {fileID: 878325695}
   _upgradeUI: {fileID: 873354962}
@@ -4906,18 +4911,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1013290749}
-        m_TargetAssemblyTypeName: UpgradeUI, Assembly-CSharp
-        m_MethodName: ChangeUpgardeBuyAnimation
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2041891314}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5096,6 +5089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundPlayer: {fileID: 1841212307}
+  _upgradeBuyAnimation: {fileID: 609711928}
+  _upgradeIcon: {fileID: 2041891314}
   _locationSystem: {fileID: 2001035059}
   _playerChange: {fileID: 878325695}
   _upgradeUI: {fileID: 1013290749}
@@ -5115,6 +5110,7 @@ MonoBehaviour:
   _upgradeLevelText: {fileID: 1559912413}
   _upgrade: {fileID: 1013290748}
   _upgradeBuyAnimation: {fileID: 609711928}
+  _locationSystem: {fileID: 2001035059}
 --- !u!1 &1016622935
 GameObject:
   m_ObjectHideFlags: 0
@@ -5620,7 +5616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc86088b466c4a740aeba5061e88c2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isActive: 0
 --- !u!114 &1046013345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5993,7 +5988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2481c4233f16d4b814e3d8be0511ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _durationAnimation: 1
+  <DurationAnimation>k__BackingField: 0
   _animationDirection: 1
 --- !u!1 &1166106991
 GameObject:
@@ -6142,6 +6137,7 @@ GameObject:
   - component: {fileID: 1167404614}
   - component: {fileID: 1167404613}
   - component: {fileID: 1167404615}
+  - component: {fileID: 1167404616}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -6167,7 +6163,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 50, y: -15}
-  m_SizeDelta: {x: 260, y: 250.00005}
+  m_SizeDelta: {x: 260, y: 250}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1167404613
 MonoBehaviour:
@@ -6220,7 +6216,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 444048361012f084db06f53bc4deb6f4, type: 2}
-  _buttonTogle: {fileID: 1680923356}
+  _buttonTogle: {fileID: 1167404616}
+--- !u!114 &1167404616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167404611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc86088b466c4a740aeba5061e88c2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1213133059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6697,18 +6705,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2063370610}
-        m_TargetAssemblyTypeName: UpgradeUI, Assembly-CSharp
-        m_MethodName: ChangeUpgardeBuyAnimation
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1589580495}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1266601663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6855,7 +6851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2481c4233f16d4b814e3d8be0511ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _durationAnimation: 1
+  <DurationAnimation>k__BackingField: 0
   _animationDirection: 1
 --- !u!1 &1303095419
 GameObject:
@@ -7323,8 +7319,8 @@ AudioSource:
   m_GameObject: {fileID: 1406417976}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4332429285746067336, guid: 444048361012f084db06f53bc4deb6f4, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b4079a30a45eb99488119225050d963f, type: 3}
+  OutputAudioMixerGroup: {fileID: 3641770406063204956, guid: 444048361012f084db06f53bc4deb6f4, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 657578e4be6b64dbf9b09deada272e55, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -7487,7 +7483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5188b7fca526542abe429923d32a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentDefence: 0
+  _startDefence: 5
 --- !u!114 &1430864627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7500,6 +7496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c449db132eff7469bda8c47f91c89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPushForce: 5
 --- !u!114 &1430864628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7561,6 +7558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOver: {fileID: 733022896}
   _startLevel: {fileID: 385212480}
+  _continueGameAttempts: {fileID: 108730070}
 --- !u!114 &1430864632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8923,9 +8921,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1241814986}
-        m_TargetAssemblyTypeName: RestartLevel, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 437887381}
+        m_TargetAssemblyTypeName: AppearanceStartAnimtion, Assembly-CSharp
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8935,10 +8933,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 484633294}
-        m_TargetAssemblyTypeName: SlideAnimation, Assembly-CSharp
-        m_MethodName: StartAnimation
-        m_Mode: 1
+      - m_Target: {fileID: 484633289}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9044,6 +9042,7 @@ GameObject:
   - component: {fileID: 1661201684}
   - component: {fileID: 1661201683}
   - component: {fileID: 1661201685}
+  - component: {fileID: 1661201686}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -9122,7 +9121,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 444048361012f084db06f53bc4deb6f4, type: 2}
-  _buttonTogle: {fileID: 1046013344}
+  _buttonTogle: {fileID: 1661201686}
+--- !u!114 &1661201686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661201681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc86088b466c4a740aeba5061e88c2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1673100652
 GameObject:
   m_ObjectHideFlags: 0
@@ -9230,18 +9241,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 484633294}
-        m_TargetAssemblyTypeName: SlideAnimation, Assembly-CSharp
-        m_MethodName: StartAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1673100655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9318,7 +9317,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 173.33333, y: 166.66667}
+  m_SizeDelta: {x: 173.3333, y: 166.6667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1680923353
 MonoBehaviour:
@@ -9438,7 +9437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc86088b466c4a740aeba5061e88c2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isActive: 0
 --- !u!114 &1680923357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9533,7 +9531,7 @@ RectTransform:
   m_GameObject: {fileID: 1693176747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.87875, y: 0.86251, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 730293377}
@@ -9565,15 +9563,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0417\u0430\u043D\u043E\u0432\u043E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5039cda6d8a45f149975144422180b22, type: 2}
+  m_sharedMaterial: {fileID: 526062759511513605, guid: 5039cda6d8a45f149975144422180b22, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9590,10 +9588,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 70.85
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -9730,22 +9728,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2041273975}
-        m_TargetAssemblyTypeName: SlideAnimation, Assembly-CSharp
-        m_MethodName: StartAnimation
+      - m_Target: {fileID: 2041273977}
+        m_TargetAssemblyTypeName: SettingsPanelBehaviour, Assembly-CSharp
+        m_MethodName: PanelExit
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1730706453}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10189,6 +10175,7 @@ MonoBehaviour:
   _upgradeDefence: {fileID: 873354963}
   _defenceAbility: {fileID: 2081450857}
   _upgradeMultiplier: {fileID: 2063370609}
+  _locationSystem: {fileID: 2001035059}
 --- !u!1 &1874981505 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6560904209230481179, guid: 96f872867a8906240aca346489c13be9, type: 3}
@@ -10253,8 +10240,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041D\u0435\u0442"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2a7dc8674a5cab14e8467f8bb0350a41, type: 2}
+  m_sharedMaterial: {fileID: 526062759511513605, guid: 2a7dc8674a5cab14e8467f8bb0350a41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10573,6 +10560,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db497352fc1a45844b9310fb396c5818, type: 2}
   _levels: {fileID: 1653195995}
   _nextLevel: {fileID: 1653195996}
+  _changePlatformsState: {fileID: 2143294578}
 --- !u!4 &2001035060
 Transform:
   m_ObjectHideFlags: 0
@@ -10602,6 +10590,7 @@ GameObject:
   - component: {fileID: 2041273973}
   - component: {fileID: 2041273975}
   - component: {fileID: 2041273976}
+  - component: {fileID: 2041273977}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -10680,7 +10669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2481c4233f16d4b814e3d8be0511ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _durationAnimation: 1
+  <DurationAnimation>k__BackingField: 1
   _animationDirection: 1
 --- !u!114 &2041273976
 MonoBehaviour:
@@ -10694,9 +10683,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab5e9e558ff29e4b8f442b2bc6c3a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _durationAnimation: 1
+  <DurationAnimation>k__BackingField: 1
   _animationDirection: 1
   _positionToMove: {x: 0, y: 0}
+--- !u!114 &2041273977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041273971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e932cb2b861f034cb589c0f4527c85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leavePanel: {fileID: 1730706453}
 --- !u!1 &2041891312
 GameObject:
   m_ObjectHideFlags: 0
@@ -10885,6 +10887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundPlayer: {fileID: 1841212307}
+  _upgradeBuyAnimation: {fileID: 609711928}
+  _upgradeIcon: {fileID: 1589580495}
   _moneyData: {fileID: 553076363}
   _upgradeUI: {fileID: 2063370610}
 --- !u!114 &2063370610
@@ -10903,6 +10907,7 @@ MonoBehaviour:
   _upgradeLevelText: {fileID: 1487921268}
   _upgrade: {fileID: 2063370609}
   _upgradeBuyAnimation: {fileID: 609711928}
+  _locationSystem: {fileID: 2001035059}
 --- !u!1 &2081450843
 GameObject:
   m_ObjectHideFlags: 0
@@ -10932,7 +10937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2081450844
 Transform:
   m_ObjectHideFlags: 0
@@ -10960,6 +10965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c449db132eff7469bda8c47f91c89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPushForce: 1
 --- !u!114 &2081450846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11021,6 +11027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOver: {fileID: 733022896}
   _startLevel: {fileID: 385212480}
+  _continueGameAttempts: {fileID: 108730070}
 --- !u!114 &2081450850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11188,7 +11195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5188b7fca526542abe429923d32a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentDefence: 0
+  _startDefence: 0
 --- !u!114 &2081450858
 MonoBehaviour:
   m_ObjectHideFlags: 0

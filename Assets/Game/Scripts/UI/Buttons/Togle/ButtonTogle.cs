@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class ButtonTogle : MonoBehaviour
 {
-    [SerializeField] private bool _isActive;
+    private bool _isActive = false;
     public void TogleState(Action firstAction, Action secondAction)
     {
         if (_isActive)
-            firstAction();
-        else
             secondAction();
+        else
+            firstAction();
 
         _isActive = !_isActive;
     }

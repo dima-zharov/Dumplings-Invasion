@@ -7,6 +7,6 @@ public class SFXController : AudioMixerController
 
     protected override void SetParameterVolume(float volume)
     {
-        _audioMixer.SetFloat(SFX_NAME, volume);
+        bool success = _audioMixer.SetFloat(SFX_NAME, volume);
     }
 }

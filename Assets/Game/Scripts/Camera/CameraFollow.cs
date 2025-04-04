@@ -14,11 +14,6 @@ public class CameraFollow : MonoBehaviour
     private void OnEnable() { _playerChange.OnChangedPlayer += ChangeTarget; }
     private void OnDisable() { _playerChange.OnChangedPlayer -= ChangeTarget; }
 
-    private void Start()
-    {
-        _offsetPosition = transform.position - _player.transform.position;
-    }
-
     private void LateUpdate()
     {
         if (_player != null)
@@ -31,6 +26,7 @@ public class CameraFollow : MonoBehaviour
     private void ChangeTarget(Player player)
     {
         _player = player;
+        _offsetPosition = transform.position - _player.transform.position;
     }
 
     private void Follow()

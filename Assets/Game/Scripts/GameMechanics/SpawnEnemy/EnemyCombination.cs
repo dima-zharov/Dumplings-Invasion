@@ -16,11 +16,11 @@ public class EnemyCombination : MonoBehaviour
         _combination = new Enemy[8][]
         {
             new Enemy[] { _carrot, _carrot, _carrot},
-            new Enemy[] { _broccoli, _potato, _potato, _carrot},
+            new Enemy[] { _broccoli, _potato, _potato},
             new Enemy[] {_broccoli, _broccoli, _potato},
             new Enemy[] {_carrot, _broccoli, _broccoli},
             new Enemy[] {_broccoli, _carrot, _carrot},
-            new Enemy[] { _potato, _potato, _potato},
+            new Enemy[] { _potato, _potato},
             new Enemy[] {_broccoli, _broccoli, _broccoli},
             new Enemy[] { _carrot, _broccoli, _potato }
         };

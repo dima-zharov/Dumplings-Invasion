@@ -11,7 +11,7 @@ public class PlayerChange : MonoBehaviour
     private Player _currentPlayer;
 
     public event Action<Player> OnChangedPlayer;
-
+    
     private void OnEnable() => _locationSystem.OnChangedLocation += Change;
     private void OnDisable() => _locationSystem.OnChangedLocation -= Change;
 
@@ -46,6 +46,9 @@ public class PlayerChange : MonoBehaviour
         if (_currentPlayer != null)
             SwitchPlayer(locationId);
         else
+        {
             _currentPlayer = _playersDictionary[locationId];
+            _currentPlayer.gameObject.SetActive(true);
+        }
     }
 }

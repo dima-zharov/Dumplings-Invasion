@@ -6,15 +6,25 @@ public class LocationSystem : MonoBehaviour
     [SerializeField] private Location[] _locations;
     [SerializeField] private Levels _levels;
     [SerializeField] private NextLevel _nextLevel; 
+    [SerializeField] private ChangePlatformsState _changePlatformsState;
+    
+    private Location _currentLocation;
+    
     public int CurrentLocationId {get; private set;}
+    public Location CurrentLocation => _currentLocation;
     
     public Location[] Locations => _locations;
     public event Action<Location> OnChangedLocation;
 
-
-    private void Awake()
+    public void Init(Location currentLocation)
     {
-        CheckTransitionToNewLocation();
+        CurrentLocationId = currentLocation.LocationID;
+        _currentLocation = currentLocation;
+        
+        OnChangedLocation?.Invoke(currentLocation);
+        _changePlatformsState.SetPlatformsTile();
+        
+        Debug.Log($"Location {currentLocation.LocationID}");
     }
 
     private void OnEnable() => _nextLevel.OnCompleteLevel += CheckTransitionToNewLocation;
@@ -28,6 +38,7 @@ public class LocationSystem : MonoBehaviour
             {
                 OnChangedLocation?.Invoke(location);
                 CurrentLocationId = location.LocationID;
+                _currentLocation = location;
             }
         }
     }

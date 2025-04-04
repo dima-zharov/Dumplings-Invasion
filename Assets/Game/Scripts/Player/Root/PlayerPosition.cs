@@ -9,6 +9,13 @@ public class PlayerPosition : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private int _jumpNumber;
+    
+    private Rigidbody _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     private void OnEnable()
     {
@@ -22,7 +29,9 @@ public class PlayerPosition : MonoBehaviour
 
     private void RestartPosition()
     {
+        _rigidbody.isKinematic = true;
+        
         transform.DOJump(_startPosition, _jumpForce, _jumpNumber, _jumpSpeed);
-        transform.DORotate(_startRotation, _jumpSpeed);
+        transform.DORotate(_startRotation, _jumpSpeed).OnComplete(() => _rigidbody.isKinematic = false);
     }
 }

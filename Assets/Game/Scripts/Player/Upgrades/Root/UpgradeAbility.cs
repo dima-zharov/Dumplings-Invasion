@@ -3,10 +3,10 @@ using UnityEngine;
 public class UpgradeAbility : MonoBehaviour
 {
     [SerializeField] private MoneyData _moneyData;
-    [SerializeField] private UpgradeBuyAnimation _upgradeBuyAnimation;
-
+    [SerializeField] private LocationSystem _locationSystem;
     public void Upgrade(Upgrade ability)
     {
-        ability.TryUpgrade(_moneyData);
+        if (ability.UpgradeLevel < _locationSystem.CurrentLocation.MaxUpgradeLevel)
+            ability.TryUpgrade(_moneyData);
     }
 }
