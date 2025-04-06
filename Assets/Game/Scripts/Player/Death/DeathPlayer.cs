@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DeathPlayer : MonoBehaviour
 {
-    [SerializeField] private GameOver _gameOver;
+    [SerializeField] private ContinueGameAttempts _gameAttempts;
     [SerializeField] private StartLevel _startLevel;
     [SerializeField] private ContinueGameAttempts _continueGameAttempts;
 
@@ -21,11 +21,14 @@ public class DeathPlayer : MonoBehaviour
     public void Kill()
     {
         _isAlive = false;
+        _continueGameAttempts.CheckAttempts();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Death") && _isAlive)
-            _continueGameAttempts.CheckAttempts();
+        {   
+            Kill();
+        }
     }
 }

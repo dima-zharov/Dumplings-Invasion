@@ -6,10 +6,12 @@ public class ExitAnimation : SlideAnimation
 {
     protected override void MoveObject(Vector2 position)
     {
-        _rectTransform.DOAnchorPos(position, DurationAnimation).SetEase(Ease.InOutSine).OnComplete(ResumePosition);
+       StartExitAnimation(position).OnComplete(ResumePosition);
     }
 
-    private void ResumePosition()
+    protected Tween StartExitAnimation(Vector2 position) => _rectTransform.DOAnchorPos(position, DurationAnimation).SetEase(Ease.InOutSine);
+
+    protected void ResumePosition()
     {
         gameObject.SetActive(false);
         transform.position = _targetPosition;

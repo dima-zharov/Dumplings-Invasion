@@ -4,6 +4,7 @@ public abstract class SlideAnimation : MonoBehaviour
 {
     [field: SerializeField] public float DurationAnimation { get; protected set; }
     [SerializeField] protected AnimationDirection _animationDirection;
+    
 
     protected Vector2 _targetPosition;
 
@@ -54,4 +55,5 @@ public abstract class SlideAnimation : MonoBehaviour
 
 
     protected abstract void MoveObject(Vector2 position);
+
 }

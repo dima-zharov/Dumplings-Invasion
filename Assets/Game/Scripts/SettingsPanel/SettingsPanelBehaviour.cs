@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(ExitAnimation))]
+[RequireComponent(typeof(SlideAnimation))]
 public class SettingsPanelBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject _leavePanel;

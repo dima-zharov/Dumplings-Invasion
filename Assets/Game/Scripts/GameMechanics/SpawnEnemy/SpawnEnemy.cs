@@ -9,6 +9,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private EnemyStartSettings _startSettings;
     [SerializeField] private LoadLevel _loadLevel;
     [SerializeField] private PlayerChange _playerChange;
+    [SerializeField] private RestartLevel _restartLevel;
 
     private DeathPlayer _player;
     private Vector3 _spawnPosition;
@@ -29,12 +30,14 @@ public class SpawnEnemy : MonoBehaviour
     private void OnEnable()
     {
         _loadLevel.OnLevelLoaded += DestroyAllEnemy;
+        _restartLevel.OnRestartedLevel += DestroyAllEnemy;
         _playerChange.OnChangedPlayer += ChangePlayer;
     }
 
     private void OnDisable()
     {
         _loadLevel.OnLevelLoaded -= DestroyAllEnemy;
+        _restartLevel.OnRestartedLevel -= DestroyAllEnemy;
         _playerChange.OnChangedPlayer -= ChangePlayer;
     }
 

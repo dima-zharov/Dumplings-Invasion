@@ -12,7 +12,6 @@ public class DataSaveLoader : MonoBehaviour
     public void Construct(List<IDataSaveLoader> dataSaveLoaders)
     {
         _dataSaveLoaders = dataSaveLoaders;
-        Debug.Log("Получено SaveLoaders: " + _dataSaveLoaders.Count);
     }
 
     private void OnEnable()

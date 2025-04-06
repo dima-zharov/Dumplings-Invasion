@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ContinueGameAttempts : MonoBehaviour
 {
+    [SerializeField] private SpawnEnemy _enemyDestroyer;
     [SerializeField] private GameObject _losePanel;
     [SerializeField] private GameObject _secondChancePanel;
     [SerializeField] private GameOver _gameOver;
-    [SerializeField] private DeathPlayer _playerDeth;
     [SerializeField] private int _numberOfAttempts;
     private AppearanceStartAnimtion _losePanelAppearance;
     private AppearanceStartAnimtion _secondChancePanelAppearance;
@@ -19,26 +19,20 @@ public class ContinueGameAttempts : MonoBehaviour
         _secondChancePanelAppearance = _secondChancePanel.GetComponent<AppearanceStartAnimtion>();
     }
 
-    private void OnEnable()
-    {
-        _gameOver.OnGameOver += _playerDeth.Kill;
-    }
-    private void OnDisable()
-    {
-        _gameOver.OnGameOver -= _playerDeth.Kill;
-    }
-
     public void CheckAttempts()
     {
         if (_currentAttempts == 0)
         {
+            _losePanel.gameObject.SetActive(true);
             _losePanelAppearance.StartAnimation();
             _currentAttempts = _numberOfAttempts;
+            _gameOver.FinishGame();
         }
         else
         {
+            _enemyDestroyer.DestroyAllEnemy();
+            _secondChancePanel.gameObject.SetActive(true);
             _secondChancePanelAppearance.StartAnimation();
-            _gameOver.FinishGame();
             
         }
     }

@@ -10,6 +10,7 @@ public class PlayerMotionless : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
+    private bool _wasContinueChancePanelShowed = false;
     private float _timeBeforeDeath = 3;
     private float _elapsedTime;
     private float _unitOfTime = 0.1f;
@@ -17,7 +18,14 @@ public class PlayerMotionless : MonoBehaviour
     private bool _isCountdownStarted;
 
     private Vector3 _currentVelocity => new Vector3(Mathf.Round(_rigidbody.velocity.x), Mathf.Round(_rigidbody.velocity.y), Mathf.Round(_rigidbody.velocity.z));
-
+    private void OnEnable()
+    {
+        _loadLevel.OnLevelLoaded += ResetContinueChancePanelState;
+    }
+    private void OnDisable()
+    {
+        _loadLevel.OnLevelLoaded -= ResetContinueChancePanelState;
+    }
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -47,13 +55,12 @@ public class PlayerMotionless : MonoBehaviour
             _timeBeforeDeathText.text = _timeBeforeDeath.ToString("0.0");
         }
 
-        if (_elapsedTime >= 6)
-        {
-            _deathPlayer.Kill();
-            ResumeValues();
-        }
     }
 
+    private void ResetContinueChancePanelState()
+    {
+        _wasContinueChancePanelShowed = false;
+    }
     private void ResumeValues()
     {
         _elapsedTime = 0;
@@ -71,6 +78,17 @@ public class PlayerMotionless : MonoBehaviour
             _elapsedTime += _unitOfTime;
 
             CheckTimeOfDeath();
+
+            if (_elapsedTime >= 6)
+            {
+                if (!_wasContinueChancePanelShowed)
+                    _deathPlayer.Kill();
+
+                _wasContinueChancePanelShowed = true;
+
+                break;
+            }
+
         }
 
         _isCountdownStarted = false;

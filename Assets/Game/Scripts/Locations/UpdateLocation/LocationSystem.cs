@@ -23,8 +23,7 @@ public class LocationSystem : MonoBehaviour
         
         OnChangedLocation?.Invoke(currentLocation);
         _changePlatformsState.SetPlatformsTile();
-        
-        Debug.Log($"Location {currentLocation.LocationID}");
+
     }
 
     private void OnEnable() => _nextLevel.OnCompleteLevel += CheckTransitionToNewLocation;
