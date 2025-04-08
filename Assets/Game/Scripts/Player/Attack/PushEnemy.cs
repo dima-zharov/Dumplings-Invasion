@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMovement))]
 public class PushEnemy : PushObject
 {
     [SerializeField] private PlayerForce _playerForce;

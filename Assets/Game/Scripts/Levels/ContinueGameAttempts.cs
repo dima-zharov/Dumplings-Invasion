@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ContinueGameAttempts : MonoBehaviour
 {
+    [SerializeField] private AudioSource _loseSound;
     [SerializeField] private SpawnEnemy _enemyDestroyer;
     [SerializeField] private GameObject _losePanel;
     [SerializeField] private GameObject _secondChancePanel;
@@ -11,6 +12,16 @@ public class ContinueGameAttempts : MonoBehaviour
     private AppearanceStartAnimtion _secondChancePanelAppearance;
 
     private int _currentAttempts;
+
+    private void OnEnable()
+    {
+        _gameOver.OnGameOver += () => _loseSound.Play();
+    }
+
+    private void OnDisable()
+    {
+        _gameOver.OnGameOver -= () => _loseSound.Play();
+    }
 
     private void Awake()
     {

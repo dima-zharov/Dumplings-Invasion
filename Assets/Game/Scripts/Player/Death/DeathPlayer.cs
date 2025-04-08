@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DeathPlayer : MonoBehaviour
 {
+    [SerializeField] private AudioSource _loseSound;
     [SerializeField] private ContinueGameAttempts _gameAttempts;
     [SerializeField] private StartLevel _startLevel;
     [SerializeField] private ContinueGameAttempts _continueGameAttempts;
@@ -20,6 +21,7 @@ public class DeathPlayer : MonoBehaviour
 
     public void Kill()
     {
+        _loseSound.Play();
         _isAlive = false;
         _continueGameAttempts.CheckAttempts();
     }
