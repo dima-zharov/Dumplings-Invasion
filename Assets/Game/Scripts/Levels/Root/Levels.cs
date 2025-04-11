@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Levels : MonoBehaviour
 {
+    [SerializeField] private GameCompletion _completeGame;
+    [SerializeField] private BestScore _bestScore;
     [SerializeField] private LevelUI _levelUI;
     [SerializeField] private RestartLevel _restartLevel;
     [SerializeField] private NextLevel _nextLevel;
@@ -35,7 +37,9 @@ public class Levels : MonoBehaviour
     public void Next()
     {
         _currentLevel++;
+        _completeGame.TryCompleteGame(_currentLevel);
         _levelUI.ChangeLevel();
+        _bestScore.TryChangeHighLevel(_currentLevel);
     }
 
     public void RestartLevel()

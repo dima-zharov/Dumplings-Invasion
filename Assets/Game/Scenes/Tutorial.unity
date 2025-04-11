@@ -358,6 +358,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floating Joystick
       objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043269, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791961219459, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1680505819, guid: 4c4445ba6c1885f49bfee10ec08251a1, type: 3}
+    - target: {fileID: 8170153792821263252, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -263388049, guid: 4c4445ba6c1885f49bfee10ec08251a1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -494,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -524,7 +536,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 333118768}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1265734915}
+        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &333118768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,6 +1150,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1443376302}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620329855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7655765173597055272, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+  m_PrefabInstance: {fileID: 231339177}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8850569e5e0ad2943a5303ecdea6001e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &732230473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,6 +2157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1265734914}
+  - component: {fileID: 1265734915}
   m_Layer: 0
   m_Name: WinPanel
   m_TagString: Untagged
@@ -2149,6 +2185,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1265734915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265734913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d405456fcf39e419b7367bfecc4ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1266844830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,6 +2352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e882ee7437ec29c4e90253276e188e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _joystick: {fileID: 620329855}
 --- !u!4 &1445894599
 Transform:
   m_ObjectHideFlags: 0

@@ -1,16 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ButtonTogle : MonoBehaviour
 {
-    private bool _isActive = false;
+    public bool IsActive;
+
     public void TogleState(Action firstAction, Action secondAction)
     {
-        if (_isActive)
+        if (IsActive)
             secondAction();
         else
             firstAction();
 
-        _isActive = !_isActive;
+        IsActive = !IsActive;
     }
 }

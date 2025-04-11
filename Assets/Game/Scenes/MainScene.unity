@@ -6035,6 +6035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc86088b466c4a740aeba5061e88c2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActive: 0
 --- !u!114 &1046013345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6047,6 +6048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eef555c6a22e114db0672f1eb9f6a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 1046013342}
   _activeSprite: {fileID: -1055707659, guid: 0eb770a93dfa886478791607d9653122, type: 3}
   _unActiveSprite: {fileID: -61180048, guid: 0eb770a93dfa886478791607d9653122, type: 3}
   _buttonTogle: {fileID: 1046013344}
@@ -6675,6 +6677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc86088b466c4a740aeba5061e88c2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActive: 0
 --- !u!114 &1167404617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8239,6 +8242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e882ee7437ec29c4e90253276e188e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _joystick: {fileID: 0}
 --- !u!4 &1445894599
 Transform:
   m_ObjectHideFlags: 0
@@ -9665,6 +9669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc86088b466c4a740aeba5061e88c2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActive: 0
 --- !u!114 &1661201687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10070,6 +10075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc86088b466c4a740aeba5061e88c2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActive: 0
 --- !u!114 &1680923357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10082,6 +10088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eef555c6a22e114db0672f1eb9f6a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 1680923354}
   _activeSprite: {fileID: 946165298, guid: 0eb770a93dfa886478791607d9653122, type: 3}
   _unActiveSprite: {fileID: 1285605906, guid: 0eb770a93dfa886478791607d9653122, type: 3}
   _buttonTogle: {fileID: 1680923356}
@@ -11134,6 +11141,7 @@ GameObject:
   - component: {fileID: 1979346690}
   - component: {fileID: 1979346689}
   - component: {fileID: 1979346691}
+  - component: {fileID: 1979346692}
   m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
@@ -11181,6 +11189,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ea715e3a467e34bab1caa47e2ef6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1979346692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979346687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fcdd6fd68121243b54cfcc022a8ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _changeSpriteSound: {fileID: 1680923357}
+  _changeSpriteMusic: {fileID: 1046013345}
+  _soundController: {fileID: 1167404615}
+  _musicController: {fileID: 1661201685}
+  _soundState: {fileID: 1167404616}
+  _musicState: {fileID: 1661201686}
+  _soundImage: {fileID: 1680923356}
+  _musicImage: {fileID: 1046013344}
 --- !u!1 &1984521809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6560904209230481179, guid: d57e649085616424bb6a8c8214ee8957, type: 3}

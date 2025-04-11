@@ -10,12 +10,12 @@ public abstract class AudioMixerController : MonoBehaviour
     {
         _buttonTogle.TogleState(Mute, UnMute);
     }
-    private void Mute()
+    public void Mute()
     {
         SetParameterVolume(-80f);
     }
 
-    private void UnMute()
+    public void UnMute()
     {
         SetParameterVolume(0f);
     }
