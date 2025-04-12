@@ -15,8 +15,7 @@ public class SoundSaveLoader : MonoBehaviour
     private string _music = "Music";
     private string _imageSound = "SoundImage";
     private string _imageMusic = "MusicImage";
-    
-
+    private bool _isMusicUnMuting;
     private void Start()
     {
         if (PlayerPrefs.HasKey(_sound) && PlayerPrefs.HasKey(_music))
@@ -43,10 +42,10 @@ public class SoundSaveLoader : MonoBehaviour
         int soundImage = PlayerPrefs.GetInt(_imageSound);
         int musicImage = PlayerPrefs.GetInt(_imageMusic);
         
-        _soundState.IsActive = sound == 1 ? true : false;
-        _musicState.IsActive = music == 1 ? true : false;
-        _soundImage.IsActive = soundImage == 1 ? false : true;
-        _musicImage.IsActive = musicImage == 1 ? false : true;
+        _soundState.IsActive = sound == 0 ? true : false;
+        _musicState.IsActive = music == 0 ? true : false;
+        _soundImage.IsActive = soundImage == 0 ? true : false;
+        _musicImage.IsActive = musicImage == 0 ? true : false;
         
         _soundController.SetAudioBehaviour();
         _musicController.SetAudioBehaviour();
@@ -69,13 +68,22 @@ public class SoundSaveLoader : MonoBehaviour
     {
         if (!isActive)
         {
+            if (!_musicState.IsActive)
+            {
+                _musicController.Mute();
+                _isMusicUnMuting = true;
+            }
+            
             SaveData();
-            _musicController.Mute();
             Time.timeScale = 0;
         }
         else
         {
-            _musicController.UnMute();
+            if (_isMusicUnMuting)
+            {
+                _musicController.UnMute();
+                _isMusicUnMuting = false;
+            }
             Time.timeScale = 1;
         }
     }

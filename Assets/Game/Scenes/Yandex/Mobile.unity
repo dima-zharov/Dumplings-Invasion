@@ -1329,7 +1329,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 306362227}
         m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
-        m_MethodName: StartAnimtion
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1342,6 +1342,18 @@ MonoBehaviour:
       - m_Target: {fileID: 288870039}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1761519641}
+        m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1852,7 +1864,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3641770406063204956, guid: 444048361012f084db06f53bc4deb6f4, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2667a0a008b044e218b63df62e2be749, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2596,7 +2608,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90.9
+  m_fontSize: 67.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5007,7 +5019,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 730293382}
         m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
-        m_MethodName: StartAnimtion
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5583,7 +5595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23515137, y: 0.155}
   m_AnchorMax: {x: 0.9654542, y: 0.883728}
-  m_AnchoredPosition: {x: 0.0032958984, y: -0.43089676}
+  m_AnchoredPosition: {x: 0.0032958984, y: -0.43034744}
   m_SizeDelta: {x: 1.0033002, y: 1.3829999}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &810163732
@@ -5766,12 +5778,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 676225871}
   - {fileID: 1122993096}
   - {fileID: 397930073}
   - {fileID: 1302508805}
   - {fileID: 1613569390}
   - {fileID: 454400884}
-  - {fileID: 676225871}
   m_Father: {fileID: 1241644541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6926,7 +6938,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1661201687}
         m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
-        m_MethodName: StartAnimtion
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7553,7 +7565,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90.5
+  m_fontSize: 67.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7641,7 +7653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -35}
+  m_AnchoredPosition: {x: 50, y: -35}
   m_SizeDelta: {x: 170, y: 165}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1167404613
@@ -7740,7 +7752,7 @@ GameObject:
   - component: {fileID: 1181933115}
   - component: {fileID: 1181933114}
   m_Layer: 0
-  m_Name: RestartButton
+  m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7877,7 +7889,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1181933114}
         m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
-        m_MethodName: StartAnimtion
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7963,7 +7975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1164, y: 120}
+  m_AnchoredPosition: {x: -1164, y: 0}
   m_SizeDelta: {x: -105.99423, y: -1432.9971}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1208839622
@@ -8009,7 +8021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DurationAnimation>k__BackingField: 1
   _animationDirection: 2
-  _positionToMove: {x: 0, y: 0}
+  _positionToMove: {x: 0, y: 300}
   _appearanceButtomHandler: {fileID: 1181933115}
 --- !u!114 &1208839625
 MonoBehaviour:
@@ -9780,11 +9792,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1761519639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 185, y: 185}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1448411511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9837,6 +9849,7 @@ GameObject:
   - component: {fileID: 1460193082}
   - component: {fileID: 1460193085}
   - component: {fileID: 1460193084}
+  - component: {fileID: 1460193088}
   m_Layer: 0
   m_Name: ShopButton
   m_TagString: Untagged
@@ -9939,7 +9952,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1460193084}
         m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
-        m_MethodName: StartAnimtion
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9961,6 +9974,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1460193084}
+        m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
+        m_MethodName: StopAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1460193084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9973,9 +9998,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097196bf10ee9e74c9a8dd5b4ba0ffaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DurationAnimation>k__BackingField: 0.5
+  <DurationAnimation>k__BackingField: 0.9
   isLooping: 1
-  _resizeValue: 0.3
+  _resizeValue: 0.2
   _resizeType: 0
 --- !u!114 &1460193085
 MonoBehaviour:
@@ -10024,6 +10049,20 @@ RectTransform:
   m_AnchoredPosition: {x: 200, y: -31}
   m_SizeDelta: {x: 74, y: 84}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1460193088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460193081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1c4e1ad72c50d42a42bfa9404ec693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loadLevel: {fileID: 1017825326}
+  _gameCompletion: {fileID: 2122878775}
 --- !u!1 &1487921267
 GameObject:
   m_ObjectHideFlags: 0
@@ -11351,7 +11390,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1629210320}
         m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
-        m_MethodName: StartAnimtion
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11551,7 +11590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -35}
+  m_AnchoredPosition: {x: -50, y: -35}
   m_SizeDelta: {x: 170, y: 165}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1661201683
@@ -11878,7 +11917,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1673100657}
         m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
-        m_MethodName: StartAnimtion
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12088,7 +12127,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1167404617}
         m_TargetAssemblyTypeName: ResizeAnimation, Assembly-CSharp
-        m_MethodName: StartAnimtion
+        m_MethodName: StartAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12471,7 +12510,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 57.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13173,9 +13212,9 @@ RectTransform:
   m_Father: {fileID: 1299831741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.70861816, y: 0.010009766}
-  m_SizeDelta: {x: -2, y: -0.020004272}
+  m_AnchorMax: {x: 1, y: 0.5334002}
+  m_AnchoredPosition: {x: -0.70861816, y: 0.2778015}
+  m_SizeDelta: {x: -2, y: 0.51539993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1761519640
 CanvasRenderer:
@@ -13197,9 +13236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097196bf10ee9e74c9a8dd5b4ba0ffaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DurationAnimation>k__BackingField: 0.5
+  <DurationAnimation>k__BackingField: 1.5
   isLooping: 1
-  _resizeValue: 0.5
+  _resizeValue: 0.2
   _resizeType: 1
 --- !u!1 &1765316729
 GameObject:
@@ -13379,7 +13418,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 141.85
+  m_fontSize: 96.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14870,8 +14909,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameCompletion: {fileID: 2122878775}
   _gameCompletePanel: {fileID: 676225870}
+  _shopPanel: {fileID: 1291198267}
   _gameCompleteInfo: {fileID: 1208839624}
-  _shopIcon: {fileID: 1460193081}
+  _shopIcon: {fileID: 1460193084}
 --- !u!1 &2143294576
 GameObject:
   m_ObjectHideFlags: 0

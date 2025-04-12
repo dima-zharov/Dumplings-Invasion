@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class SlideAnimation : MonoBehaviour
+public abstract class SlideAnimation : MonoBehaviour, IAnimation
 {
     [field: SerializeField] public float DurationAnimation { get; protected set; }
     [SerializeField] protected AnimationDirection _animationDirection;

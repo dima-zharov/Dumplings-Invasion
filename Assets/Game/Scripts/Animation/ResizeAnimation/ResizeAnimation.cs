@@ -1,58 +1,60 @@
 using DG.Tweening;
 using UnityEngine;
 
-[RequireComponent (typeof(RectTransform))]
-public class ResizeAnimation : MonoBehaviour
+[RequireComponent(typeof(RectTransform))]
+public class ResizeAnimation : MonoBehaviour, IAnimation
 {
     [field: SerializeField] public float DurationAnimation { get; private set; }
     public bool isLooping = false;
     [SerializeField] private float _resizeValue;
     [SerializeField] private ResizeTypes _resizeType;
     private Sequence _scaleSequence;
-    private Transform _objectSize;
     private RectTransform _UIObjectSize;
     private Vector3 _startUISize;
+
     private enum ResizeTypes
     {
         Grow,
         Minimize
     }
 
+
+    private void OnEnable()
+    {
+        if (_scaleSequence != null && !_scaleSequence.IsPlaying())
+            StartAnimation();
+    }
+
     private void Start()
     {
-        _scaleSequence = DOTween.Sequence();
-        _objectSize = GetComponent<RectTransform>();
-        _UIObjectSize = _objectSize as RectTransform;
+        _UIObjectSize = GetComponent<RectTransform>();
         _startUISize = _UIObjectSize.localScale;
     }
 
-    public void StartAnimtion()
+    public void StartAnimation()
     {
-        switch (_resizeType)
+        StopAnimation();
+        _scaleSequence = DOTween.Sequence();
+
+        Vector3 targetScale = _resizeType switch
         {
-            case (ResizeTypes.Grow):
-                StartChangeSizeAnimation(new Vector3(_UIObjectSize.localScale.x + _resizeValue, _UIObjectSize.localScale.y + _resizeValue));
-                break;
-            case (ResizeTypes.Minimize):
-                StartChangeSizeAnimation(new Vector3(_UIObjectSize.localScale.x - _resizeValue, _UIObjectSize.localScale.y - _resizeValue));
-                break;
-        }
+            ResizeTypes.Grow => _startUISize + Vector3.one * _resizeValue,
+            ResizeTypes.Minimize => _startUISize - Vector3.one * _resizeValue,
+            _ => _startUISize
+        };
+
+        _scaleSequence.Append(_UIObjectSize.DOScale(targetScale, DurationAnimation / 2).SetEase(Ease.InOutSine));
+        _scaleSequence.Append(_UIObjectSize.DOScale(_startUISize, DurationAnimation / 2).SetEase(Ease.InOutSine));
+
+        if (isLooping)
+            _scaleSequence.SetLoops(-1, LoopType.Restart);
     }
 
-    public void StopAnimation()
+    private void StopAnimation()
     {
         DOTween.Kill(_UIObjectSize);
-        SetBeginSize();
+        _scaleSequence?.Kill();
+
+        _UIObjectSize.localScale = _startUISize;
     }
-
-    private void StartChangeSizeAnimation(Vector3 scaleToChange)
-    {
-        _scaleSequence.Append(_UIObjectSize.DOScale(scaleToChange, DurationAnimation/2).OnComplete(SetBeginSize).SetEase(Ease.InOutSine));
-        if (isLooping)
-            StartLoopAnimation();
-    }
-
-    private void SetBeginSize() => _scaleSequence.Append(_UIObjectSize.DOScale(_startUISize, DurationAnimation / 2).SetEase(Ease.InOutSine));
-
-    private void StartLoopAnimation() => _scaleSequence.SetLoops(-1, LoopType.Restart);
 }
