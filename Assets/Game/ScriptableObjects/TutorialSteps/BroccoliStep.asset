@@ -15,8 +15,5 @@ MonoBehaviour:
   InstructionText: "\u041F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A \u21161
     \u2014 \u0411\u0440\u043E\u043A\u043A\u043E\u043B\u0438: \u043A\u043E\u0432\u0430\u0440\u043D\u0430\u044F
     \u0437\u0435\u043B\u0451\u043D\u0430\u044F \u0442\u0435\u043D\u044C"
-  GifHint: {fileID: 21300000, guid: 618fe3432ab001149aeadbb9aff0f9be, type: 3}
+  VideoClip: {fileID: 32900000, guid: 360afc813a4090f42a486a0bf41b2d4e, type: 3}
   EnemyPrefab: {fileID: 4015962840685928193, guid: 2e3079fbb03e90744bafac747d0ee781, type: 3}
-  OnStepStart:
-    m_PersistentCalls:
-      m_Calls: []

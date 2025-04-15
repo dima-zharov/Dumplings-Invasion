@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class LoadTutorialStep : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class LoadTutorialStep : MonoBehaviour
     [SerializeField] private TutorialEnemySpawn _enemySpawner;
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private TutorialStep[] _steps;
-    [SerializeField] private Image _gifDisplay;
+    [SerializeField] private VideoPlayer _videoPlayer;
     [SerializeField] private TextMeshProUGUI _instructionText;
     [SerializeField] private GameObject _startButton;
     
@@ -37,7 +38,8 @@ public class LoadTutorialStep : MonoBehaviour
         
         var step = _steps[_currentStepIndex];
         _instructionText.text = step.InstructionText;
-        _gifDisplay.sprite = step.GifHint;
+        _videoPlayer.clip = step.VideoClip;
+        _videoPlayer.Play();
         
         _failCount = 0;
     }
