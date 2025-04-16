@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - Pan
-  - ScrollerElementBackground
-  - 
+  - ScrollerElementForeground
+  - ScrollerElementState
   - 
   - 
   - 

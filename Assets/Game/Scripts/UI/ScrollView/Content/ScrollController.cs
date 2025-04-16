@@ -16,22 +16,21 @@ public abstract class ScrollController : MonoBehaviour
 
     public void UpdateElements()
     {
-        InitializeElements();
+        if(_scrollElements.Count == 0)
+            InitializeElements();
         Initialize();
         ChangeElement();
-        ClearScrollElements();
     }
 
     private void ChangeElement()
     {
-        foreach (GameObject element in _scrollElements)
-            foreach (IScrollElement action in _scrollActions)
-                action.MakeElementAction();
+        foreach (IScrollElement action in _scrollActions)
+            action.MakeElementAction();
     }
 
     private void InitializeElements()
     {
-        for(int i = 0; i < _scrollElementsSize; i++)
+        for (int i = 0; i < _scrollElementsSize; i++)
         {
             _scrollElements.Add(Instantiate(_prefab, _scrollViewContent));
         }
@@ -41,16 +40,12 @@ public abstract class ScrollController : MonoBehaviour
                      .ToList();
     }
 
-    private void ClearScrollElements()
-    {
-        _scrollActions?.Clear();
-        _scrollElements?.Clear();
-    }
 
-    protected virtual void Initialize(){ }
-    protected void InitializeConcreteElements<T>(out List<T> someActions) where T: MonoBehaviour, IScrollElement
+    protected virtual void Initialize() { }
+    protected void InitializeConcreteElements<T>(out List<T> someActions) where T : MonoBehaviour, IScrollElement
     {
         someActions = _scrollActions.OfType<T>().ToList();
+        someActions.Reverse();
         _scrollElements?.Clear();
         _scrollElements.AddRange(someActions.Select(x => x.gameObject));
     }
