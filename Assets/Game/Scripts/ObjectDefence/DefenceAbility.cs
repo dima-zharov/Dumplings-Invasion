@@ -9,7 +9,7 @@ public class DefenceAbility : MonoBehaviour
 
     public float CurrentDefence => _currentDefence;
 
-    private void Start()
+    private void Awake()
     {
         if (_currentDefence < _startDefence || !PlayerPrefs.HasKey("firstOpen"))
             _currentDefence = _startDefence;

@@ -10,11 +10,13 @@ public class GameCompletion : MonoBehaviour
 
     public void TryCompleteGame(int currentLevel)
     {
-        if(currentLevel - 1 == _lastLevelToFinishGame)
+        if (currentLevel - 1 == _lastLevelToFinishGame && !IsEndlessModeEnable)
         {
             OnGameCompleted?.Invoke();
             IsEndlessModeEnable = true;
         }
+        else if (currentLevel - 1 > _lastLevelToFinishGame)
+            IsEndlessModeEnable = true;
     }
 
     [ContextMenu(nameof(CompleteGame))]

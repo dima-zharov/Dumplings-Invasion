@@ -126,13 +126,13 @@ TextureImporter:
       name: UIList_0
       rect:
         serializedVersion: 2
-        x: 334
-        y: 290
-        width: 98
-        height: 138
+        x: 1084
+        y: 10
+        width: 252
+        height: 252
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 60, y: 60, z: 60, w: 60}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -210,9 +210,9 @@ TextureImporter:
       name: UIList_8
       rect:
         serializedVersion: 2
-        x: 944
+        x: 936
         y: 269
-        width: 146
+        width: 163
         height: 148
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -358,9 +358,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 412
-        y: 31
-        width: 195
-        height: 194
+        y: 56
+        width: 159
+        height: 168
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,10 +378,10 @@ TextureImporter:
       name: UIList_19
       rect:
         serializedVersion: 2
-        x: 610
-        y: 55
-        width: 156
-        height: 160
+        x: 570
+        y: 9
+        width: 252
+        height: 252
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -399,8 +399,8 @@ TextureImporter:
       name: UIList_20
       rect:
         serializedVersion: 2
-        x: 770
-        y: 9
+        x: 828
+        y: 10
         width: 252
         height: 252
       alignment: 0
@@ -417,79 +417,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIList_21
-      rect:
-        serializedVersion: 2
-        x: 1025
-        y: 5
-        width: 252
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 60, y: 60, z: 60, w: 60}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 839956d0723e2bc4abdf0d97d1f38e0d
-      internalID: -1026178392
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIList_22
-      rect:
-        serializedVersion: 2
-        x: 1282
-        y: 5
-        width: 252
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 60, y: 60, z: 60, w: 60}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6ee2f28a9e9dad94a9db896a75d89ee6
-      internalID: 1225784666
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIList_23
-      rect:
-        serializedVersion: 2
-        x: 1538
-        y: 31
-        width: 164
-        height: 165
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 30, y: 30, z: 30, w: 30}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1ea2ca418e96e14f8ff0eae93d71d92
-      internalID: -1872336799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: UIList_24
       rect:
         serializedVersion: 2
-        x: 1705
-        y: 5
-        width: 253
-        height: 253
+        x: 1658
+        y: 10
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 60, y: 60, z: 60, w: 60}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -538,6 +475,27 @@ TextureImporter:
       bones: []
       spriteID: cb15d4e7da39c8d428009ddea06932c7
       internalID: 1247241076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIList_2
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 10
+        width: 252
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 60, y: 60, z: 60, w: 60}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb09911f70e9a3e45a0272a24faf31a0
+      internalID: 522499084
       vertices: []
       indices: 
       edges: []

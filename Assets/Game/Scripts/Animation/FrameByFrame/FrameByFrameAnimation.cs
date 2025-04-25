@@ -9,6 +9,7 @@ public class FrameByFrameAnimation : MonoBehaviour
     [SerializeField] private List<Sprite> _frames;
     [SerializeField] private float _frameDuration = 0.1f;
     [SerializeField] private bool _loop = true;
+    [SerializeField] private bool _destroyAfterPlaying;
 
     private Image _currentImage;
     private Sequence _animationSequence;
@@ -37,7 +38,9 @@ public class FrameByFrameAnimation : MonoBehaviour
         }
 
         if (_loop)
-            _animationSequence.SetLoops(-1); 
+            _animationSequence.SetLoops(-1);
+        if (_destroyAfterPlaying)
+            Destroy(gameObject);
     }
 
     public void StopAnimation()

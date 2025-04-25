@@ -10,6 +10,8 @@ public class ElementImagesHandler : MonoBehaviour, IScrollElement
     public bool IsBlocked { get; private set; }
     public bool IsActive { get; private set; }
 
+
+
     public void MakeElementAction()
     {
         SetImage(_foregroundSprite, _foregroundImage);

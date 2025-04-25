@@ -34,8 +34,6 @@ public class LocationSaveLoader : IDataSaveLoader
         {
             _locationSystem.Init(_locationSystem.Locations[0]);
         }
-        
-        Debug.Log("Data Loaded");
     }
 }
 

@@ -8,7 +8,7 @@ public class PlayerForce : MonoBehaviour
 
     public float PushForce => _pushForce;
 
-    private void Start()
+    private void Awake()
     {
         if (_pushForce < _startPushForce || !PlayerPrefs.HasKey("firstOpen"))
             _pushForce = _startPushForce;

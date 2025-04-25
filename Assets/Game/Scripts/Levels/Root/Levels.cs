@@ -11,6 +11,7 @@ public class Levels : MonoBehaviour
 
     private int _minimumLevel;
     private int _currentLevel = 1;
+    private int _lastLevel = 31;
 
     public int CurrentLevel => _currentLevel;
     public int MinimumLevel => _minimumLevel;
@@ -30,7 +31,10 @@ public class Levels : MonoBehaviour
 
     private void Init(Location location)
     {
-        _minimumLevel = location.MinimumLevel;
+        if(_bestScore.HighLevel < _lastLevel)
+            _minimumLevel = location.MinimumLevel;
+        else
+            _minimumLevel = _lastLevel;
         RestartLevel();
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class PlayerChange : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class PlayerChange : MonoBehaviour
         OnChangedPlayer?.Invoke(_currentPlayer);
     }
 
+    public void Change(int PlayerNumber)
+    {
+        TrySwitchPlayer(PlayerNumber);
+        OnChangedPlayer?.Invoke(_currentPlayer);
+    }
+
     private void SwitchPlayer(int locationId)
     {
         Player newPlayer = _playersDictionary[locationId];
@@ -43,8 +50,11 @@ public class PlayerChange : MonoBehaviour
 
     private void TrySwitchPlayer(int locationId)
     {
+
         if (_currentPlayer != null)
             SwitchPlayer(locationId);
+
+
         else
         {
             _currentPlayer = _playersDictionary[locationId];
