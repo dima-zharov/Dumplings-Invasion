@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResizeAnimation : MonoBehaviour, IAnimation
 {
     [field: SerializeField] public float DurationAnimation { get; private set; }
-    public bool isLooping = false;
+    [SerializeField] private bool _isLooping = false;
     [SerializeField] private float _resizeValue;
     [SerializeField] private ResizeTypes _resizeType;
     private Sequence _scaleSequence;
@@ -21,7 +21,7 @@ public class ResizeAnimation : MonoBehaviour, IAnimation
 
     private void OnEnable()
     {
-        if (_scaleSequence != null && !_scaleSequence.IsPlaying())
+        if (_scaleSequence != null && !_scaleSequence.IsPlaying() && _isLooping)
             StartAnimation();
     }
 
@@ -46,8 +46,14 @@ public class ResizeAnimation : MonoBehaviour, IAnimation
         _scaleSequence.Append(_UIObjectSize.DOScale(targetScale, DurationAnimation / 2).SetEase(Ease.InOutSine));
         _scaleSequence.Append(_UIObjectSize.DOScale(_startUISize, DurationAnimation / 2).SetEase(Ease.InOutSine));
 
-        if (isLooping)
+        if (_isLooping)
             _scaleSequence.SetLoops(-1, LoopType.Restart);
+        
+    }
+
+    public void ChangeLoopState(bool isLooping)
+    {
+        _isLooping = isLooping;
     }
 
     private void StopAnimation()

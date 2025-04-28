@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class LoadTutorialStep : MonoBehaviour
@@ -10,7 +9,7 @@ public class LoadTutorialStep : MonoBehaviour
     [SerializeField] private Rigidbody _playerRigidbody;
     [SerializeField] private TutorialPlayerJumpToStartPosition _playerJumpToStartPosition;
     [SerializeField] private TutorialEnemySpawn _enemySpawner;
-    [SerializeField] private GameObject _winPanel;
+    [SerializeField] private SlideAnimation _winPanel;
     [SerializeField] private TutorialStep[] _steps;
     [SerializeField] private VideoPlayer _videoPlayer;
     [SerializeField] private TextMeshProUGUI _instructionText;
@@ -62,6 +61,7 @@ public class LoadTutorialStep : MonoBehaviour
 
     private void EnableUIElements()
     {
+
         _tutorialUI.SetActive(true);
         _startButton.SetActive(true);
     }
@@ -99,7 +99,7 @@ public class LoadTutorialStep : MonoBehaviour
     private void FinishTutorial()
     {
         PlayerPrefs.SetInt("TutorialCompleted", 1);
-        _winPanel.SetActive(true);
+        _winPanel.StartAnimation();
         _playerRigidbody.isKinematic = true;
     }
 

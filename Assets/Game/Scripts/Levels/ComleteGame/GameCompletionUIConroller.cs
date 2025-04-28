@@ -12,10 +12,12 @@ public class GameCompletionUIConroller : MonoBehaviour
     private void OnEnable()
     {
         _gameCompletion.OnGameCompleted += ActivatePanels;
+        _gameCompletion.OnLoadCompletedGame += ActivateGameCompletePanel;
     }
     private void OnDisable()
     {
         _gameCompletion.OnGameCompleted -= ActivatePanels;
+        _gameCompletion.OnLoadCompletedGame -= ActivateGameCompletePanel;
     }
 
 
@@ -23,6 +25,12 @@ public class GameCompletionUIConroller : MonoBehaviour
     {
         StartPanelsAnimation(_shopPanel, _shopIcon);
         StartPanelsAnimation(_gameCompletePanel, _gameCompleteInfo);
+    }
+
+    private void ActivateGameCompletePanel()
+    {
+        _shopPanel.SetActive(true);
+
     }
 
     private async void StartPanelsAnimation(GameObject parent, IAnimation animation)

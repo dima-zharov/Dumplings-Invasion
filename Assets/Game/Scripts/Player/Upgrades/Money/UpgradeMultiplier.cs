@@ -7,6 +7,10 @@ public class UpgradeMultiplier : Upgrade
 
     private float _increaseMultiplier = 0.2f;
 
+    private void Start()
+    {
+        _upgradeUI.ChangeUpgradeText();
+    }
     private void Awake()
     {
         _startUpgradePrice = 10;

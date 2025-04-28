@@ -10,7 +10,7 @@ public class BestScore : MonoBehaviour
     private int _highLevel;
     public int HighLevel => _highLevel;
 
-    private void Awake()
+    private void Start()
     {
         _highLevel = PlayerPrefs.GetInt("BestScore");
         _gameCompletion.TryCompleteGame(_highLevel);

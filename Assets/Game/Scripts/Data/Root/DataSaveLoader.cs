@@ -24,6 +24,12 @@ public class DataSaveLoader : MonoBehaviour
         _gameBeginning.OnGameStarted -= LoadData;
     }
 
+    [ContextMenu("DeleteAllData")]
+    private void DeleteAllData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     private void SaveData()
     {
         PlayerPrefs.SetInt("firstOpen", 1);
@@ -34,7 +40,6 @@ public class DataSaveLoader : MonoBehaviour
         }
 
         Repository.SaveState();
-        //PlayerPrefs.DeleteKey("firstOpen");
     }
 
     private void LoadData()

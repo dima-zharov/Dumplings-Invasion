@@ -29,6 +29,13 @@ public class Levels : MonoBehaviour
         _locationSystem.OnChangedLocation -= Init;
     }
 
+    private void Start()
+    {
+        if(_bestScore.HighLevel >= _lastLevel)
+            _minimumLevel = _lastLevel;
+        RestartLevel();
+    }
+
     private void Init(Location location)
     {
         if(_bestScore.HighLevel < _lastLevel)

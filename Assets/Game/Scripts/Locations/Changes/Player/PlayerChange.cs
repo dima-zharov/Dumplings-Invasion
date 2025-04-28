@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 public class PlayerChange : MonoBehaviour
 {
+    [SerializeField] private EffectsOnPlayerChangePlayer _playerChangedEffects;
     [SerializeField] private Player[] _players;
     [SerializeField] private LocationSystem _locationSystem;
-
+    private bool _isGameJustBeginning = true;
+    private const string PLATER_ID_KEY = "PlayerId";
     private Dictionary<int, Player> _playersDictionary;
-    private Player _currentPlayer;
+    public Player CurrentPlayer { get; private set; }
 
     public event Action<Player> OnChangedPlayer;
     
@@ -29,36 +30,40 @@ public class PlayerChange : MonoBehaviour
     public void Change(Location location)
     {
         TrySwitchPlayer(location.LocationID);
-        OnChangedPlayer?.Invoke(_currentPlayer);
+        OnChangedPlayer?.Invoke(CurrentPlayer);
+        if(!_isGameJustBeginning)
+            _playerChangedEffects.MakeParticles(CurrentPlayer.transform.position);
+        _isGameJustBeginning = false;
     }
 
     public void Change(int PlayerNumber)
     {
         TrySwitchPlayer(PlayerNumber);
-        OnChangedPlayer?.Invoke(_currentPlayer);
+        OnChangedPlayer?.Invoke(CurrentPlayer);
     }
 
     private void SwitchPlayer(int locationId)
     {
         Player newPlayer = _playersDictionary[locationId];
-        newPlayer.transform.position = _currentPlayer.transform.position;
+        newPlayer.transform.position = CurrentPlayer.transform.position;
 
-        _currentPlayer.gameObject.SetActive(false);
-        _currentPlayer = newPlayer;
-        _currentPlayer.gameObject.SetActive(true);
+        CurrentPlayer.gameObject.SetActive(false);
+        CurrentPlayer = newPlayer;
+        CurrentPlayer.gameObject.SetActive(true);
     }
 
     private void TrySwitchPlayer(int locationId)
     {
 
-        if (_currentPlayer != null)
+        if (CurrentPlayer != null)
             SwitchPlayer(locationId);
 
 
         else
         {
-            _currentPlayer = _playersDictionary[locationId];
-            _currentPlayer.gameObject.SetActive(true);
+            CurrentPlayer = _playersDictionary[locationId];
+            CurrentPlayer.gameObject.SetActive(true);
+            PlayerPrefs.SetInt(PLATER_ID_KEY, locationId - 1);
         }
     }
 }

@@ -22,7 +22,8 @@ public class PlayerChoise : MonoBehaviour
             {
                 if(_gameCompletion.IsEndlessModeEnable)
                     _playersData[i].SetPlayerData(_playersForce[GetActivePlayerNumber()].PushForce, _playersDefence[GetActivePlayerNumber()].CurrentDefence);
-                _playerChange.Change(i + 1);
+                if(_playerChange.CurrentPlayer != _players[i])
+                    _playerChange.Change(i + 1);
                 continue;
             }
         }

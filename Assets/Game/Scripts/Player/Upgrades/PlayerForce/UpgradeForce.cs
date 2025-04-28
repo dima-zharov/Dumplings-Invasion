@@ -10,6 +10,7 @@ public class UpgradeForce : Upgrade
 
     private float _increaseForce = 0.1f;
 
+
     private void OnEnable()
     { 
         _locationSystem.OnChangedLocation += Init;
