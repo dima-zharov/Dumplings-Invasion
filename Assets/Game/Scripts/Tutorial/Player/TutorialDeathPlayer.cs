@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class TutorialDeathPlayer : MonoBehaviour
@@ -13,7 +12,6 @@ public class TutorialDeathPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log(other.gameObject.layer);
         if (other.gameObject.layer == LayerMask.NameToLayer("Death")  && _isAlive)
         {
             _isAlive = false;

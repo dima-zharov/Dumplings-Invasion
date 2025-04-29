@@ -6,14 +6,10 @@ public class GameBeginning : MonoBehaviour
     public event Action OnGameFirstOpen;
     public event Action OnGameStarted;
 
-    private void Awake()
+    private void Start()
     {
-        //if (PlayerPrefs.HasKey("firstOpen"))
+        if(PlayerPrefs.GetInt("firstOpen") == 0)
+            OnGameFirstOpen?.Invoke();
         OnGameStarted?.Invoke();
-    }
-
-    public void StartGame()
-    {
-        OnGameFirstOpen?.Invoke();
     }
 }

@@ -1,6 +1,5 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UIElements;
 public class AppearanceStartAnimtion : SlideAnimation
 {
     [SerializeField] protected Vector2 _positionToMove;

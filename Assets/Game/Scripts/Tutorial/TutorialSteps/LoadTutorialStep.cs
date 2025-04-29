@@ -4,7 +4,10 @@ using UnityEngine.Video;
 
 public class LoadTutorialStep : MonoBehaviour
 {
-    [SerializeField] private GameObject _tutorialUI;
+    [SerializeField] private EnemyWeakener _enemyWeakener;
+    [SerializeField] private AudioSource _winSound;
+    [SerializeField] private AudioSource _loseSound;
+    [SerializeField] private AppearanceStartAnimtion _tutorialUI;
     [SerializeField] private TutorialDeathPlayer _deathPlayer;
     [SerializeField] private Rigidbody _playerRigidbody;
     [SerializeField] private TutorialPlayerJumpToStartPosition _playerJumpToStartPosition;
@@ -13,33 +16,32 @@ public class LoadTutorialStep : MonoBehaviour
     [SerializeField] private TutorialStep[] _steps;
     [SerializeField] private VideoPlayer _videoPlayer;
     [SerializeField] private TextMeshProUGUI _instructionText;
-    [SerializeField] private GameObject _startButton;
-    
+    [SerializeField] private ButtonIntaracteble _startButton;
+
     private GameObject _enemy;
 
     private int _currentStepIndex = 0;
     private int _failCount = 0;
-    
+
     public bool IsEnemySpawn { get; set; }
-    
+
     public GameObject EnemyObject => _enemy;
 
     private void Start()
     {
         StartStep();
-        
         EnableUIElements();
     }
 
     private void StartStep()
     {
         CleanupPreviousEnemy();
-        
+
         var step = _steps[_currentStepIndex];
         _instructionText.text = step.InstructionText;
         _videoPlayer.clip = step.VideoClip;
         _videoPlayer.Play();
-        
+
         _failCount = 0;
     }
 
@@ -51,23 +53,25 @@ public class LoadTutorialStep : MonoBehaviour
 
     private void RestartGame()
     {
-        Invoke(nameof(EnableUIElements), 2f);
+        Invoke(nameof(EnableUIElements), 1f);
         _playerJumpToStartPosition.RestartPosition();
         IsEnemySpawn = false;
         CleanupPreviousEnemy();
         _deathPlayer.RevivePlayer();
-        
+
     }
 
     private void EnableUIElements()
     {
-
-        _tutorialUI.SetActive(true);
-        _startButton.SetActive(true);
+        _tutorialUI.gameObject.SetActive(true);
+        _tutorialUI.StartAnimation();
+        _startButton.EnableButton();
     }
 
     public void PlayerWin()
     {
+        if(_currentStepIndex != 2)
+            _winSound.Play();
         IsEnemySpawn = false;
         _currentStepIndex++;
         if (_currentStepIndex < _steps.Length)
@@ -83,22 +87,23 @@ public class LoadTutorialStep : MonoBehaviour
 
     public void PlayerLose()
     {
+        _loseSound.Play();
         RestartGame();
         _failCount++;
-        if (_failCount == 2)
+        if (_failCount >= 2)
         {
-            Debug.Log("Показать гифку-подсказку и текст помощи");
+            _instructionText.text = _steps[_currentStepIndex].HelpText;
         }
         if (_failCount == 5)
         {
-            Debug.Log("Враг ослаблен");
-            
+            _enemyWeakener.WeakEnemy(_steps[_currentStepIndex].EnemyPrefab);
         }
     }
 
     private void FinishTutorial()
     {
         PlayerPrefs.SetInt("TutorialCompleted", 1);
+        _winPanel.GetComponent<AudioSource>().Play();
         _winPanel.StartAnimation();
         _playerRigidbody.isKinematic = true;
     }

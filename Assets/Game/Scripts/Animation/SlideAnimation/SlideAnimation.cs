@@ -25,7 +25,7 @@ public abstract class SlideAnimation : MonoBehaviour, IAnimation
         Right
     };
 
-    protected void Start()
+    protected void Awake()
     {
         _targetPosition = transform.position;
         _rectTransform = transform as RectTransform;

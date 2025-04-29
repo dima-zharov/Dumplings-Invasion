@@ -5,9 +5,8 @@ public class SceneLoader : MonoBehaviour
 {
     private void Awake()
     {
-        PlayerPrefs.SetInt("TutorialCompleted", 0);
-        if (PlayerPrefs.GetInt("TutorialCompleted", 0) == 1)
-            SceneManager.LoadScene("Desctop");
+        if (PlayerPrefs.GetInt("TutorialCompleted") == 1)
+            SceneManager.LoadScene("Game");
         else
             SceneManager.LoadScene("Tutorial");
     }

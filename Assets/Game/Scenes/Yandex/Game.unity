@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0312834223d10a341887f6c4a57b7d0f, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -894,6 +894,7 @@ GameObject:
   - component: {fileID: 174225851}
   - component: {fileID: 174225852}
   - component: {fileID: 174225853}
+  - component: {fileID: 174225854}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -980,6 +981,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerChange: {fileID: 878325695}
+--- !u!81 &174225854
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174225848}
+  m_Enabled: 1
 --- !u!1 &229593882
 GameObject:
   m_ObjectHideFlags: 0
@@ -6680,6 +6689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd07d8c67137c349a85d871b3cb1dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameBeggining: {fileID: 1979346691}
   _animationSpeed: 1
   _restartLevel: {fileID: 1241814986}
   _buttonState: {fileID: 730293381}

@@ -1,20 +1,18 @@
 using UnityEngine;
 
-public class DontDestroyObjectOnLoad : MonoBehaviour
+public class Singleton : MonoBehaviour
 {
-    private static bool _isCreated = false; 
+    public static Singleton Instance { get; private set; }
 
     private void Awake()
     {
-
-        if (_isCreated)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
+        Instance = this;
         DontDestroyOnLoad(gameObject);
-        _isCreated = true;
     }
 }
-

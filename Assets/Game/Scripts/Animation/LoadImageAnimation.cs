@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class LoadImageAnimation : MonoBehaviour
 {
+    [SerializeField] private GameBeginning _gameBeggining;
     [SerializeField] private float _animationSpeed;
     [SerializeField] private RestartLevel _restartLevel;
     [SerializeField] private ButtonIntaracteble _buttonState;
@@ -11,8 +12,16 @@ public class LoadImageAnimation : MonoBehaviour
     private float _imagePosition;
     private bool _isAnimating;
 
-    private void OnEnable() => _restartLevel.OnRestartedLevel += PlayAnimation;
-    private void OnDisable() => _restartLevel.OnRestartedLevel -= PlayAnimation;
+    private void OnEnable()
+    {
+        _restartLevel.OnRestartedLevel += PlayAnimation;
+        _gameBeggining.OnGameFirstOpen += PlayAnimation;
+    }
+    private void OnDisable()
+    {
+        _restartLevel.OnRestartedLevel -= PlayAnimation;
+        _gameBeggining.OnGameFirstOpen -= PlayAnimation;
+    }
 
 
     private void Start()

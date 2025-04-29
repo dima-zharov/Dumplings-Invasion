@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Game/Scenes/LoaderScene.unity
     guid: f0805e8ba232b1a448ab83b25e46fb7f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Game/Scenes/Yandex/Tutorial.unity
     guid: fbef7827eb5222548a0fc2060dcd7a67
   - enabled: 1
-    path: Assets/Game/Scenes/Yandex/Desctop.unity
+    path: Assets/Game/Scenes/Yandex/Game.unity
     guid: acb7bbb88e509c1409b3e7f05017d98d
   m_configObjects: {}
