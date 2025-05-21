@@ -20,8 +20,12 @@ public class PlayerChoise : MonoBehaviour
         {
             if (i == playerId)
             {
-                if(_gameCompletion.IsEndlessModeEnable)
-                    _playersData[i].SetPlayerData(_playersForce[GetActivePlayerNumber()].PushForce, _playersDefence[GetActivePlayerNumber()].CurrentDefence);
+                if (_gameCompletion.IsEndlessModeEnable)
+                {
+                    _playersData[i].SetPlayerData(_playersForce[PlayerPrefs.GetInt("PlayerId")].PushForce, _playersDefence[PlayerPrefs.GetInt("PlayerId")].CurrentDefence);
+                    Debug.Log(_playersDefence[PlayerPrefs.GetInt("PlayerId")].CurrentDefence + " " + _players[PlayerPrefs.GetInt("PlayerId")].name);
+                }
+                
                 if(_playerChange.CurrentPlayer != _players[i])
                     _playerChange.Change(i + 1);
                 continue;
@@ -43,15 +47,5 @@ public class PlayerChoise : MonoBehaviour
             if(i > _players.Count - 1)
                 _playersData.Remove(_playersData[i]);
         }
-    }
-
-    private int GetActivePlayerNumber()
-    {
-        for(int i = 0; i < _players.Count; i++)
-        {
-            if (_players[i].gameObject.activeSelf)
-                return i;
-        }
-        return 2;
     }
 }

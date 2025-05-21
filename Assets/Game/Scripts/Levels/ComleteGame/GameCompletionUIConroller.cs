@@ -30,7 +30,7 @@ public class GameCompletionUIConroller : MonoBehaviour
     private void ActivateGameCompletePanel()
     {
         _shopPanel.SetActive(true);
-
+        _shopIcon.gameObject.SetActive(true);
     }
 
     private async void StartPanelsAnimation(GameObject parent, IAnimation animation)

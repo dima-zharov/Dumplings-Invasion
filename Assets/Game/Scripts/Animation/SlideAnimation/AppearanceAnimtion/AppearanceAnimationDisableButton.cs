@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class AppearanceAnimationDisableButton : AppearanceStartAnimtion
+public class AppearanceAnimationDisableButton : AppearanceStartAnimation
 {
     [SerializeField] private ButtonIntaracteble _appearanceButtomHandler;
 

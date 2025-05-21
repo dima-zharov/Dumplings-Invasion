@@ -1,15 +1,14 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerChange : MonoBehaviour
 {
     [SerializeField] private EffectsOnPlayerChangePlayer _playerChangedEffects;
+    [SerializeField] private GameCompletion _gameCompletion;
     [SerializeField] private Player[] _players;
     [SerializeField] private LocationSystem _locationSystem;
     private bool _isGameJustBeginning = true;
-    private const string PLATER_ID_KEY = "PlayerId";
-    private Dictionary<int, Player> _playersDictionary;
+    private const string PLAYER_ID_KEY = "PlayerId";
     public Player CurrentPlayer { get; private set; }
 
     public event Action<Player> OnChangedPlayer;
@@ -17,23 +16,16 @@ public class PlayerChange : MonoBehaviour
     private void OnEnable() => _locationSystem.OnChangedLocation += Change;
     private void OnDisable() => _locationSystem.OnChangedLocation -= Change;
 
-    private void Awake()
-    {
-        _playersDictionary = new Dictionary<int, Player>()
-        {
-            [1] = _players[0],
-            [2] = _players[1],
-            [3] = _players[2],
-        };
-    }
-
     public void Change(Location location)
     {
-        TrySwitchPlayer(location.LocationID);
-        OnChangedPlayer?.Invoke(CurrentPlayer);
-        if(!_isGameJustBeginning)
-            _playerChangedEffects.MakeParticles(CurrentPlayer.transform.position);
-        _isGameJustBeginning = false;
+        if (!_gameCompletion.IsEndlessModeEnable)
+        {
+            TrySwitchPlayer(location.LocationID);
+            OnChangedPlayer?.Invoke(CurrentPlayer);
+            if(!_isGameJustBeginning)
+                _playerChangedEffects.MakeParticles(CurrentPlayer.transform.position);
+            _isGameJustBeginning = false;
+        }
     }
 
     public void Change(int PlayerNumber)
@@ -42,9 +34,9 @@ public class PlayerChange : MonoBehaviour
         OnChangedPlayer?.Invoke(CurrentPlayer);
     }
 
-    private void SwitchPlayer(int locationId)
+    private void SwitchPlayer(int playerNumber)
     {
-        Player newPlayer = _playersDictionary[locationId];
+        Player newPlayer = _players[playerNumber - 1];
         newPlayer.transform.position = CurrentPlayer.transform.position;
 
         CurrentPlayer.gameObject.SetActive(false);
@@ -52,18 +44,18 @@ public class PlayerChange : MonoBehaviour
         CurrentPlayer.gameObject.SetActive(true);
     }
 
-    private void TrySwitchPlayer(int locationId)
+    private void TrySwitchPlayer(int playerNumber)
     {
 
         if (CurrentPlayer != null)
-            SwitchPlayer(locationId);
+            SwitchPlayer(playerNumber);
 
 
         else
         {
-            CurrentPlayer = _playersDictionary[locationId];
+            CurrentPlayer = _players[playerNumber - 1];
             CurrentPlayer.gameObject.SetActive(true);
-            PlayerPrefs.SetInt(PLATER_ID_KEY, locationId - 1);
         }
+        PlayerPrefs.SetInt(PLAYER_ID_KEY, playerNumber - 1);
     }
 }

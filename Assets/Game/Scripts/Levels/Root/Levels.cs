@@ -31,8 +31,7 @@ public class Levels : MonoBehaviour
 
     private void Start()
     {
-        if(_bestScore.HighLevel >= _lastLevel)
-            _minimumLevel = _lastLevel;
+        CheckMinimumLevel();
         RestartLevel();
     }
 
@@ -55,8 +54,16 @@ public class Levels : MonoBehaviour
 
     public void RestartLevel()
     {
+        CheckMinimumLevel();
         _currentLevel = _minimumLevel;
+        _completeGame.TryCompleteGame(_currentLevel);
         _levelUI.ChangeLevel();
+    }
+
+    private void CheckMinimumLevel()
+    {
+        if (_bestScore.HighLevel >= _lastLevel)
+            _minimumLevel = _lastLevel;
     }
 
 }

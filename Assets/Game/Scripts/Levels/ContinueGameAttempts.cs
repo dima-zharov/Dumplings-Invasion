@@ -8,8 +8,8 @@ public class ContinueGameAttempts : MonoBehaviour
     [SerializeField] private GameObject _secondChancePanel;
     [SerializeField] private GameOver _gameOver;
     [SerializeField] private int _numberOfAttempts;
-    private AppearanceStartAnimtion _losePanelAppearance;
-    private AppearanceStartAnimtion _secondChancePanelAppearance;
+    private AppearanceStartAnimation _losePanelAppearance;
+    private AppearanceStartAnimation _secondChancePanelAppearance;
 
     private int _currentAttempts;
 
@@ -26,8 +26,8 @@ public class ContinueGameAttempts : MonoBehaviour
     private void Awake()
     {
         _currentAttempts = _numberOfAttempts;
-        _losePanelAppearance = _losePanel.GetComponent<AppearanceStartAnimtion>();
-        _secondChancePanelAppearance = _secondChancePanel.GetComponent<AppearanceStartAnimtion>();
+        _losePanelAppearance = _losePanel.GetComponent<AppearanceStartAnimation>();
+        _secondChancePanelAppearance = _secondChancePanel.GetComponent<AppearanceStartAnimation>();
     }
 
     public void CheckAttempts()

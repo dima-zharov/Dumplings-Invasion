@@ -4,8 +4,9 @@ using Zenject;
 
 public class DataInstaller : MonoInstaller
 {
-    private const string PLATER_ID_KEY = "PlayerId";
+    private const string PLAYER_ID_KEY = "PlayerId";
     private int _currnetPlayerId;
+    [SerializeField] private PlayersScroller _playersScroller;
     [SerializeField] private MoneyData _moneyData;
     [SerializeField] private List<PlayerForce> _playerForce;
     [SerializeField] private List<DefenceAbility> _defenceAbility;
@@ -16,7 +17,11 @@ public class DataInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        _currnetPlayerId = PlayerPrefs.GetInt(PLATER_ID_KEY);
+        _currnetPlayerId = PlayerPrefs.GetInt(PLAYER_ID_KEY);
+
+        Container.Bind<PlayersScroller>().FromInstance(_playersScroller).AsSingle();
+        Container.Bind<IUnlocker>().To<WatchAddUnlockPlayer>().AsSingle();
+        Container.Bind<IUnlocker>().To<BuyPlayerUnlock>().AsSingle();
 
         Container.Bind<LocationSystem>().FromInstance(_locationSystem).AsSingle();
         Container.Bind<IDataSaveLoader>().To<LocationSaveLoader>().AsSingle();

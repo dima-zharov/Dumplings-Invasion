@@ -21,8 +21,6 @@ public class GameCompletion : MonoBehaviour
 
         else if (currentLevel > _lastLevelToFinishGame)
             OnLoadCompletedGame?.Invoke();
-
-        IsEndlessModeEnable = true;
     }
 
     private void LoadEndlessModeState()

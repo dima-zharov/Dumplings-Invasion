@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayersScroller : ScrollController
 {
     public int SelectedPlayerNumber { get; private set; } = 2;
+    private const string PLAYER_ID_KEY = "PlayerId";
     [SerializeField] private PlayerChoise _playerChoise;
     [Header("Elements Data")]
     [Space]
@@ -23,8 +24,14 @@ public class PlayersScroller : ScrollController
     [SerializeField] private Sprite _chosenSprite;
     [SerializeField] private Sprite _unactiveSprite;
     [SerializeField] private Sprite _blockSprite;
+    [Space]
+    [Header("UnlockPlayer")]
+    [SerializeField] private UnlockPanelManager _unlockPanelManager;
+    [SerializeField] private List<string> _unlockDescriptions;
 
+    private List<IUnlocker> _unlockers; 
     private List<Button> _buttons;
+    private List<Button> _lockButtons;
     private List<ElementImagesHandler> _handlersPlayersScrollerElementsState;
     private List<ElementDescriptionTextChanger> _changersElementDescriptionText;
     private List<ChoiseSoundPlayer> _choicesSoundPlayers;
@@ -43,11 +50,15 @@ public class PlayersScroller : ScrollController
 
     protected override void Initialize()
     {
+        _unlockers = new List<IUnlocker> { new WatchAddUnlockPlayer(this), new BuyPlayerUnlock(this) };
         InitializeConcreteElements(out _handlersPlayersScrollerElementsState);
         InitializeConcreteElements(out _changersElementDescriptionText);
         InitializeConcreteElements(out _choicesSoundPlayers);
         _foregroundImages = FindImages(_layerMaskForegroundImage);
         _stateImages = FindImages(_layerMaskStateImage);
+
+        if(PlayerPrefs.HasKey(PLAYER_ID_KEY))
+            SelectedPlayerNumber = PlayerPrefs.GetInt(PLAYER_ID_KEY);
 
         SetImages(_foregroundSprites, _foregroundImages);
         SetData();
@@ -81,6 +92,7 @@ public class PlayersScroller : ScrollController
         {
             _choicesSoundPlayers[i].InitializeData(_handlersPlayersScrollerElementsState[i]);
             _changersElementDescriptionText[i].SetElementText(_descriptions[i]);
+            
         }
         ChangeDataToElement();
         _playerChoise.ActivatePlayer(SelectedPlayerNumber);
@@ -98,14 +110,19 @@ public class PlayersScroller : ScrollController
         }
 
         _buttons = new List<Button>();
-        foreach (var element in _scrollElements)
+        _lockButtons = new List<Button>();
+
+        for(int i =0; i < _scrollElements.Count; i++)
         {
-            var button = element.GetComponent<Button>();
+            var button = _scrollElements[i].GetComponent<Button>();
             if (button != null)
             {
+                if (_handlersPlayersScrollerElementsState[i].IsBlocked)
+                    _lockButtons.Add(button);
                 _buttons.Add(button);
                 button.onClick.AddListener(() => OnButtonClick(button));
             }
+
         }
     }
 
@@ -114,6 +131,7 @@ public class PlayersScroller : ScrollController
         if (_isProcessing) return;
 
         int index = _buttons.IndexOf(clickedButton);
+        int lockedIndex = _lockButtons.IndexOf(clickedButton);
 
 
         _isProcessing = true;
@@ -123,7 +141,15 @@ public class PlayersScroller : ScrollController
             _choicesSoundPlayers[index].PlayElementChoisenSound(_handlersPlayersScrollerElementsState[index]);
             SelectedPlayerNumber = index;
             _descriptionTextLabel.text = _descriptions[index];
-            _playerChoise.ActivatePlayer(SelectedPlayerNumber);
+            if (_handlersPlayersScrollerElementsState[index].IsBlocked)
+            {
+                _unlockPanelManager.ChangeUnlockInfoData(_unlockDescriptions[lockedIndex], _unlockers[lockedIndex]);
+                _unlockPanelManager.ActivatePanel();
+            }
+            else
+            {
+                _playerChoise.ActivatePlayer(SelectedPlayerNumber);
+            }
         }
         finally
         {

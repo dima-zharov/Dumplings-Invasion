@@ -7,7 +7,7 @@ public class LoadTutorialStep : MonoBehaviour
     [SerializeField] private EnemyWeakener _enemyWeakener;
     [SerializeField] private AudioSource _winSound;
     [SerializeField] private AudioSource _loseSound;
-    [SerializeField] private AppearanceStartAnimtion _tutorialUI;
+    [SerializeField] private AppearanceStartAnimation _tutorialUI;
     [SerializeField] private TutorialDeathPlayer _deathPlayer;
     [SerializeField] private Rigidbody _playerRigidbody;
     [SerializeField] private TutorialPlayerJumpToStartPosition _playerJumpToStartPosition;

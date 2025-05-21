@@ -11,13 +11,17 @@ public class DefenceAbility : MonoBehaviour
 
     private void Awake()
     {
-        if (_currentDefence < _startDefence || !PlayerPrefs.HasKey("firstOpen"))
+        if (_currentDefence < _startDefence)
+        {
             _currentDefence = _startDefence;
+            Debug.Log(_currentDefence);
+        }
     }
 
     public void Init(float currentDefence)
     {
         _currentDefence = currentDefence;
+        Debug.Log(gameObject.name + " " + _currentDefence);
     }
     
     public void SetDefence(float defence)

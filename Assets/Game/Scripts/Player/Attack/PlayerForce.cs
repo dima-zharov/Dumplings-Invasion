@@ -4,24 +4,22 @@ public class PlayerForce : MonoBehaviour
 {
     [SerializeField] private float _startPushForce;
     
-    private float _pushForce;
-
-    public float PushForce => _pushForce;
+    public float PushForce { get; private set; }
 
     private void Awake()
     {
-        if (_pushForce < _startPushForce || !PlayerPrefs.HasKey("firstOpen"))
-            _pushForce = _startPushForce;
+        if (PushForce < _startPushForce || !PlayerPrefs.HasKey("firstOpen"))
+            PushForce = _startPushForce;
     }
 
     public void Init(float pushForce)
     {
-        _pushForce = pushForce;
+        PushForce = pushForce;
     }
 
     public void UpgradeForce(float increaseForce)
     {
-        _pushForce += increaseForce;
+        PushForce += increaseForce;
     }
     
     
