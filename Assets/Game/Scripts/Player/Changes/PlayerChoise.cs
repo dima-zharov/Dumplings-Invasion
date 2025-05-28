@@ -20,15 +20,14 @@ public class PlayerChoise : MonoBehaviour
         {
             if (i == playerId)
             {
-                if (_gameCompletion.IsEndlessModeEnable)
+                if (_gameCompletion.IsEndlessModeEnable && _playerChange.CurrentPlayer != _players[i])
                 {
                     _playersData[i].SetPlayerData(_playersForce[PlayerPrefs.GetInt("PlayerId")].PushForce, _playersDefence[PlayerPrefs.GetInt("PlayerId")].CurrentDefence);
                     Debug.Log(_playersDefence[PlayerPrefs.GetInt("PlayerId")].CurrentDefence + " " + _players[PlayerPrefs.GetInt("PlayerId")].name);
-                }
-                
-                if(_playerChange.CurrentPlayer != _players[i])
                     _playerChange.Change(i + 1);
-                continue;
+                    continue;
+                }
+              
             }
         }
         

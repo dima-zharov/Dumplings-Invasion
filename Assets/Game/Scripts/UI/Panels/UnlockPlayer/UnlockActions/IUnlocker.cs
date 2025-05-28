@@ -1,4 +1,6 @@
 public interface IUnlocker
-{ 
-    public void Unlock();
+{
+    int PlayerIndex { get; }  
+    string Description {  get; }
+    void Unlock();
 }

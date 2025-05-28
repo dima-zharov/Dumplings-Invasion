@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class LocationSystem : MonoBehaviour
@@ -18,6 +19,8 @@ public class LocationSystem : MonoBehaviour
 
     public void Init(Location currentLocation)
     {
+        PlayerUnlockState.InitializeDefaultUnlocked(_locations.Length);
+
         CurrentLocationId = currentLocation.LocationID;
         _currentLocation = currentLocation;
         

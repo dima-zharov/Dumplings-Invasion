@@ -7,9 +7,9 @@ public class UnlockPanelManager : MonoBehaviour
     [SerializeField] private AppearanceAnimationDisableButton  _startAnimation;
     private IUnlocker _unlocker;
 
-    public void ChangeUnlockInfoData(string unlockInfoText, IUnlocker unlockType)
+    public void ChangeUnlockInfoData(IUnlocker unlockType)
     {
-        _unlockIhfo.text = unlockInfoText;
+        _unlockIhfo.text = unlockType.Description;
         _unlocker = unlockType;
     }
 

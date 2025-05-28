@@ -29,7 +29,7 @@ public class PlayersScroller : ScrollController
     [SerializeField] private UnlockPanelManager _unlockPanelManager;
     [SerializeField] private List<string> _unlockDescriptions;
 
-    private List<IUnlocker> _unlockers; 
+    private List<IUnlocker> _unlockers;
     private List<Button> _buttons;
     private List<Button> _lockButtons;
     private List<ElementImagesHandler> _handlersPlayersScrollerElementsState;
@@ -37,7 +37,6 @@ public class PlayersScroller : ScrollController
     private List<ChoiseSoundPlayer> _choicesSoundPlayers;
     private List<Image> _foregroundImages;
     private List<Image> _stateImages;
-    private int _currentPlayersCount = 3;
     private bool _isProcessing = false;
     private void OnDisable()
     {
@@ -50,14 +49,14 @@ public class PlayersScroller : ScrollController
 
     protected override void Initialize()
     {
-        _unlockers = new List<IUnlocker> { new WatchAddUnlockPlayer(this), new BuyPlayerUnlock(this) };
+        _unlockers = new List<IUnlocker> { new WatchAddUnlockPlayer(this, 3), new BuyPlayerUnlock(this, 4) };
         InitializeConcreteElements(out _handlersPlayersScrollerElementsState);
         InitializeConcreteElements(out _changersElementDescriptionText);
         InitializeConcreteElements(out _choicesSoundPlayers);
         _foregroundImages = FindImages(_layerMaskForegroundImage);
         _stateImages = FindImages(_layerMaskStateImage);
 
-        if(PlayerPrefs.HasKey(PLAYER_ID_KEY))
+        if (PlayerPrefs.HasKey(PLAYER_ID_KEY))
             SelectedPlayerNumber = PlayerPrefs.GetInt(PLAYER_ID_KEY);
 
         SetImages(_foregroundSprites, _foregroundImages);
@@ -92,7 +91,7 @@ public class PlayersScroller : ScrollController
         {
             _choicesSoundPlayers[i].InitializeData(_handlersPlayersScrollerElementsState[i]);
             _changersElementDescriptionText[i].SetElementText(_descriptions[i]);
-            
+
         }
         ChangeDataToElement();
         _playerChoise.ActivatePlayer(SelectedPlayerNumber);
@@ -112,7 +111,7 @@ public class PlayersScroller : ScrollController
         _buttons = new List<Button>();
         _lockButtons = new List<Button>();
 
-        for(int i =0; i < _scrollElements.Count; i++)
+        for (int i = 0; i < _scrollElements.Count; i++)
         {
             var button = _scrollElements[i].GetComponent<Button>();
             if (button != null)
@@ -143,7 +142,7 @@ public class PlayersScroller : ScrollController
             _descriptionTextLabel.text = _descriptions[index];
             if (_handlersPlayersScrollerElementsState[index].IsBlocked)
             {
-                _unlockPanelManager.ChangeUnlockInfoData(_unlockDescriptions[lockedIndex], _unlockers[lockedIndex]);
+                _unlockPanelManager.ChangeUnlockInfoData(_unlockers[lockedIndex]);
                 _unlockPanelManager.ActivatePanel();
             }
             else
@@ -159,34 +158,25 @@ public class PlayersScroller : ScrollController
 
     private void UpdateSelection(int selectedIndex)
     {
-
         if (selectedIndex < 0 || selectedIndex >= _handlersPlayersScrollerElementsState.Count)
-        {
             return;
-        }
 
-        if (_handlersPlayersScrollerElementsState[selectedIndex].IsBlocked)
-        {
+        if (!PlayerUnlockState.IsUnlocked(selectedIndex))
             return;
-        }
+
+        SelectedPlayerNumber = selectedIndex;
 
         for (int i = 0; i < _handlersPlayersScrollerElementsState.Count; i++)
         {
+            bool isBlocked = !PlayerUnlockState.IsUnlocked(i);
+            bool isActive = i == selectedIndex;
 
-            if (_handlersPlayersScrollerElementsState[i] == null ||
-                i >= _stateImages.Count ||
-                _stateImages[i] == null ||
-                i >= _foregroundImages.Count ||
-                _foregroundImages[i] == null)
-            {
-                continue;
-            }
-
-            bool isBlocked = i >= _currentPlayersCount;
             _handlersPlayersScrollerElementsState[i].ChooseState(
                 isBlocked,
-                false,
-                isBlocked ? _blockSprite : _unactiveSprite,
+                isActive,
+                isActive
+                    ? _chosenSprite
+                    : isBlocked ? _blockSprite : _unactiveSprite,
                 _stateImages[i]
             );
 
@@ -194,39 +184,35 @@ public class PlayersScroller : ScrollController
             {
                 _foregroundImages[i].sprite = _foregroundSprites[i];
             }
-
         }
-
-        _handlersPlayersScrollerElementsState[selectedIndex].ChooseState(
-            false,
-            true,
-            _chosenSprite,
-            _stateImages[selectedIndex]
-        );
-
     }
 
-    public void IncreasePlayersCount()
+
+    public void UnlockPlayer(int index)
     {
-        _currentPlayersCount = Mathf.Min(_currentPlayersCount + 1, _handlersPlayersScrollerElementsState.Count);
+        UpdateSelection(index);
         UpdateAllElements();
     }
+
 
 
     private void UpdateAllElements()
     {
         for (int i = 0; i < _handlersPlayersScrollerElementsState.Count; i++)
         {
+            bool isBlocked = !PlayerUnlockState.IsUnlocked(i);
+            bool isActive = i == SelectedPlayerNumber;
+
             _changersElementDescriptionText[i].SetElementText(_descriptions[i]);
-            if(!_handlersPlayersScrollerElementsState[i].IsActive)
-            {
-                bool isBlocked = i >= _currentPlayersCount;
-                _handlersPlayersScrollerElementsState[i].ChooseState(
-                    isBlocked,
-                    false,
-                    isBlocked ? _blockSprite : _unactiveSprite,
-                    _stateImages[i]);
-            }
+
+            _handlersPlayersScrollerElementsState[i].ChooseState(
+                isBlocked,
+                isActive,
+                isActive
+                    ? _chosenSprite
+                    : isBlocked ? _blockSprite : _unactiveSprite,
+                _stateImages[i]
+            );
         }
     }
 
