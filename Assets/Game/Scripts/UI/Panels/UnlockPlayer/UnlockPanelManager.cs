@@ -4,7 +4,6 @@ using UnityEngine;
 public class UnlockPanelManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _unlockIhfo;
-    [SerializeField] private AppearanceAnimationDisableButton  _startAnimation;
     private IUnlocker _unlocker;
 
     public void ChangeUnlockInfoData(IUnlocker unlockType)
@@ -15,8 +14,7 @@ public class UnlockPanelManager : MonoBehaviour
 
     public void ActivatePanel()
     {
-        _startAnimation.gameObject.SetActive(true);
-        _startAnimation.StartAnimation();
+        gameObject.SetActive(true);
     }
 
     public void UnlockPlayer()
