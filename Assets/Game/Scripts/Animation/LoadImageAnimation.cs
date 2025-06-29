@@ -9,7 +9,9 @@ public class LoadImageAnimation : MonoBehaviour
     [SerializeField] private ButtonIntaracteble _buttonState;
 
     private RectTransform _imageTransform;
-    private float _imagePosition;
+    private Vector2 _startOffsetMin;
+    private Vector2 _startOffsetMax;
+    private float _startImagePosition;
     private bool _isAnimating;
 
     private void OnEnable()
@@ -27,14 +29,30 @@ public class LoadImageAnimation : MonoBehaviour
     private void Start()
     {
         _imageTransform = GetComponent<RectTransform>();
-
-        _imagePosition = _imageTransform.offsetMin.x;
+        _startImagePosition = _imageTransform.anchoredPosition.x + Screen.width / 2;
+        _imageTransform.anchoredPosition = new Vector2(_startImagePosition, _imageTransform.anchoredPosition.y);
+        _startOffsetMin = _imageTransform.offsetMin;
+        _startOffsetMax = _imageTransform.offsetMax;
     }
 
     public void PlayAnimation()
     {
         _buttonState.DisableButton();
-        _imageTransform.DOMoveX(_imagePosition - _imagePosition / 2, _animationSpeed).SetLoops(2, LoopType.Yoyo).OnComplete(_buttonState.EnableButton);
+
+        DOTween.To(() => _imageTransform.offsetMin, x => _imageTransform.offsetMin = x,
+            new Vector2(0, _startOffsetMin.y), _animationSpeed).SetEase(Ease.InOutQuad);
+
+        DOTween.To(() => _imageTransform.offsetMax, x => _imageTransform.offsetMax = x,
+            new Vector2(0, _startOffsetMax.y), _animationSpeed).SetEase(Ease.InOutQuad)
+            .OnComplete(() =>
+            {
+                DOTween.To(() => _imageTransform.offsetMin, x => _imageTransform.offsetMin = x,
+                    _startOffsetMin, _animationSpeed).SetEase(Ease.InOutQuad);
+
+                DOTween.To(() => _imageTransform.offsetMax, x => _imageTransform.offsetMax = x,
+                    _startOffsetMax, _animationSpeed).SetEase(Ease.InOutQuad)
+                    .OnComplete(_buttonState.EnableButton);
+            });
     }
 
 }

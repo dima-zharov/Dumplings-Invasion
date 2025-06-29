@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 1559622560799563083}
   - component: {fileID: 4392701556507465733}
   - component: {fileID: 1619591848325400266}
-  - component: {fileID: 5209432121388351370}
   - component: {fileID: 6961000036864836072}
   - component: {fileID: -7619077874963612630}
   - component: {fileID: -4023276508807971247}
   - component: {fileID: 7770537531942063897}
   - component: {fileID: -6456652101350593754}
   - component: {fileID: 2675462463277563685}
+  - component: {fileID: 886067147120229305}
   m_Layer: 0
   m_Name: carrot
   m_TagString: Untagged
@@ -119,28 +119,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!64 &5209432121388351370
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425913308089511157}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: -2432090755550338912, guid: a242275504720604aa5b4e4b703cb60f, type: 3}
 --- !u!114 &6961000036864836072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +198,25 @@ MonoBehaviour:
   _speed: 10
   _duration: 0.5
   _timeOfTrack: 3
+--- !u!64 &886067147120229305
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425913308089511157}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 4614c3cfb72502f448dd0ba007512014, type: 3}

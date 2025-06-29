@@ -6,6 +6,7 @@ public class PlayerChoise : MonoBehaviour
     [SerializeField] GameCompletion _gameCompletion;
     [SerializeField] private List<Player> _players;
     [SerializeField] private PlayerChange _playerChange;
+    
     private List<PlayerDataManager> _playersData = new();
     private List<PlayerForce> _playersForce = new();
     private List<DefenceAbility> _playersDefence = new();
@@ -25,7 +26,6 @@ public class PlayerChoise : MonoBehaviour
                     _playersData[i].SetPlayerData(_playersForce[PlayerPrefs.GetInt("PlayerId")].PushForce, _playersDefence[PlayerPrefs.GetInt("PlayerId")].CurrentDefence);
                     Debug.Log(_playersDefence[PlayerPrefs.GetInt("PlayerId")].CurrentDefence + " " + _players[PlayerPrefs.GetInt("PlayerId")].name);
                     _playerChange.Change(i + 1);
-                    continue;
                 }
               
             }

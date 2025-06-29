@@ -14,7 +14,7 @@ public class LoadTutorialStep : MonoBehaviour
     [SerializeField] private TutorialEnemySpawn _enemySpawner;
     [SerializeField] private SlideAnimation _winPanel;
     [SerializeField] private TutorialStep[] _steps;
-    [SerializeField] private VideoPlayer _videoPlayer;
+    [SerializeField] private VideoPlayerManager _videoPlayerManager;
     [SerializeField] private TextMeshProUGUI _instructionText;
     [SerializeField] private ButtonIntaracteble _startButton;
 
@@ -39,8 +39,8 @@ public class LoadTutorialStep : MonoBehaviour
 
         var step = _steps[_currentStepIndex];
         _instructionText.text = step.InstructionText;
-        _videoPlayer.clip = step.VideoClip;
-        _videoPlayer.Play();
+        _videoPlayerManager.ChoseVideoClip(_currentStepIndex);
+        _videoPlayerManager.PlayVideo();
 
         _failCount = 0;
     }

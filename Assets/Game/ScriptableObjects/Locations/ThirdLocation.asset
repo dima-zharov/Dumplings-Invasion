@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _locationId: 3
   _minimumLevel: 20
-  _minimumUpgradePrice: 250
+  _minimumUpgradePrice: 100
   _maxUpgradeLevel: 45

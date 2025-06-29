@@ -6,6 +6,7 @@ public class DataInstaller : MonoInstaller
 {
     private const string PLAYER_ID_KEY = "PlayerId";
     private int _currnetPlayerId;
+    
     [SerializeField] private PlayersScroller _playersScroller;
     [SerializeField] private MoneyData _moneyData;
     [SerializeField] private List<PlayerForce> _playerForce;

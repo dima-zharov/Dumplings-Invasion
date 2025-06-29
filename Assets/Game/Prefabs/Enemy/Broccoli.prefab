@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 157150776894273376}
   - component: {fileID: 7742489308195107524}
   - component: {fileID: 7717285554382899433}
-  - component: {fileID: 3672982011986275731}
   - component: {fileID: 7179408971760538057}
   - component: {fileID: 264146996229671401}
   - component: {fileID: 6232988895641321760}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: 6421623915608228911}
   - component: {fileID: -5019962749286163397}
   - component: {fileID: -4997129005333833540}
+  - component: {fileID: 1215334509889937301}
   m_Layer: 0
   m_Name: Broccoli
   m_TagString: Untagged
@@ -91,28 +91,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3672982011986275731
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4015962840685928193}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: -2432090755550338912, guid: a242275504720604aa5b4e4b703cb60f, type: 3}
 --- !u!54 &7179408971760538057
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -217,3 +195,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _endSize: 0.25
   _duration: 0.5
+--- !u!64 &1215334509889937301
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015962840685928193}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 7e5c74b596cf7c64180db7e1b3d98c9c, type: 3}

@@ -7,6 +7,7 @@ public abstract class Upgrade : MonoBehaviour
     [SerializeField] private SoundPlayer _soundPlayer;
     [SerializeField] private UpgradeBuyAnimation _upgradeBuyAnimation;
     [SerializeField] private Image _upgradeIcon;
+    
     protected float _upgradePrice;
     protected float _startUpgradePrice;
     protected int _upgradeLevel;
