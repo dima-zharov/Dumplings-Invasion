@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MaterialsAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 618fe3432ab001149aeadbb9aff0f9be, type: 3}
+    - {fileID: 2800000, guid: c357f89f17d42e8469edc747b24c0e19, type: 3}
+    - {fileID: 2800000, guid: e38f290260e0f0b478cf6020cb4f7364, type: 3}
+    - {fileID: 2800000, guid: f70e37d7942dde24d8dc7fcc9f15dfee, type: 3}
+    - {fileID: 2800000, guid: 88a3dd619a8fb0349ad8f2075c2b7fda, type: 3}
+    - {fileID: 2800000, guid: ce463d4c398526d4aa836875295ebb71, type: 3}
+    - {fileID: 2800000, guid: ad408c306ffb7ed4ba494c88c26e9fe4, type: 3}
+    - {fileID: 2800000, guid: 12d65fcd7966f9840bc1eaaa675981a1, type: 3}
+    - {fileID: 2800000, guid: 6b8bc10c62e60cf418e33e6c901dee22, type: 3}
+    - {fileID: 2800000, guid: 51acaa65e76602a4ebc1145574af9c89, type: 3}
+    - {fileID: 2800000, guid: 0236a9b7e332e214eb3245a1414e3efe, type: 3}
+    - {fileID: 2800000, guid: d994423af0f3e7c4f82ac0c17392b13b, type: 3}
+    - {fileID: 2800000, guid: 2c3fc37db8cbdc247b0286a47048bef5, type: 3}
+    - {fileID: 2800000, guid: 067846d8147e68140a5a4388e5bf3de1, type: 3}
+    - {fileID: 2800000, guid: 331f838832ab014428874594bda7a133, type: 3}
+    - {fileID: 2800000, guid: 063489da4c019fd47989eb8d2df6702d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - ad408c306ffb7ed4ba494c88c26e9fe4: 21300000
+    - 88a3dd619a8fb0349ad8f2075c2b7fda: 21300000
+    - e38f290260e0f0b478cf6020cb4f7364: 21300000
+    - 618fe3432ab001149aeadbb9aff0f9be: 21300000
+    - 51acaa65e76602a4ebc1145574af9c89: 21300000
+    - 0236a9b7e332e214eb3245a1414e3efe: 21300000
+    - f70e37d7942dde24d8dc7fcc9f15dfee: 21300000
+    - 067846d8147e68140a5a4388e5bf3de1: 21300000
+    - d994423af0f3e7c4f82ac0c17392b13b: 21300000
+    - 6b8bc10c62e60cf418e33e6c901dee22: 21300000
+    - ce463d4c398526d4aa836875295ebb71: 21300000
+    - 2c3fc37db8cbdc247b0286a47048bef5: 21300000
+    - 12d65fcd7966f9840bc1eaaa675981a1: 21300000
+    - c357f89f17d42e8469edc747b24c0e19: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ad408c306ffb7ed4ba494c88c26e9fe4, type: 3}
+  - {fileID: 21300000, guid: 88a3dd619a8fb0349ad8f2075c2b7fda, type: 3}
+  - {fileID: 21300000, guid: e38f290260e0f0b478cf6020cb4f7364, type: 3}
+  - {fileID: 21300000, guid: 618fe3432ab001149aeadbb9aff0f9be, type: 3}
+  - {fileID: 21300000, guid: 51acaa65e76602a4ebc1145574af9c89, type: 3}
+  - {fileID: 21300000, guid: 0236a9b7e332e214eb3245a1414e3efe, type: 3}
+  - {fileID: 21300000, guid: f70e37d7942dde24d8dc7fcc9f15dfee, type: 3}
+  - {fileID: 21300000, guid: 067846d8147e68140a5a4388e5bf3de1, type: 3}
+  - {fileID: 21300000, guid: d994423af0f3e7c4f82ac0c17392b13b, type: 3}
+  - {fileID: 21300000, guid: 6b8bc10c62e60cf418e33e6c901dee22, type: 3}
+  - {fileID: 21300000, guid: ce463d4c398526d4aa836875295ebb71, type: 3}
+  - {fileID: 21300000, guid: 2c3fc37db8cbdc247b0286a47048bef5, type: 3}
+  - {fileID: 21300000, guid: 12d65fcd7966f9840bc1eaaa675981a1, type: 3}
+  - {fileID: 21300000, guid: c357f89f17d42e8469edc747b24c0e19, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - stump
+  - dirt
+  - potatoMaterial
+  - broccolMaterial
+  - grass33
+  - grass51
+  - bush
+  - petal41
+  - grass56
+  - tableclothMaterialBlue
+  - metal
+  - petal25
+  - tableclothMaterial
+  - carrotMaterial
+  m_RenderDataMap: {}
+  m_Tag: MaterialsAtlas
+  m_IsVariant: 0
