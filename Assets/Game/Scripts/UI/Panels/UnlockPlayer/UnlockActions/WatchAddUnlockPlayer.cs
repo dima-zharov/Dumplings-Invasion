@@ -1,3 +1,4 @@
+using YG;
 using Zenject;
 
 public class WatchAddUnlockPlayer : IUnlocker
@@ -25,6 +26,7 @@ public class WatchAddUnlockPlayer : IUnlocker
         }
         else
         {
+            YandexGame.RewVideoShow(1);
             _tryesToUnlock--;
             Description = $"ќткрыть персонажа за просмотр рекламы? \n (осталось {_tryesToUnlock})";
         }

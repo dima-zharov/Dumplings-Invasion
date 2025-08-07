@@ -199,7 +199,7 @@
 
                 FullAdShow(); // First ad true
 
-                // Additional init modules
+                initPayments();
 
             } catch (e) {
                 console.error('CRASH Initialization SDK: ', e);
@@ -355,6 +355,17 @@
                 console.error('CRASH Prompt Show: ', e.message);
                 FocusGame();
             }
+        }
+
+        var payments = null;
+
+        function initPayments(){
+
+            ysdk.getPayments({signed: true}).then(_payments =>{
+                payments = _payments;
+            }).catch(err =>{
+                
+            })
         }
 
         // Additional script modules:

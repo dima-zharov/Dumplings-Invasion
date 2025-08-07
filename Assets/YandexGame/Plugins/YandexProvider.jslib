@@ -98,5 +98,28 @@ mergeInto(LibraryManager.library,
 				return false;
 		}
 		return false;
+	},
+
+
+	MakePurchase : function(){
+		payments.purchase({id:'cat'}).then(purchase =>{
+
+			myGameInstance.SendMessage("UnlockIhfoPanel", "UnlockPlayer");
+			}).catch(err => {
+
+		})
+	},
+
+	CheckBought : function(){
+
+		payments.getPurchases().then(purchases=>{
+			if(purchases.some(purchase => purchase.productID == 'cat')){
+				myGameInstance.SendMessage("UnlockIhfoPanel", "UnlockPlayer");
+			}
+		}).catch(err => {
+
+		})
 	}
+
+
 });
