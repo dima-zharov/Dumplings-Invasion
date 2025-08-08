@@ -19,14 +19,15 @@ public class WatchAddUnlockPlayer : IUnlocker
 
     public void Unlock()
     {
-        if(_tryesToUnlock == 1)
+        YandexGame.RewVideoShow(1);
+        if (_tryesToUnlock == 1)
         {
             PlayerUnlockState.Unlock(PlayerIndex);
             _playerScroller.UnlockPlayer(PlayerIndex);
         }
         else
         {
-            YandexGame.RewVideoShow(1);
+
             _tryesToUnlock--;
             Description = $"ќткрыть персонажа за просмотр рекламы? \n (осталось {_tryesToUnlock})";
         }

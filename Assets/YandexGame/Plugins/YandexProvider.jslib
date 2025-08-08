@@ -106,20 +106,8 @@ mergeInto(LibraryManager.library,
 
 			myGameInstance.SendMessage("UnlockIhfoPanel", "UnlockPlayer");
 			}).catch(err => {
-
-		})
-	},
-
-	CheckBought : function(){
-
-		payments.getPurchases().then(purchases=>{
-			if(purchases.some(purchase => purchase.productID == 'cat')){
-				myGameInstance.SendMessage("UnlockIhfoPanel", "UnlockPlayer");
-			}
-		}).catch(err => {
-
+				myGameInstance.SendMessage("UnlockIhfoPanel", "ShowErrorMessage);
 		})
 	}
-
 
 });
