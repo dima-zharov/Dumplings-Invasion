@@ -1,7 +1,9 @@
+using System.Runtime.InteropServices;
+using UnityEngine;
 using YG;
 using Zenject;
 
-public class WatchAddUnlockPlayer : IUnlocker
+public class WatchAddUnlockPlayer : MonoBehaviour, IUnlocker
 {
     public string Description { get; private set; } = "ќткрыть персонажа за просмотр рекламы? \n (осталось 2)";
 
@@ -9,6 +11,9 @@ public class WatchAddUnlockPlayer : IUnlocker
 
     private PlayersScroller _playerScroller;
     private int _tryesToUnlock = 2;
+
+    [DllImport("__Internal")]
+    private static extern void WatchAddGetPlayerExtern();
 
     [Inject]
     public WatchAddUnlockPlayer(PlayersScroller players, int playerIndex)
@@ -19,7 +24,12 @@ public class WatchAddUnlockPlayer : IUnlocker
 
     public void Unlock()
     {
-        YandexGame.RewVideoShow(1);
+        WatchAddGetPlayerExtern();
+
+    }
+
+    private void WatchAddGetPlayer()
+    {
         if (_tryesToUnlock == 1)
         {
             PlayerUnlockState.Unlock(PlayerIndex);

@@ -7,7 +7,6 @@ public class ErrorPurchase : MonoBehaviour
     public void ShowErrorMessage()
     {
         StartCoroutine(ShowErrorPanelCoroutine());
-        return;
     }
 
     private IEnumerator ShowErrorPanelCoroutine()

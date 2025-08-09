@@ -104,9 +104,29 @@ mergeInto(LibraryManager.library,
 	MakePurchase : function(){
 		payments.purchase({id:'cat'}).then(purchase =>{
 
-			myGameInstance.SendMessage("UnlockIhfoPanel", "UnlockPlayer");
+			myGameInstance.SendMessage("UnlockTypes", "BuyPlayer");
 			}).catch(err => {
-				myGameInstance.SendMessage("UnlockIhfoPanel", "ShowErrorMessage);
+				myGameInstance.SendMessage("UnlockIhfoPanel", "ShowErrorMessage");
+		})
+	}
+
+	WatchAddGetPlayerExtern : function(){
+		ysdk.adv.showRewardedVideo({
+			callbacks:{
+			onRewarded: () =>{
+				myGameInstance.SendMessage("UnlockTypes", "WatchAddGetPlayer");
+			}
+			}
+		})
+	}
+
+		CheckAttemptsExtern : function(){
+		ysdk.adv.showRewardedVideo({
+			callbacks:{
+			onRewarded: () =>{
+				myGameInstance.SendMessage("ContinueChancePanel", "SpendAttemp");
+			}
+			}
 		})
 	}
 

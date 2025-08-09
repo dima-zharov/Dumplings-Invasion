@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class ContinueGameAttempts : MonoBehaviour
@@ -10,6 +11,7 @@ public class ContinueGameAttempts : MonoBehaviour
     [SerializeField] private int _numberOfAttempts;
     private AppearanceStartAnimation _losePanelAppearance;
     private AppearanceStartAnimation _secondChancePanelAppearance;
+    private ExitAnimationDisableButton _secondChancePanelDiasbleAnimation;
 
     private int _currentAttempts;
 
@@ -28,7 +30,11 @@ public class ContinueGameAttempts : MonoBehaviour
         _currentAttempts = _numberOfAttempts;
         _losePanelAppearance = _losePanel.GetComponent<AppearanceStartAnimation>();
         _secondChancePanelAppearance = _secondChancePanel.GetComponent<AppearanceStartAnimation>();
+        _secondChancePanelDiasbleAnimation = _secondChancePanel.GetComponent<ExitAnimationDisableButton>();
     }
+
+    [DllImport("__Internal")]
+    private static extern void CheckAttemptsExtern();
 
     public void CheckAttempts()
     {
@@ -48,5 +54,11 @@ public class ContinueGameAttempts : MonoBehaviour
         }
     }
 
-    public void SpendAttemp() => _currentAttempts--;
+    private void SpendAttemp()
+    {
+        _currentAttempts--;
+        _secondChancePanelDiasbleAnimation.StartAnimation();
+    }
+
+    public void TrySpendAttemp() => CheckAttemptsExtern();
 }

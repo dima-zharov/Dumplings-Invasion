@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 4537454229439460552}
   - component: {fileID: 6114147719274595624}
   - component: {fileID: 4761955422837056809}
-  - component: {fileID: 2252391269239100621}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Untagged
@@ -214,28 +213,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 8
   _radius: 4
---- !u!64 &2252391269239100621
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270749252831739033}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: ad13d3d2c0278d1489597a4565562080, type: 3}
 --- !u!1 &742926502172232983
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &40116936575599833
 Transform:
   m_ObjectHideFlags: 0
@@ -305,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5224101480496138712
 Transform:
   m_ObjectHideFlags: 0
@@ -358,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1132071396888499824
 Transform:
   m_ObjectHideFlags: 0
@@ -411,7 +388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6683431882319307078
 Transform:
   m_ObjectHideFlags: 0

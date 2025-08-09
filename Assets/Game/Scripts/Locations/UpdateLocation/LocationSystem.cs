@@ -16,7 +16,7 @@ public class LocationSystem : MonoBehaviour
     
     public Location[] Locations => _locations;
     public event Action<Location> OnChangedLocation;
-    public event Action OnChangedLocationUI;
+    public event Action OnChangedLocationGlobal;
 
     public void Init(Location currentLocation)
     {
@@ -42,7 +42,7 @@ public class LocationSystem : MonoBehaviour
                 OnChangedLocation?.Invoke(location);
                 CurrentLocationId = location.LocationID;
                 _currentLocation = location;
-                OnChangedLocationUI?.Invoke();
+                OnChangedLocationGlobal?.Invoke();
             }
         }
     }

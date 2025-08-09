@@ -11,11 +11,11 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private LocationSystem _locationSystem;
     private void OnEnable()
     {
-        _locationSystem.OnChangedLocationUI += ChangeUpgradeText;
+        _locationSystem.OnChangedLocationGlobal += ChangeUpgradeText;
     }
     private void OnDisable()
     {
-        _locationSystem.OnChangedLocationUI -= ChangeUpgradeText;
+        _locationSystem.OnChangedLocationGlobal -= ChangeUpgradeText;
     }
     public void ChangeUpgradeText()
     {
