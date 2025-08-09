@@ -11,7 +11,6 @@ public class ContinueGameAttempts : MonoBehaviour
     [SerializeField] private int _numberOfAttempts;
     private AppearanceStartAnimation _losePanelAppearance;
     private AppearanceStartAnimation _secondChancePanelAppearance;
-    private ExitAnimationDisableButton _secondChancePanelDiasbleAnimation;
 
     private int _currentAttempts;
 
@@ -30,7 +29,7 @@ public class ContinueGameAttempts : MonoBehaviour
         _currentAttempts = _numberOfAttempts;
         _losePanelAppearance = _losePanel.GetComponent<AppearanceStartAnimation>();
         _secondChancePanelAppearance = _secondChancePanel.GetComponent<AppearanceStartAnimation>();
-        _secondChancePanelDiasbleAnimation = _secondChancePanel.GetComponent<ExitAnimationDisableButton>();
+
     }
 
     [DllImport("__Internal")]
@@ -40,10 +39,7 @@ public class ContinueGameAttempts : MonoBehaviour
     {
         if (_currentAttempts == 0)
         {
-            _losePanel.gameObject.SetActive(true);
-            _losePanelAppearance.StartAnimation();
-            _currentAttempts = _numberOfAttempts;
-            _gameOver.FinishGame();
+            FinishGame();
         }
         else
         {
@@ -54,11 +50,16 @@ public class ContinueGameAttempts : MonoBehaviour
         }
     }
 
-    private void SpendAttemp()
+    private void FinishGame()
     {
-        _currentAttempts--;
-        _secondChancePanelDiasbleAnimation.StartAnimation();
+        _losePanel.gameObject.SetActive(true);
+        _losePanelAppearance.StartAnimation();
+        _currentAttempts = _numberOfAttempts;
+        _gameOver.FinishGame();
     }
+
+    private void SpendAttemp() => _currentAttempts--;
+    
 
     public void TrySpendAttemp() => CheckAttemptsExtern();
 }

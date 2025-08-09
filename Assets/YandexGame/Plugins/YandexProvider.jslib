@@ -124,7 +124,17 @@ mergeInto(LibraryManager.library,
 	ysdk.adv.showRewardedVideo({
 			callbacks:{
 			onRewarded: () => {
-				myGameInstance.SendMessage("ContinueChancePanel", "SpendAttemp");
+				rewarded = true;
+				myGameInstance.SendMessage("LoadCanvas", "SpendAttemp");
+				myGameInstance.SendMessage("LoadCanvas", "CheckAttempts");
+			},
+			onClose: () => {
+                if (!rewarded) {
+                    myGameInstance.SendMessage("LoadCanvas", "FinishGame");
+                }
+            },
+			onError: () => {
+				myGameInstance.SendMessage("LoadCanvas", "FinishGame");
 			}
 			}
 		})
