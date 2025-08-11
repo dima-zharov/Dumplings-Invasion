@@ -1,23 +1,12 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
-public class PlayerMotionless : MonoBehaviour
-{
-    [SerializeField] private TextMeshProUGUI _timeBeforeDeathText;
-    [SerializeField] private DeathPlayer _deathPlayer;
+public class PlayerMotionless : PlayerMotioniessBase 
+{ 
     [SerializeField] private LoadLevel _loadLevel;
+    [SerializeField] private StartLevel _startLevel;
+    private DeathPlayer _deathPlayer;
 
-    private Rigidbody _rigidbody;
-
-    private bool _wasContinueChancePanelShowed = false;
-    private float _timeBeforeDeath = 3;
-    private float _elapsedTime;
-    private float _unitOfTime = 0.1f;
-    private bool _isImmobility;
-    private bool _isCountdownStarted;
-
-    private Vector3 _currentVelocity => new Vector3(Mathf.Round(_rigidbody.velocity.x), Mathf.Round(_rigidbody.velocity.y), Mathf.Round(_rigidbody.velocity.z));
     private void OnEnable()
     {
         _loadLevel.OnLevelLoaded += ResetContinueChancePanelState;
@@ -26,72 +15,25 @@ public class PlayerMotionless : MonoBehaviour
     {
         _loadLevel.OnLevelLoaded -= ResetContinueChancePanelState;
     }
-    private void Awake()
+
+    protected override void InitIDeathPlayer()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _deathPlayer = GetComponent<DeathPlayer>();
+        _deathPlayerBase = _deathPlayer; 
     }
 
-    private void Update()
+    protected override void CheckTimerBegin()
     {
-        if (CheckImmobility() && !_isCountdownStarted && _deathPlayer.IsAlive && !_loadLevel.IsLevelLoading)
+        if (CheckImmobility() && !_isCountdownStarted && _deathPlayerBase.IsAlive && _startLevel.IsGameStarted)
             StartCoroutine(TimerImmobility());
     }
-
-    private bool CheckImmobility()
+    protected override void KillPlayer()
     {
-        if (_currentVelocity == Vector3.zero) 
-            _isImmobility = true;
-        else 
-            _isImmobility = false;
+        if (!_wasContinueChancePanelShowed)
+            _deathPlayerBase.Kill();
 
-        return _isImmobility;
-    }
-
-    private void CheckTimeOfDeath()
-    {
-        if (_elapsedTime >= 3)
-        {
-            _timeBeforeDeath -= _unitOfTime;
-            _timeBeforeDeathText.text = _timeBeforeDeath.ToString("0.0");
-        }
+        _wasContinueChancePanelShowed = true;
 
     }
 
-    private void ResetContinueChancePanelState()
-    {
-        _wasContinueChancePanelShowed = false;
-    }
-    private void ResumeValues()
-    {
-        _elapsedTime = 0;
-        _timeBeforeDeath = 3;
-        _timeBeforeDeathText.text = "";
-    }
-
-    private IEnumerator TimerImmobility()
-    {
-        _isCountdownStarted = true;
-
-        while (_isImmobility)
-        {
-            yield return new WaitForSeconds(_unitOfTime);
-            _elapsedTime += _unitOfTime;
-
-            CheckTimeOfDeath();
-
-            if (_elapsedTime >= 6)
-            {
-                if (!_wasContinueChancePanelShowed)
-                    _deathPlayer.Kill();
-
-                _wasContinueChancePanelShowed = true;
-
-                break;
-            }
-
-        }
-
-        _isCountdownStarted = false;
-        ResumeValues();
-    }
 }

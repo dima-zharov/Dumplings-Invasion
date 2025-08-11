@@ -24,6 +24,7 @@ public class LoadTutorialStep : MonoBehaviour
     private int _failCount = 0;
 
     public bool IsEnemySpawn { get; set; }
+    public bool IsTutorialStepActive { get; private set; } = false;
 
     public GameObject EnemyObject => _enemy;
 
@@ -36,11 +37,10 @@ public class LoadTutorialStep : MonoBehaviour
     private void StartStep()
     {
         CleanupPreviousEnemy();
-
+        _deathPlayer.RevivePlayer();
         var step = _steps[_currentStepIndex];
         _instructionText.text = step.InstructionText;
         _videoPlayerManager.ChoseVideoClip(_currentStepIndex);
-        
         _failCount = 0;
     }
 
@@ -48,6 +48,7 @@ public class LoadTutorialStep : MonoBehaviour
     {
         _enemy = _enemySpawner.EnemySpawn(_steps[_currentStepIndex].EnemyPrefab);
         IsEnemySpawn = true;
+        IsTutorialStepActive = true;
     }
 
     private void RestartGame()
@@ -82,10 +83,12 @@ public class LoadTutorialStep : MonoBehaviour
         {
             FinishTutorial();
         }
+        IsTutorialStepActive = false;
     }
 
     public void PlayerLose()
     {
+        IsTutorialStepActive = false;
         _loseSound.Play();
         RestartGame();
         _failCount++;

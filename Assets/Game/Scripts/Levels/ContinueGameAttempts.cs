@@ -58,7 +58,7 @@ public class ContinueGameAttempts : MonoBehaviour
         _gameOver.FinishGame();
     }
 
-    private void SpendAttemp() => _currentAttempts--;
+    public void SpendAttemp() => _currentAttempts--;
     
 
     public void TrySpendAttemp() => CheckAttemptsExtern();

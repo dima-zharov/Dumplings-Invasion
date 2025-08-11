@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class TutorialDeathPlayer : MonoBehaviour
+public class TutorialDeathPlayer : MonoBehaviour, IDeathPlayer
 {
     [SerializeField] private LoadTutorialStep _loadTutorialStep;
-    
-    private bool _isAlive = true;
-    
-    public bool IsAlive => _isAlive;
-    
-    public void RevivePlayer() { _isAlive = true; }
+
+    public bool IsAlive { get; set; } = true;
+
+    public void RevivePlayer() { IsAlive = true; }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Death")  && _isAlive)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Death")  && IsAlive)
         {
-            _isAlive = false;
-            _loadTutorialStep.PlayerLose();
+           Kill();
         }
+    }
+
+    public void Kill()
+    {
+        IsAlive = false;
+        _loadTutorialStep.PlayerLose();
     }
 }

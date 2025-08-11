@@ -104,7 +104,8 @@ public class SpawnEnemy : MonoBehaviour
         {
             foreach (var enemy in _enemies)
             {
-                Destroy(enemy.gameObject);
+                if(enemy != null)
+                    Destroy(enemy.gameObject);
             }
 
             _enemies.Clear();

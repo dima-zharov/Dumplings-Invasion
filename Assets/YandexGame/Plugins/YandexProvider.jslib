@@ -121,6 +121,8 @@ mergeInto(LibraryManager.library,
 	},
 
 	CheckAttemptsExtern : function(){
+	let rewarded = false;
+	
 	ysdk.adv.showRewardedVideo({
 			callbacks:{
 			onRewarded: () => {
