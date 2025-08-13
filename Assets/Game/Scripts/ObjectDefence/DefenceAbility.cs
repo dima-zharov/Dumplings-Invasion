@@ -21,7 +21,6 @@ public class DefenceAbility : MonoBehaviour
     public void Init(float currentDefence)
     {
         _currentDefence = currentDefence;
-        Debug.Log(gameObject.name + " " + _currentDefence);
     }
     
     public void SetDefence(float defence)

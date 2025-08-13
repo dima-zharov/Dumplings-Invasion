@@ -548,7 +548,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5dbbae3802d4f4f9ba1a8a156ccbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 3
+  <NeedSpeedToPush>k__BackingField: 0
+  _pushForce: 3.5
 --- !u!114 &8398963391870020336
 MonoBehaviour:
   m_ObjectHideFlags: 0

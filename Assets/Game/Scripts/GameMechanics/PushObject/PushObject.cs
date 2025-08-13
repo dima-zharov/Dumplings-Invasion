@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PushObject : MonoBehaviour
 {
+    [field:SerializeField] public bool NeedSpeedToPush { get; private set; }
     private Rigidbody _playerRigidbody;
     private Rigidbody _enemyRigidbody;
     private DefenceAbility _defenceAbility;
@@ -21,7 +22,9 @@ public class PushObject : MonoBehaviour
         Vector3 directionToEnemy = (enemy.transform.position - player.transform.position).normalized;
         directionToEnemy.y = 0;
 
-        Vector3 pushDirection = directionToEnemy * _force * _speed;
+        Vector3 pushDirection = directionToEnemy * _force;
+        if(NeedSpeedToPush)
+            pushDirection = pushDirection * _speed;
 
         _enemyRigidbody.AddForce(pushDirection, ForceMode.Impulse);
     }

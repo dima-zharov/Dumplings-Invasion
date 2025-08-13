@@ -14,11 +14,12 @@ GameObject:
   - component: {fileID: 7518696125149620205}
   - component: {fileID: 6333500861444833572}
   - component: {fileID: 8000958156175650046}
-  - component: {fileID: -1731632769865257742}
   - component: {fileID: 5005966698107766206}
   - component: {fileID: 4304010458456501499}
   - component: {fileID: 4537454229439460552}
   - component: {fileID: 3216336954166805045}
+  - component: {fileID: 8159980636371826488}
+  - component: {fileID: 6142075962266594471}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Untagged
@@ -146,20 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e713c3aaccbf464faf0687ff05378fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1731632769865257742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270749252831739033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 471ecb424eb2d2d4eaa15b38e14059d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 8
-  _radius: 4
 --- !u!114 &5005966698107766206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65280bf23691074b8243e3c9d66f4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosiveForce: 200
-  _explosionRadius: 3
+  _explosiveForce: 100
+  _explosionRadius: 5
 --- !u!114 &4304010458456501499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +200,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _endSize: 0.5
   _duration: 0.5
+--- !u!114 &8159980636371826488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270749252831739033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5dbbae3802d4f4f9ba1a8a156ccbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <NeedSpeedToPush>k__BackingField: 0
+  _pushForce: 8
+--- !u!114 &6142075962266594471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270749252831739033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471ecb424eb2d2d4eaa15b38e14059d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 8
+  _radius: 4
 --- !u!1 &1325017505657181459
 GameObject:
   m_ObjectHideFlags: 0

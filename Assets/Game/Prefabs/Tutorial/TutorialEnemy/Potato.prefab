@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4537454229439460552}
   - component: {fileID: 6114147719274595624}
   - component: {fileID: 4761955422837056809}
+  - component: {fileID: 6175859630022913499}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Untagged
@@ -158,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65280bf23691074b8243e3c9d66f4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosiveForce: 700
-  _explosionRadius: 3
+  _explosiveForce: 100
+  _explosionRadius: 5
 --- !u!114 &4304010458456501499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +214,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 8
   _radius: 4
+--- !u!114 &6175859630022913499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270749252831739033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5dbbae3802d4f4f9ba1a8a156ccbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <NeedSpeedToPush>k__BackingField: 0
+  _pushForce: 8
 --- !u!1 &742926502172232983
 GameObject:
   m_ObjectHideFlags: 0
