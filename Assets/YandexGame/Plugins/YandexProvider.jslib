@@ -125,21 +125,34 @@ mergeInto(LibraryManager.library,
 	
 	ysdk.adv.showRewardedVideo({
 			callbacks:{
-			onRewarded: () => {
-				rewarded = true;
-				myGameInstance.SendMessage("LoadCanvas", "SpendAttemp");
-				myGameInstance.SendMessage("LoadCanvas", "CheckAttempts");
-			},
-			onClose: () => {
-                if (!rewarded) {
-                    myGameInstance.SendMessage("LoadCanvas", "FinishGame");
-                }
-            },
-			onError: () => {
-				myGameInstance.SendMessage("LoadCanvas", "FinishGame");
-			}
+				onRewarded: () => {
+					rewarded = true;
+					myGameInstance.SendMessage("LoadCanvas", "WatchAdd");
+					myGameInstance.SendMessage("LoadCanvas", "SpendAttemp");
+				},
+	            onClose: () => {
+	                if (!rewarded) {
+	                    myGameInstance.SendMessage("LoadCanvas", "FinishGame");
+	                }
+	            },
+	            onError: () => {
+	                myGameInstance.SendMessage("LoadCanvas", "FinishGame");
+	            }
 			}
 		})
-	}
+	},
+
+	SaveExtern: function(date){
+		var dateString = UTF8ToString(date);
+		var myObj = JSON.parse(dateString);
+		player.setData(myObj);
+	},
+
+	LoadExtern: function(){
+		player.getData().then(_date =>{
+			const myJSON = JSON.stringify(_date);
+			myGameInstance.SendMessage('Data', 'SetData', myJSON);
+		});
+	},
 
 });

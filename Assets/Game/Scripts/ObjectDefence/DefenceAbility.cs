@@ -14,7 +14,6 @@ public class DefenceAbility : MonoBehaviour
         if (_currentDefence < _startDefence)
         {
             _currentDefence = _startDefence;
-            Debug.Log(_currentDefence);
         }
     }
 

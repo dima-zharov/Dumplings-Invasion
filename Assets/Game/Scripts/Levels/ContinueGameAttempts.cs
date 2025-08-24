@@ -11,7 +11,7 @@ public class ContinueGameAttempts : MonoBehaviour
     [SerializeField] private int _numberOfAttempts;
     private AppearanceStartAnimation _losePanelAppearance;
     private AppearanceStartAnimation _secondChancePanelAppearance;
-
+    private bool _isAddWatched = false;
     private int _currentAttempts;
 
     private void OnEnable()
@@ -41,7 +41,7 @@ public class ContinueGameAttempts : MonoBehaviour
         {
             FinishGame();
         }
-        else
+        else if(!_isAddWatched)
         {
             _enemyDestroyer.DestroyAllEnemy();
             _secondChancePanel.gameObject.SetActive(true);
@@ -58,7 +58,9 @@ public class ContinueGameAttempts : MonoBehaviour
         _gameOver.FinishGame();
     }
 
-    public void SpendAttemp() => _currentAttempts--;
+    private void WatchAdd() => _isAddWatched =  true;
+
+    private void SpendAttemp() => _currentAttempts--;
     
 
     public void TrySpendAttemp() => CheckAttemptsExtern();

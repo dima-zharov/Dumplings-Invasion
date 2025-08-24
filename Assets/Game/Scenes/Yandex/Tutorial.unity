@@ -1255,6 +1255,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4083214806362214960, guid: d57e649085616424bb6a8c8214ee8957, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4979816757836474766, guid: d57e649085616424bb6a8c8214ee8957, type: 3}
       propertyPath: m_Layer
       value: 6

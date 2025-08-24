@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class DataSaveLoader : MonoBehaviour
 {
     [SerializeField] private GameBeginning _gameBeginning;
+    [SerializeField] private LoadLevel _loadLevel;
 
     private List<IDataSaveLoader> _dataSaveLoaders;
 
@@ -17,11 +18,13 @@ public class DataSaveLoader : MonoBehaviour
     private void OnEnable()
     {
         _gameBeginning.OnGameStarted += LoadData;
+        _loadLevel.OnLevelLoaded += SaveData;
     }
 
     private void OnDisable()
     {
         _gameBeginning.OnGameStarted -= LoadData;
+        _loadLevel.OnLevelLoaded -= SaveData;
     }
 
     [ContextMenu("DeleteAllData")]
@@ -52,8 +55,12 @@ public class DataSaveLoader : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    private void OnApplicationPause(bool pause)
     {
-        SaveData();
+        if (pause)
+        {
+            SaveData();
+        }
     }
+
 }

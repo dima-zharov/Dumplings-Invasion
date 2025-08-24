@@ -1,53 +1,32 @@
-using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
 
 public class Repository : MonoBehaviour
 {
-    private const string GAME_STATE_KEY = "GameState";
 
-    private static Dictionary<string, string> _currentState = new();
+    private static ISaveType _currentSaveType;
+
+    private void Awake()
+    {
+        _currentSaveType = new YandexCloudSaveLoader();
+    }
+
 
     public static void LoadState()
     {
-        if (PlayerPrefs.HasKey(GAME_STATE_KEY))
-        {
-            var serializedState = PlayerPrefs.GetString(GAME_STATE_KEY);
-            _currentState = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedState);
-        }
-        else
-        {
-            _currentState = new Dictionary<string, string>();
-        }
+        _currentSaveType.LoadData();
     }
 
     public static void SaveState()
     {
-        var serializedState = JsonConvert.SerializeObject(_currentState);
-        PlayerPrefs.SetString(GAME_STATE_KEY, serializedState);
+        _currentSaveType.SaveData();
     }
 
-    public static T GetData<T>()
-    {
-        var serializedData = _currentState[typeof(T).Name];
-        return JsonConvert.DeserializeObject<T>(serializedData);
-    }
+  
 
     public static void SetData<T>(T value)
     {
-        var serializedData = JsonConvert.SerializeObject(value);
-        _currentState[typeof(T).Name] = serializedData;
+        _currentSaveType.SetData(value);
     }
 
-    public static bool TryGetData<T>(out T value)
-    {
-        if (_currentState.TryGetValue(typeof(T).Name, out var serializedData))
-        {
-            value = JsonConvert.DeserializeObject<T>(serializedData);
-            return true;
-        }
-
-        value = default;
-        return false;
-    }
+    public static bool TryGetData<T>(out T value) => _currentSaveType.TryGetData(out value);
 }
