@@ -28,8 +28,9 @@ public class WatchAddUnlockPlayer : MonoBehaviour, IUnlocker
 
     }
 
-    private void WatchAddGetPlayer()
+    public void WatchAddGetPlayer()
     {
+        Debug.Log($"WatchAddGetPlayer() called, tries = {_tryesToUnlock}, PlayerIndex={PlayerIndex}");
         if (_tryesToUnlock == 1)
         {
             PlayerUnlockState.Unlock(PlayerIndex);

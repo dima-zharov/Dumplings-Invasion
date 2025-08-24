@@ -7,12 +7,40 @@ mergeInto(LibraryManager.library,
 
 	FullAdShow: function ()
 	{
-		FullAdShow();
+		ysdk.adv.showFullscreenAdv({
+			callbacks: {
+				onOpen: () => {
+					myGameInstance.SendMessage("PauseManager", "Pause"); 
+				},
+				onClose: (wasShown) => {
+					myGameInstance.SendMessage("PauseManager", "Resume"); 
+				},
+				onError: (err) => {
+					console.error("FullAd error:", err);
+					myGameInstance.SendMessage("PauseManager", "Resume"); 
+				}
+			}
+		});
 	},
 
     RewardedShow: function (id)
 	{
-		RewardedShow(id);
+		ysdk.adv.showRewardedVideo({
+			callbacks: {
+				onOpen: () => {
+					myGameInstance.SendMessage("PauseManager", "Pause");
+				},
+				onRewarded: () => {
+					RewardedShow(id); 
+				},
+				onClose: () => {
+					myGameInstance.SendMessage("PauseManager", "Resume");
+				},
+				onError: () => {
+					myGameInstance.SendMessage("PauseManager", "Resume");
+				}
+			}
+		});
 	},
 
 	ReviewInternal: function()

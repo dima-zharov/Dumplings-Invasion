@@ -11,18 +11,18 @@ public class SoundSaveLoader : MonoBehaviour
     [SerializeField] private ButtonTogle _soundImage;
     [SerializeField] private ButtonTogle _musicImage;
     
+    
     private string _sound = "Sound";
     private string _music = "Music";
     private string _imageSound = "SoundImage";
     private string _imageMusic = "MusicImage";
-    private bool _isMusicUnMuting;
     private void Start()
     {
         if (PlayerPrefs.HasKey(_sound) && PlayerPrefs.HasKey(_music))
             LoadData();
     }
 
-    private void SaveData()
+    public void SaveData()
     {
         int soundState = _soundState.IsActive ? 1 : 0;
         int musicState = _musicState.IsActive ? 1 : 0;
@@ -53,38 +53,5 @@ public class SoundSaveLoader : MonoBehaviour
         _changeSpriteMusic.ChangeSpriteState();
     }
     
-    
-    private void OnApplicationPause(bool pauseStatus)
-    {
-        HandleFocusOrPause(!pauseStatus);
-    }
 
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        HandleFocusOrPause(hasFocus);
-    }
-
-    private void HandleFocusOrPause(bool isActive)
-    {
-        if (!isActive)
-        {
-            if (!_musicState.IsActive)
-            {
-                _musicController.Mute();
-                _isMusicUnMuting = true;
-            }
-            
-            SaveData();
-            Time.timeScale = 0;
-        }
-        else
-        {
-            if (_isMusicUnMuting)
-            {
-                _musicController.UnMute();
-                _isMusicUnMuting = false;
-            }
-            Time.timeScale = 1;
-        }
-    }
 }

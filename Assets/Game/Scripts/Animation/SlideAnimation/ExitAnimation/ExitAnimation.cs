@@ -29,7 +29,6 @@ public class ExitAnimation : SlideAnimation
 
     protected void ResumePosition()
     {
-        // Возвращаем на сохранённую локальную позицию
         _rectTransform.anchoredPosition = _startAnchoredPosition;
 
         gameObject.SetActive(false);

@@ -40,6 +40,7 @@ public class ContinueGameAttempts : MonoBehaviour
         if (_currentAttempts == 0)
         {
             FinishGame();
+            _isAddWatched = false;
         }
         else if(!_isAddWatched)
         {
