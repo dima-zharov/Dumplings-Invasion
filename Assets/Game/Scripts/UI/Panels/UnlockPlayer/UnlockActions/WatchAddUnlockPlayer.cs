@@ -38,7 +38,6 @@ public class WatchAddUnlockPlayer : MonoBehaviour, IUnlocker
         }
         else
         {
-
             _tryesToUnlock--;
             Description = $"ќткрыть персонажа за просмотр рекламы? \n (осталось {_tryesToUnlock})";
         }

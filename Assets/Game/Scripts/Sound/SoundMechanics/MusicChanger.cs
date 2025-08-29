@@ -17,6 +17,8 @@ public class MusicChanger : MonoBehaviour
         }
         if(PlayerPrefs.HasKey(MUSIC_INDEX))
             _audioSource.clip = _backgroundMusic[PlayerPrefs.GetInt(MUSIC_INDEX)];
+
+        _audioSource?.Play();
     }
     public void ChangeMusic()
     {

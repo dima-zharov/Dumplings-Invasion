@@ -129,21 +129,52 @@ mergeInto(LibraryManager.library,
 	},
 
 
-	MakePurchase : function(){
-		payments.purchase({id:'cat'}).then(purchase =>{
+MakePurchase: function() {
+    payments.purchase({ id: 'cat' }).then(function(purchase) {
 
-			myGameInstance.SendMessage("UnlockTypes", "BuyPlayer");
-			}).catch(err => {
-				myGameInstance.SendMessage("UnlockIhfoPanel", "ShowErrorMessage");
-		})
-	},
+        try { myGameInstance.SendMessage("UnlockTypes", "BuyPlayer"); } catch (e) {}
+
+        if (typeof ysdk !== 'undefined' && ysdk.getPlayer) {
+            ysdk.getPlayer({ signed: true }).then(function(player) {
+                player.getData().then(function(data) {
+                    data = data || {};
+                    var unlocked = data.unlockedSkins || {};
+                    unlocked.cat = true;           
+                    data.unlockedSkins = unlocked;
+                    player.setData(data, true).catch(function(err) {
+                        console.warn('Cloud save failed:', err);
+                    });
+                }).catch(function(err) {
+                    console.warn('player.getData failed:', err);
+                });
+            }).catch(function(err) {
+                console.warn('ysdk.getPlayer failed:', err);
+            });
+        }
+
+    }).catch(function(err) {
+        // покупка не удалась / отменена
+        myGameInstance.SendMessage("UnlockInfoPanel", "ShowErrorMessage");
+    });
+},
+
 
 	WatchAddGetPlayerExtern : function(){
 		ysdk.adv.showRewardedVideo({
 			callbacks:{
-			onRewarded: () => {
-				myGameInstance.SendMessage("UnlockTypes", "WatchAddGetPlayer");
-			}
+			    onOpen: () => {
+	                console.log("Реклама открыта");
+	            },
+				onRewarded: () => {
+					myGameInstance.SendMessage("UnlockTypes", "WatchAddGetPlayer");
+				},
+				onClose: () => {
+		             console.log("Реклама закрыта");
+		                
+		        },
+		        onError: () => {
+		             console.log("Невозможно воспроизвести рекламу");
+		        }
 			}
 		})
 	},
@@ -168,19 +199,6 @@ mergeInto(LibraryManager.library,
 	            }
 			}
 		})
-	},
-
-	SaveExtern: function(date){
-		var dateString = UTF8ToString(date);
-		var myObj = JSON.parse(dateString);
-		player.setData(myObj);
-	},
-
-	LoadExtern: function(){
-		player.getData().then(_date =>{
-			const myJSON = JSON.stringify(_date);
-			myGameInstance.SendMessage('Data', 'SetData', myJSON);
-		});
 	},
 
 });

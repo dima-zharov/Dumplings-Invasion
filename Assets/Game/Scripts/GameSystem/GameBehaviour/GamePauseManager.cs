@@ -8,36 +8,31 @@ public class GamePauseManager : MonoBehaviour
     [SerializeField] private ButtonTogle _musicState;
 
     private bool _isMusicUnMuting;
-    private bool _isPause;
-    private bool _isFocus;
 
 
     private void OnApplicationPause(bool pauseStatus)
     {
         HandleFocusOrPause(!pauseStatus);
-        _isPause = pauseStatus;
     }
 
     private void OnApplicationFocus(bool hasFocus)
     {
         HandleFocusOrPause(hasFocus);
-        _isFocus = hasFocus;
     }
 
     public void Pause()
     {
-        HandleFocusOrPause(!_isPause);
+        HandleFocusOrPause(false);
     }
     public void Resume()
     {
-        HandleFocusOrPause(_isFocus);
+        HandleFocusOrPause(true);
     }
 
     private void HandleFocusOrPause(bool isActive)
     {
         if (!isActive)
         {
-
             _musicController.Mute();
             _isMusicUnMuting = true;
             _soundSaveLoader.SaveData();

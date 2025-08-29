@@ -85,5 +85,13 @@ public abstract class PlayerMotioniessBase : MonoBehaviour
         ResumeValues();
     }
 
+    protected void StopTimerImmobility()
+    {
+        _isCountdownStarted = false;
+        ResumeValues();
+        StopAllCoroutines();
+    }
+    
+
     protected abstract void KillPlayer();
 }

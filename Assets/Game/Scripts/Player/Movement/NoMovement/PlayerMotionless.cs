@@ -10,10 +10,12 @@ public class PlayerMotionless : PlayerMotioniessBase
     private void OnEnable()
     {
         _loadLevel.OnLevelLoaded += ResetContinueChancePanelState;
+        _loadLevel.OnLevelLoaded += StopTimerImmobility;
     }
     private void OnDisable()
     {
         _loadLevel.OnLevelLoaded -= ResetContinueChancePanelState;
+        _loadLevel.OnLevelLoaded -= StopTimerImmobility;
     }
 
     protected override void InitIDeathPlayer()
@@ -24,8 +26,10 @@ public class PlayerMotionless : PlayerMotioniessBase
 
     protected override void CheckTimerBegin()
     {
-        if (CheckImmobility() && !_isCountdownStarted && _deathPlayerBase.IsAlive && _startLevel.IsGameStarted)
+        if (CheckImmobility() && !_isCountdownStarted && _deathPlayerBase.IsAlive && !_loadLevel.IsLevelLoading)
             StartCoroutine(TimerImmobility());
+
+        Debug.Log(_loadLevel.IsLevelLoading);
     }
     protected override void KillPlayer()
     {

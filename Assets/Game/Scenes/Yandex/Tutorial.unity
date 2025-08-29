@@ -437,7 +437,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
+  m_fontSize: 86.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -727,6 +727,51 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174225848}
   m_Enabled: 1
+--- !u!1 &262658266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262658268}
+  - component: {fileID: 262658267}
+  m_Layer: 0
+  m_Name: SceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &262658267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262658266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114194b67ea4ef7429a944ba88e289d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bootstrapSceneName: LoaderScene
+--- !u!4 &262658268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262658266}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &281844737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DurationAnimation>k__BackingField: 1
   _animationDirection: 2
+  _offscreenMarginPixels: 10
   _positionToMove: {x: 0, y: 0}
   _appearanceButtomHandler: {fileID: 0}
 --- !u!114 &377382211
@@ -3444,6 +3490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DurationAnimation>k__BackingField: 1
   _animationDirection: 2
+  _offscreenMarginPixels: 10
   _positionToMove: {x: 0, y: 0}
   _appearanceButtomHandler: {fileID: 410816770}
 --- !u!114 &1439504903
@@ -4256,6 +4303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DurationAnimation>k__BackingField: 1
   _animationDirection: 1
+  _offscreenMarginPixels: 10
 --- !u!114 &1895337948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4270,6 +4318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DurationAnimation>k__BackingField: 0.9
   _animationDirection: 0
+  _offscreenMarginPixels: 10
   _positionToMove: {x: 0, y: 0.25}
 --- !u!1 &1901870277
 GameObject:
@@ -4355,7 +4404,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 161.8
+  m_fontSize: 77.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5365,3 +5414,4 @@ SceneRoots:
   - {fileID: 379442256}
   - {fileID: 1109105310}
   - {fileID: 2039567380}
+  - {fileID: 262658268}

@@ -11,8 +11,8 @@ public class LoadLevel : MonoBehaviour
 
     public void Load()
     {
-        OnLevelLoaded?.Invoke();
         _isLevelLoading = true;
+        OnLevelLoaded?.Invoke();
     }
 
     public void DisableIsLevelLoading()
