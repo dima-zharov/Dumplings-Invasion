@@ -1,8 +1,7 @@
-using System.Runtime.InteropServices;
-using UnityEngine;
+using YG;
 using Zenject;
 
-public class BuyPlayerUnlock : MonoBehaviour, IUnlocker
+public class BuyPlayerUnlock : IUnlocker
 {
     public string Description { get; private set; } = "Перейти в раздел покупок?";
     public int PlayerIndex { get; private set; }
@@ -15,19 +14,13 @@ public class BuyPlayerUnlock : MonoBehaviour, IUnlocker
         PlayerIndex = playerIndex;
     }
 
-
     public void Unlock()
     {
-
-        MakePurchase();
+        YandexGame.BuyPayments("cat");
         
     }
-    [DllImport("__Internal")]
-    private static extern void MakePurchase();
-
-    private void BuyPlayer()
+    public void BuyPlayer(string id)
     {
-        Description = "Перейти в раздел покупок?";
         PlayerUnlockState.Unlock(PlayerIndex);
         _playerScroller.UnlockPlayer(PlayerIndex);
     }

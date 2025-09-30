@@ -9,9 +9,9 @@ public class ButtonTogle : MonoBehaviour
     public void TogleState(Action firstAction, Action secondAction)
     {
         if (IsActive)
-            secondAction();
-        else
             firstAction();
+        else
+            secondAction();
 
         IsActive = !IsActive;
     }

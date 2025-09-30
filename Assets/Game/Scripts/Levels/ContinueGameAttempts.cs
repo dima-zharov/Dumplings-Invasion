@@ -1,8 +1,10 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
+using YG;
 
 public class ContinueGameAttempts : MonoBehaviour
 {
+    [SerializeField] private YandexEventHandler _yandexEventHandler;
     [SerializeField] private AudioSource _loseSound;
     [SerializeField] private SpawnEnemy _enemyDestroyer;
     [SerializeField] private GameObject _losePanel;
@@ -32,9 +34,6 @@ public class ContinueGameAttempts : MonoBehaviour
 
     }
 
-    [DllImport("__Internal")]
-    private static extern void CheckAttemptsExtern();
-
     public void CheckAttempts()
     {
         if (_currentAttempts == 0)
@@ -59,10 +58,16 @@ public class ContinueGameAttempts : MonoBehaviour
         _gameOver.FinishGame();
     }
 
-    private void WatchAdd() => _isAddWatched =  true;
 
-    private void SpendAttemp() => _currentAttempts--;
-    
+    private void SpendAttemp()
+    {
+        _isAddWatched = true;
+        _currentAttempts--; 
+    }
 
-    public void TrySpendAttemp() => CheckAttemptsExtern();
+    public void TrySpendAttemp() 
+    {
+        _yandexEventHandler.InitEvent(true, SpendAttemp); 
+        _yandexEventHandler.InitEvent(false, FinishGame); 
+    }
 }

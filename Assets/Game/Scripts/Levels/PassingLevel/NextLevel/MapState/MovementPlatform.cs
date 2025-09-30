@@ -7,7 +7,7 @@ public class MovementPlatform : MonoBehaviour
     [SerializeField] private LevelTransition _levelTransition;
 
     private float _startPositionZ = 0;
-    private float _endPositionZ = -40;
+    private float _endPositionZ = -60;
     private bool _isMovement = false;
 
     private void OnEnable()

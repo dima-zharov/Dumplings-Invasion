@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using YG;
 
 public class LocationSystem : MonoBehaviour
 {

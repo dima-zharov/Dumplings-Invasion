@@ -29,7 +29,6 @@ public class PlayerMotionless : PlayerMotioniessBase
         if (CheckImmobility() && !_isCountdownStarted && _deathPlayerBase.IsAlive && !_loadLevel.IsLevelLoading)
             StartCoroutine(TimerImmobility());
 
-        Debug.Log(_loadLevel.IsLevelLoading);
     }
     protected override void KillPlayer()
     {

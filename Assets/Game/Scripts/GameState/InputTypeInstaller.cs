@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using YG;
 using Zenject;
 
 public class InputTypeInstaller : MonoInstaller
@@ -6,7 +8,7 @@ public class InputTypeInstaller : MonoInstaller
     [SerializeField] private Joystick _joystick;
     public override void InstallBindings()
     {
-        bool isMobile = Application.isMobilePlatform || Screen.width < 800;
+        bool isMobile = SystemInfo.deviceType == DeviceType.Handheld;
 
         if (isMobile)
         {
@@ -15,13 +17,14 @@ public class InputTypeInstaller : MonoInstaller
         }
         else
         {
-            if (_joystick != null)
-                _joystick.gameObject.SetActive(false);
-            Container.BindInterfacesAndSelfTo<DesktopMovement>().AsSingle();
+             if (_joystick != null)
+                 _joystick.gameObject.SetActive(false);
+             Container.BindInterfacesAndSelfTo<DesktopMovement>().AsSingle();
         }
 
         Container.Bind<Joystick>().FromInstance(_joystick);
 
         Container.Bind<MovementHandler>().AsSingle().NonLazy();
     }
+
 }

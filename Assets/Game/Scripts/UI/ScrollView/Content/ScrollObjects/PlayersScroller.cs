@@ -7,6 +7,7 @@ public class PlayersScroller : ScrollController
 {
     public int SelectedPlayerNumber { get; private set; } = 2;
     private const string PLAYER_ID_KEY = "PlayerId";
+    [SerializeField] private YandexEventHandler _yandexEventHandler;
     [SerializeField] private PlayerChoise _playerChoise;
     [Header("Elements Data")]
     [Space]
@@ -40,16 +41,19 @@ public class PlayersScroller : ScrollController
     private bool _isProcessing = false;
     private void OnDisable()
     {
-        foreach (var button in _buttons)
+        if(_buttons != null)
         {
-            if (button != null)
-                button.onClick.RemoveAllListeners();
+            foreach (var button in _buttons)
+            {
+                if (button != null)
+                    button.onClick.RemoveAllListeners();
+            }
         }
     }
 
     protected override void Initialize()
     {
-        _unlockers = new List<IUnlocker> { null, null, null, new WatchAddUnlockPlayer(this, 3), new BuyPlayerUnlock(this, 4) };
+        _unlockers = new List<IUnlocker> { null, null, null, new WatchAddUnlockPlayer(this, 3, _yandexEventHandler), new BuyPlayerUnlock(this, 4) };
         InitializeConcreteElements(out _handlersPlayersScrollerElementsState);
         InitializeConcreteElements(out _changersElementDescriptionText);
         InitializeConcreteElements(out _choicesSoundPlayers);

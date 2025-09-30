@@ -7,40 +7,12 @@ mergeInto(LibraryManager.library,
 
 	FullAdShow: function ()
 	{
-		ysdk.adv.showFullscreenAdv({
-			callbacks: {
-				onOpen: () => {
-					myGameInstance.SendMessage("PauseManager", "Pause"); 
-				},
-				onClose: (wasShown) => {
-					myGameInstance.SendMessage("PauseManager", "Resume"); 
-				},
-				onError: (err) => {
-					console.error("FullAd error:", err);
-					myGameInstance.SendMessage("PauseManager", "Resume"); 
-				}
-			}
-		});
+		FullAdShow();
 	},
 
     RewardedShow: function (id)
 	{
-		ysdk.adv.showRewardedVideo({
-			callbacks: {
-				onOpen: () => {
-					myGameInstance.SendMessage("PauseManager", "Pause");
-				},
-				onRewarded: () => {
-					RewardedShow(id); 
-				},
-				onClose: () => {
-					myGameInstance.SendMessage("PauseManager", "Resume");
-				},
-				onError: () => {
-					myGameInstance.SendMessage("PauseManager", "Resume");
-				}
-			}
-		});
+		RewardedShow(id);
 	},
 
 	ReviewInternal: function()
@@ -126,79 +98,5 @@ mergeInto(LibraryManager.library,
 				return false;
 		}
 		return false;
-	},
-
-
-MakePurchase: function() {
-    payments.purchase({ id: 'cat' }).then(function(purchase) {
-
-        try { myGameInstance.SendMessage("UnlockTypes", "BuyPlayer"); } catch (e) {}
-
-        if (typeof ysdk !== 'undefined' && ysdk.getPlayer) {
-            ysdk.getPlayer({ signed: true }).then(function(player) {
-                player.getData().then(function(data) {
-                    data = data || {};
-                    var unlocked = data.unlockedSkins || {};
-                    unlocked.cat = true;           
-                    data.unlockedSkins = unlocked;
-                    player.setData(data, true).catch(function(err) {
-                        console.warn('Cloud save failed:', err);
-                    });
-                }).catch(function(err) {
-                    console.warn('player.getData failed:', err);
-                });
-            }).catch(function(err) {
-                console.warn('ysdk.getPlayer failed:', err);
-            });
-        }
-
-    }).catch(function(err) {
-        // покупка не удалась / отменена
-        myGameInstance.SendMessage("UnlockInfoPanel", "ShowErrorMessage");
-    });
-},
-
-
-	WatchAddGetPlayerExtern : function(){
-		ysdk.adv.showRewardedVideo({
-			callbacks:{
-			    onOpen: () => {
-	                console.log("Реклама открыта");
-	            },
-				onRewarded: () => {
-					myGameInstance.SendMessage("UnlockTypes", "WatchAddGetPlayer");
-				},
-				onClose: () => {
-		             console.log("Реклама закрыта");
-		                
-		        },
-		        onError: () => {
-		             console.log("Невозможно воспроизвести рекламу");
-		        }
-			}
-		})
-	},
-
-	CheckAttemptsExtern : function(){
-	let rewarded = false;
-	
-	ysdk.adv.showRewardedVideo({
-			callbacks:{
-				onRewarded: () => {
-					rewarded = true;
-					myGameInstance.SendMessage("LoadCanvas", "WatchAdd");
-					myGameInstance.SendMessage("LoadCanvas", "SpendAttemp");
-				},
-	            onClose: () => {
-	                if (!rewarded) {
-	                    myGameInstance.SendMessage("LoadCanvas", "FinishGame");
-	                }
-	            },
-	            onError: () => {
-	                myGameInstance.SendMessage("LoadCanvas", "FinishGame");
-	            }
-			}
-		})
-	},
-
+	}
 });

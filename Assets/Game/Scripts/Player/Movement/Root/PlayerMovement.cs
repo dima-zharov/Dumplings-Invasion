@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public bool IsPlayerMoving() => _moveAction.ReadValue<Vector2>() != Vector2.zero;
+    public bool IsPlayerMoving() => _movementHandler != null && _movementHandler.Movement.LastInput != Vector2.zero;
 
     public void UpgradeSpeed(float increaseSpeed)
     {

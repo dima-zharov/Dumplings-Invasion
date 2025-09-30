@@ -10,8 +10,8 @@ public class SoundSaveLoader : MonoBehaviour
     [SerializeField] private ButtonTogle _musicState;
     [SerializeField] private ButtonTogle _soundImage;
     [SerializeField] private ButtonTogle _musicImage;
-    
-    
+
+
     private string _sound = "Sound";
     private string _music = "Music";
     private string _imageSound = "SoundImage";
@@ -28,7 +28,7 @@ public class SoundSaveLoader : MonoBehaviour
         int musicState = _musicState.IsActive ? 1 : 0;
         int soundImage = _soundImage.IsActive ? 1 : 0;
         int musicImage = _musicImage.IsActive ? 1 : 0;
-        
+
         PlayerPrefs.SetInt(_sound, soundState);
         PlayerPrefs.SetInt(_music, musicState);
         PlayerPrefs.SetInt(_imageSound, soundImage);
@@ -41,17 +41,17 @@ public class SoundSaveLoader : MonoBehaviour
         int music = PlayerPrefs.GetInt(_music);
         int soundImage = PlayerPrefs.GetInt(_imageSound);
         int musicImage = PlayerPrefs.GetInt(_imageMusic);
-        
-        _soundState.IsActive = sound == 0 ? true : false;
-        _musicState.IsActive = music == 0 ? true : false;
-        _soundImage.IsActive = soundImage == 0 ? true : false;
-        _musicImage.IsActive = musicImage == 0 ? true : false;
-        
+
+        _soundState.IsActive = sound != 1;
+        _musicState.IsActive = music != 1;
+        _soundImage.IsActive = soundImage != 1;
+        _musicImage.IsActive = musicImage != 1;
+
         _soundController.SetAudioBehaviour();
         _musicController.SetAudioBehaviour();
         _changeSpriteSound.ChangeSpriteState();
         _changeSpriteMusic.ChangeSpriteState();
     }
-    
+
 
 }

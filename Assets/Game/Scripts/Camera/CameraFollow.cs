@@ -3,6 +3,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private PlayerChange _playerChange;
+    [SerializeField] private LevelTransition _levelTransition;
 
     private Player _player;
     private Vector3 _offsetPosition;
@@ -12,8 +13,16 @@ public class CameraFollow : MonoBehaviour
     private float _barrierMinZ = -21;
     private float _barrierMaxZ = -18.5f;
 
-    private void OnEnable() { _playerChange.OnChangedPlayer += ChangeTarget; }
-    private void OnDisable() { _playerChange.OnChangedPlayer -= ChangeTarget; }
+    private void OnEnable() 
+    { 
+        _playerChange.OnChangedPlayer += ChangeTarget;
+        _levelTransition.OnCompleteTransition += SetDefaultPosition;
+    }
+    private void OnDisable() 
+    {
+        _playerChange.OnChangedPlayer -= ChangeTarget; 
+        _levelTransition.OnCompleteTransition -= SetDefaultPosition;
+    }
 
     private void Start()
     {
@@ -33,6 +42,12 @@ public class CameraFollow : MonoBehaviour
     {
         _player = player;
         _offsetPosition = _startPosition - _player.transform.position;
+        SetDefaultPosition();
+    }
+
+    private void SetDefaultPosition()
+    {
+        transform.position = _startPosition;
     }
 
     private void Follow()
