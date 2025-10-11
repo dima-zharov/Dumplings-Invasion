@@ -5,11 +5,10 @@ public class Repository : MonoBehaviour
 
     private static ISaveType _currentSaveType;
 
-    private void Awake()
+    static Repository()
     {
         _currentSaveType = new YandexCloudSaveLoader();
     }
-
 
     public static void LoadState()
     {

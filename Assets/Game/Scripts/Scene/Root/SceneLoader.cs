@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class SceneLoader : MonoBehaviour
 {
     private void Awake()
     {
         if (PlayerPrefs.GetInt("TutorialCompleted") == 1)
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadSceneAsync("Game");
         else
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadSceneAsync("Tutorial");
     }
 }

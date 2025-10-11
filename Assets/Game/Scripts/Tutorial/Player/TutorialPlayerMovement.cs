@@ -37,8 +37,8 @@ public class TutorialPlayerMovement : MonoBehaviour
         }
     }
 
-    public bool IsPlayerMoving() => _moveAction.ReadValue<Vector2>() != Vector2.zero;
-    
+    public bool IsPlayerMoving() => _movementHandler != null && _movementHandler.Movement.LastInput != Vector2.zero;
+
 
     private void OnCollisionEnter(Collision collision)
     {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zenject;
 using System.Collections.Generic;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class DataSaveLoader : MonoBehaviour
 {
@@ -33,10 +34,10 @@ public class DataSaveLoader : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    private void SaveData()
+    public void SaveData()
     {
         PlayerPrefs.SetInt("firstOpen", 1);
-        
+
         foreach (var dataSaveLoader in _dataSaveLoaders)
         {
             dataSaveLoader.SaveData();

@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Video;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class LoadTutorialStep : MonoBehaviour
 {
@@ -105,6 +107,7 @@ public class LoadTutorialStep : MonoBehaviour
     private void FinishTutorial()
     {
         PlayerPrefs.SetInt("TutorialCompleted", 1);
+        PlayerPrefs.Save();
         _winPanel.GetComponent<AudioSource>().Play();
         _winPanel.StartAnimation();
         _playerRigidbody.isKinematic = true;

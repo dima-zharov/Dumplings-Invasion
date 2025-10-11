@@ -5,11 +5,11 @@ public class YGAds : MonoBehaviour
 {
     public void TryShowFullScreenAd()
     {
-        YandexGame.FullscreenShow();
+        YG2.InterstitialAdvShow();
     }
 
-    public void ShowRewardedAd()
+    public void ShowRewardedAd(string rewardId)
     {
-        YandexGame.RewVideoShow(1);
+        YG2.RewardedAdvShow(rewardId);
     }
 }

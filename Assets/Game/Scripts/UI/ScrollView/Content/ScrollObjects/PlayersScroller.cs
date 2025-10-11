@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class PlayersScroller : ScrollController
 {
@@ -53,7 +54,7 @@ public class PlayersScroller : ScrollController
 
     protected override void Initialize()
     {
-        _unlockers = new List<IUnlocker> { null, null, null, new WatchAddUnlockPlayer(this, 3, _yandexEventHandler), new BuyPlayerUnlock(this, 4) };
+        _unlockers = new List<IUnlocker> { null, null, null, new WatchAddUnlockPlayer(this, 3, "get_meatball", _yandexEventHandler), new BuyPlayerUnlock(this, 4, "cat") };
         InitializeConcreteElements(out _handlersPlayersScrollerElementsState);
         InitializeConcreteElements(out _changersElementDescriptionText);
         InitializeConcreteElements(out _choicesSoundPlayers);

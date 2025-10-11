@@ -7,8 +7,8 @@ public class CameraFollow : MonoBehaviour
 
     private Player _player;
     private Vector3 _offsetPosition;
-    private Vector3 _startPosition;
 
+    private bool _isGameStarted = true;
     private float _barrierX = 1.5f;
     private float _barrierMinZ = -21;
     private float _barrierMaxZ = -18.5f;
@@ -16,17 +16,12 @@ public class CameraFollow : MonoBehaviour
     private void OnEnable() 
     { 
         _playerChange.OnChangedPlayer += ChangeTarget;
-        _levelTransition.OnCompleteTransition += SetDefaultPosition;
+        _levelTransition.OnCompleteTransition += CountOffset;
     }
     private void OnDisable() 
-    {
-        _playerChange.OnChangedPlayer -= ChangeTarget; 
-        _levelTransition.OnCompleteTransition -= SetDefaultPosition;
-    }
-
-    private void Start()
-    {
-        _startPosition = transform.position;
+    { 
+        _playerChange.OnChangedPlayer -= ChangeTarget;
+        _levelTransition.OnCompleteTransition -= CountOffset;
     }
 
     private void LateUpdate()
@@ -41,13 +36,17 @@ public class CameraFollow : MonoBehaviour
     private void ChangeTarget(Player player)
     {
         _player = player;
-        _offsetPosition = _startPosition - _player.transform.position;
-        SetDefaultPosition();
+        if (_isGameStarted)
+        {
+            CountOffset();
+            _isGameStarted = false;
+        }
+
     }
 
-    private void SetDefaultPosition()
+    private void CountOffset()
     {
-        transform.position = _startPosition;
+        _offsetPosition = transform.position - _player.transform.position;
     }
 
     private void Follow()

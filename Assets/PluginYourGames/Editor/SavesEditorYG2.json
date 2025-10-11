@@ -1,0 +1,51 @@
+{
+  "stringKeys": [
+    "LocationDataSerializable",
+    "MoneyDataSerializable",
+    "MultiplierDataSerializable",
+    "StrengthDataSerializable",
+    "DefenceDataSerializable"
+  ],
+  "stringValues": [
+    "{\"CurrentLocation\":{\"MinimumLevel\":20,\"MinimumUpgradePrice\":100,\"LocationID\":3,\"MaxUpgradeLevel\":45,\"name\":\"ThirdLocation\",\"hideFlags\":0},\"LocationID\":3,\"MinimumUpgradePrice\":100,\"MinimumLevel\":20,\"MaxUpgradeLevel\":45}",
+    "{\"Money\":22.0,\"Multiplier\":9.399996}",
+    "{\"UpgradePrice\":52.0,\"UpgradeLevel\":42}",
+    "{\"UpgradeLevel\":2,\"UpgradePrice\":100.0,\"PushForce\":1.2}",
+    "{\"UpgradePrice\":100.0,\"UpgradeLevel\":1,\"CurrentDefence\":0.1}"
+  ],
+  "floatKeys": [],
+  "floatValues": [],
+  "intKeys": [
+    "TutorialCompleted",
+    "PlayerUnlocked_0",
+    "PlayerUnlocked_1",
+    "PlayerUnlocked_2",
+    "PlayerId",
+    "firstOpen",
+    "BestScore",
+    "EndlessMode",
+    "PlayerUnlocked_4",
+    "PlayerUnlocked_3"
+  ],
+  "intValues": [
+    1,
+    1,
+    1,
+    1,
+    3,
+    1,
+    32,
+    1,
+    1,
+    1
+  ],
+  "intExample": 5,
+  "strExample": "Hello!",
+  "boolExample": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "idSave": 38
+}

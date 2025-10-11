@@ -8,18 +8,18 @@ public class InputTypeInstaller : MonoInstaller
     [SerializeField] private Joystick _joystick;
     public override void InstallBindings()
     {
-        bool isMobile = SystemInfo.deviceType == DeviceType.Handheld;
+        bool isDesctop = YG2.envir.isDesktop;
 
-        if (isMobile)
-        {
-            _joystick.gameObject.SetActive(true);
-            Container.BindInterfacesAndSelfTo<MobileMovement>().AsSingle();
-        }
-        else
+        if (isDesctop)
         {
              if (_joystick != null)
                  _joystick.gameObject.SetActive(false);
              Container.BindInterfacesAndSelfTo<DesktopMovement>().AsSingle();
+        }
+        else
+        {
+            _joystick.gameObject.SetActive(true);
+            Container.BindInterfacesAndSelfTo<MobileMovement>().AsSingle();
         }
 
         Container.Bind<Joystick>().FromInstance(_joystick);

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
+
 public class PlayerUnlockState
 {
     private const string KEY_PREFIX = "PlayerUnlocked_";
@@ -25,7 +27,6 @@ public class PlayerUnlockState
     public static void Unlock(int index)
     {
         PlayerPrefs.SetInt(KEY_PREFIX + index, 1);
-        PlayerPrefs.Save();
         _cachedUnlocks[index] = true;
     }
 }

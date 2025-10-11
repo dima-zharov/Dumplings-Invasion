@@ -17,7 +17,6 @@ public class PushEnemy : PushObject
         if (collision.gameObject.TryGetComponent(out Enemy enemy) && _playerMovement.IsPlayerMoving())
         {
             Push(enemy.gameObject, gameObject, _playerForce.PushForce);
-            Debug.Log("Pushed");
         }
     }
 

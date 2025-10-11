@@ -10,7 +10,6 @@ public class DesktopMovement : IMovement
         Vector2 direction = moveAction.ReadValue<Vector2>() * speed;
         LastInput = direction;
         rigidbody.AddForce(direction.x, 0, direction.y);
-        Debug.Log(direction);
     }
 
  

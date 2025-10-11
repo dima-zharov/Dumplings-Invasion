@@ -9,13 +9,15 @@ public class WatchAddUnlockPlayer : IUnlocker
 
     public int PlayerIndex { get; private set; }
 
+    private string _unlockId;
     private YandexEventHandler _yandexEventHandler;
     private PlayersScroller _playerScroller;
     private int _tryesToUnlock = 2;
 
     [Inject]
-    public WatchAddUnlockPlayer(PlayersScroller players, int playerIndex, YandexEventHandler yandexEventHandler)
+    public WatchAddUnlockPlayer(PlayersScroller players, int playerIndex, string unlockId, YandexEventHandler yandexEventHandler)
     {
+        _unlockId = unlockId;
         _playerScroller = players;
         PlayerIndex = playerIndex;
         _yandexEventHandler = yandexEventHandler;
@@ -23,13 +25,13 @@ public class WatchAddUnlockPlayer : IUnlocker
 
     public void Unlock()
     {
+        YG2.RewardedAdvShow(_unlockId);
         _yandexEventHandler.InitEvent(true, WatchAddGetPlayer);
 
     }
 
     public void WatchAddGetPlayer()
     {
-        YandexGame.RewVideoShow(1);
         Debug.Log($"WatchAddGetPlayer() called, tries = {_tryesToUnlock}, PlayerIndex={PlayerIndex}");
         if (_tryesToUnlock <= 1)
         {
